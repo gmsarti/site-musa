@@ -7,12 +7,27 @@
     <meta name="description" content="Pousada em Iguape/SP, cercada pela Mata Atlântica. Suítes confortáveis, jardins, piscina natural e observação de aves. Fale com a gente pelo WhatsApp.">
     <meta name="theme-color" content="#A84B2B">
 
+    <!-- Idiomas: atualizar as URLs quando o domínio oficial for definido -->
+    <!-- i18n:alternates:start -->
+    <link rel="alternate" hreflang="pt-BR" href="https://gmsarti.github.io/site-musa/">
+    <link rel="alternate" hreflang="en" href="https://gmsarti.github.io/site-musa/en/">
+    <link rel="alternate" hreflang="es" href="https://gmsarti.github.io/site-musa/es/">
+    <link rel="alternate" hreflang="fr" href="https://gmsarti.github.io/site-musa/fr/">
+    <link rel="alternate" hreflang="x-default" href="https://gmsarti.github.io/site-musa/">
+    <!-- i18n:alternates:end -->
+
     <!-- Open Graph / redes sociais -->
     <meta property="og:type" content="website">
+    <!-- i18n:og-locale:start -->
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="og:locale:alternate" content="es_ES">
+    <meta property="og:locale:alternate" content="fr_FR">
+    <meta property="og:url" content="https://gmsarti.github.io/site-musa/">
+    <!-- i18n:og-locale:end -->
     <meta property="og:title" content="Pousada MUSA | Iguape/SP">
     <meta property="og:description" content="Refúgio na Mata Atlântica com suítes confortáveis, jardins, piscina natural e observação de aves.">
-    <meta property="og:image" content="img/og.jpg">
+    <meta property="og:image" content="https://gmsarti.github.io/site-musa/img/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Entrada da Pousada Musa, em Iguape/SP">
@@ -67,11 +82,23 @@
                 </nav>
 
                 <div class="flex items-center gap-3">
+                    <!-- i18n:switcher-desktop:start -->
+                    <nav class="hidden lg:flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="Idioma">
+                        <span class="px-1.5 py-1 text-musa-terracotta" aria-current="page" aria-label="Português">PT</span>
+                        <span class="text-stone-400" aria-hidden="true">/</span>
+                        <a href="en/" hreflang="en" lang="en" aria-label="English" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">EN</a>
+                        <span class="text-stone-400" aria-hidden="true">/</span>
+                        <a href="es/" hreflang="es" lang="es" aria-label="Español" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">ES</a>
+                        <span class="text-stone-400" aria-hidden="true">/</span>
+                        <a href="fr/" hreflang="fr" lang="fr" aria-label="Français" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">FR</a>
+                    </nav>
+                    <!-- i18n:switcher-desktop:end -->
+
                     <button type="button" onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs tracking-wider uppercase font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
                         Reservar
                     </button>
 
-                    <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-musa-text hover:text-musa-terracotta" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+                    <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-musa-text hover:text-musa-terracotta" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu" data-open-label="Abrir menu" data-close-label="Fechar menu">
                         <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -90,6 +117,15 @@
                 <a href="#experiencias" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Experiências</a>
                 <a href="#localizacao" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Localização</a>
                 <a href="#contato" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Contato</a>
+
+                <!-- i18n:switcher-mobile:start -->
+                <div class="flex items-center gap-3 pt-2 text-xs font-semibold uppercase tracking-wider text-musa-muted border-t border-stone-200">
+                    <span class="py-1.5 text-musa-terracotta" aria-current="page" aria-label="Português">PT</span>
+                    <a href="en/" hreflang="en" lang="en" aria-label="English" class="py-1.5 hover:text-musa-terracotta">EN</a>
+                    <a href="es/" hreflang="es" lang="es" aria-label="Español" class="py-1.5 hover:text-musa-terracotta">ES</a>
+                    <a href="fr/" hreflang="fr" lang="fr" aria-label="Français" class="py-1.5 hover:text-musa-terracotta">FR</a>
+                </div>
+                <!-- i18n:switcher-mobile:end -->
             </div>
         </header>
 
@@ -312,7 +348,7 @@
             </div>
 
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
-                <button type="button" onclick="openPhoto('entrada')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Entrada da Musa" data-text="O portal de madeira e o caminho de entrada, cercados pela vegetação." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/hero-960.webp" width="1400" height="629"
                          srcset="img/hero-480.webp 480w, img/hero-960.webp 960w, img/hero.webp 1400w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -321,7 +357,7 @@
                          loading="lazy" decoding="async">
                     <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Entrada</span>
                 </button>
-                <button type="button" onclick="openPhoto('pousada')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Varanda e jardim" data-text="A área externa da pousada, com varanda e vista para o jardim." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/pousada-960.webp" width="1200" height="539"
                          srcset="img/pousada-480.webp 480w, img/pousada-960.webp 960w, img/pousada.webp 1200w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -330,7 +366,7 @@
                          loading="lazy" decoding="async">
                     <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Varanda</span>
                 </button>
-                <button type="button" onclick="openPhoto('piscina')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Piscina natural" data-text="Água natural, pedras e vegetação ao redor." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/piscina-960.webp" width="1200" height="539"
                          srcset="img/piscina-480.webp 480w, img/piscina-960.webp 960w, img/piscina.webp 1200w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -339,7 +375,7 @@
                          loading="lazy" decoding="async">
                     <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Piscina natural</span>
                 </button>
-                <button type="button" onclick="openPhoto('jardim')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Jardins e lago" data-text="Jardins, árvores frutíferas e o lago da pousada." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/jardim-960.webp" width="1200" height="539"
                          srcset="img/jardim-480.webp 480w, img/jardim-960.webp 960w, img/jardim.webp 1200w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -348,7 +384,7 @@
                          loading="lazy" decoding="async">
                     <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Jardins</span>
                 </button>
-                <button type="button" onclick="openPhoto('aves')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Saíra-sete-cores" data-text="Uma das espécies já fotografadas nos jardins da Musa." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/aves-960.webp" width="1200" height="795"
                          srcset="img/aves-480.webp 480w, img/aves-960.webp 960w, img/aves.webp 1200w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -357,7 +393,7 @@
                          loading="lazy" decoding="async">
                     <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Saíra-sete-cores</span>
                 </button>
-                <button type="button" onclick="openPhoto('colhereiro')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                <button type="button" onclick="openPhoto(this)" data-tag="Galeria" data-title="Colhereiro" data-text="Ave registrada na região, em meio à Mata Atlântica." class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
                     <img src="img/colhereiro-960.webp" width="1200" height="795"
                          srcset="img/colhereiro-480.webp 480w, img/colhereiro-960.webp 960w, img/colhereiro.webp 1200w"
                          sizes="(min-width: 1024px) 300px, (min-width: 640px) 30vw, 50vw"
@@ -423,8 +459,8 @@
                         </p>
                         <p>
                             <strong class="block text-xs uppercase tracking-wider text-musa-muted mb-0.5">Contato</strong>
-                            <a href="tel:+5511952991990" class="hover:text-musa-terracotta transition-colors">(11) 95299-1990</a><br>
-                            <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pousada%20Musa." target="_blank" rel="noopener" class="hover:text-musa-terracotta transition-colors">WhatsApp da pousada</a>
+                            <a href="tel:+5511952991990" class="inline-block py-1 hover:text-musa-terracotta transition-colors">(11) 95299-1990</a><br>
+                            <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pousada%20Musa." target="_blank" rel="noopener" class="inline-block py-1 hover:text-musa-terracotta transition-colors">WhatsApp da pousada</a>
                         </p>
                     </address>
 
@@ -622,9 +658,9 @@
                     <div>
                         <label for="accommodationSelect" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Preferência de acomodação</label>
                         <select id="accommodationSelect" name="accommodation" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:border-musa-terracotta">
-                            <option value="casal">Opção para casal</option>
-                            <option value="familia">Opção para família</option>
-                            <option value="a-combinar">A combinar / quero sugestão</option>
+                            <option value="casal" data-pt="Opção para casal">Opção para casal</option>
+                            <option value="familia" data-pt="Opção para família">Opção para família</option>
+                            <option value="a-combinar" data-pt="A combinar / quero sugestão">A combinar / quero sugestão</option>
                         </select>
                     </div>
                     <div>
@@ -666,7 +702,8 @@
                 </div>
 
                 <div id="bookingPrivacy" class="bg-stone-200/70 p-4 rounded-xl border border-stone-300 text-xs text-musa-muted leading-relaxed">
-                    Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.
+                    Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.<br>
+                    <span class="text-musa-terracotta font-medium">A solicitação é enviada em português para a equipe da pousada.</span>
                 </div>
 
                 <div class="pt-2 flex items-center justify-end gap-3">
@@ -689,374 +726,73 @@
         </svg>
     </a>
 
-    <!-- ================= SCRIPTS ================= -->
-    <script>
-        const WHATSAPP_NUMBER = '5511952991990';
-        const WHATSAPP_BASE = 'https://wa.me/' + WHATSAPP_NUMBER;
-        let lastFocusedElement = null;
+    <!-- ================= CONTEÚDO DOS MODAIS ================= -->
+    <template id="modal-pousada" data-tag="Nossa essência" data-title="Sobre a Pousada Musa" data-img="img/pousada-960.webp" data-alt="Varanda e jardim da Pousada Musa">
+        <p>A Pousada Musa fica em Engenhos, Iguape, no litoral sul de São Paulo, cercada pela Mata Atlântica. É um lugar de ritmo lento, jardins, árvores frutíferas e muito canto de pássaro.</p>
+        <p>As suítes são confortáveis, com camas elogiadas por quem já se hospedou e banheiros novos. A proposta é simples: descansar bem, comer bem e aproveitar a natureza ao redor.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
+            <div>✓ Suítes confortáveis</div>
+            <div>✓ Jardins e árvores frutíferas</div>
+            <div>✓ Observação de aves</div>
+            <div>✓ Ambiente acolhedor e LGBTQ+ friendly</div>
+        </div>
+        <p class="text-musa-terracotta font-semibold">Valores e disponibilidade são confirmados pelo WhatsApp.</p>
+    </template>
 
-        // Datas padrão e validação
-        function toLocalISO(date) {
-            const y = date.getFullYear();
-            const m = String(date.getMonth() + 1).padStart(2, '0');
-            const d = String(date.getDate()).padStart(2, '0');
-            return `${y}-${m}-${d}`;
-        }
+    <template id="modal-piscina" data-tag="Bem-estar &amp; natureza" data-title="Piscina Natural" data-img="img/piscina-960.webp" data-alt="Piscina natural da Pousada Musa">
+        <p>Uma área de água natural cercada por pedras, jardins e vegetação, com peixes e som de água corrente. Um dos cantos mais tranquilos da pousada.</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
+            <div><strong>Ambiente:</strong> ao ar livre, junto ao jardim</div>
+            <div><strong>Destaque:</strong> água natural e contato com a mata</div>
+        </div>
+        <p>Combine o banho com uma volta pelos jardins e uma sessão de observação de aves.</p>
+    </template>
 
-        function formatDateBR(iso) {
-            if (!iso) return '';
-            const parts = iso.split('-');
-            return `${parts[2]}/${parts[1]}/${parts[0]}`;
-        }
+    <template id="modal-jardim" data-tag="Natureza ao redor" data-title="Jardins &amp; Árvores Frutíferas" data-img="img/jardim-960.webp" data-alt="Jardins e lago da Pousada Musa">
+        <p>Os jardins e as árvores frutíferas atraem aves ao longo do dia. Saíras e outras espécies da Mata Atlântica circulam por aqui; colhereiros já foram registrados na região.</p>
+        <p>Reserve um tempo para caminhar sem pressa, sentar à sombra e observar.</p>
+    </template>
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const checkIn = document.getElementById('checkIn');
-            const checkOut = document.getElementById('checkOut');
-            if (!checkIn || !checkOut) return;
+    <template id="modal-aves" data-tag="Guia de observação" data-title="Aves da Mata Atlântica" data-img="img/aves-960.webp" data-alt="Saíra-sete-cores na Pousada Musa">
+        <p>Cercada por Mata Atlântica e árvores frutíferas, a Musa tem um comedouro movimentado e jardins que atraem aves durante o dia. Estas são algumas espécies já fotografadas na pousada e na região:</p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+            <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                <img src="img/aves-480.webp" srcset="img/aves-480.webp 480w, img/aves-960.webp 960w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="318" alt="Saíra-sete-cores" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
+                <span class="text-[11px] text-emerald-700 font-semibold uppercase">Comedouro &amp; jardim</span>
+                <h4 class="font-serif text-base text-musa-terracotta">Saíra-sete-cores</h4>
+                <p class="text-xs text-musa-muted mt-1">Ave colorida da Mata Atlântica, vista nos jardins e no comedouro.</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                <img src="img/colhereiro-480.webp" srcset="img/colhereiro-480.webp 480w, img/colhereiro-960.webp 960w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="318" alt="Colhereiro" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
+                <span class="text-[11px] text-amber-700 font-semibold uppercase">Área alagada &amp; entorno</span>
+                <h4 class="font-serif text-base text-musa-terracotta">Colhereiro</h4>
+                <p class="text-xs text-musa-muted mt-1">Ave rosada de bico achatado, registrada na região da pousada.</p>
+            </div>
+            <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                <img src="img/tie-480.webp" srcset="img/tie-480.webp 480w, img/tie.webp 1000w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="724" alt="Tiê-sangue" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
+                <span class="text-[11px] text-red-700 font-semibold uppercase">Jardins</span>
+                <h4 class="font-serif text-base text-musa-terracotta">Tiê-sangue</h4>
+                <p class="text-xs text-musa-muted mt-1">Pássaro vermelho vibrante da Mata Atlântica, fotografado na pousada.</p>
+            </div>
+        </div>
+        <p class="text-xs text-musa-muted">Dica: as primeiras horas do dia costumam ser as melhores para observar e fotografar. Leve câmera ou binóculo.</p>
+    </template>
 
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(today.getDate() + 1);
-            const afterTomorrow = new Date(today);
-            afterTomorrow.setDate(today.getDate() + 3);
+    <template id="modal-varanda" data-tag="Descanso" data-title="Varanda &amp; Jardins" data-img="img/pousada-960.webp" data-alt="Varanda da Pousada Musa com vista para o jardim">
+        <p>A varanda da casa é um convite a desacelerar: sombra, vista para o jardim e o som dos pássaros ao fundo.</p>
+        <p>Um bom lugar para ler, conversar ou simplesmente não fazer nada.</p>
+    </template>
 
-            checkIn.min = toLocalISO(today);
-            checkIn.value = toLocalISO(tomorrow);
-            checkOut.min = toLocalISO(tomorrow);
-            checkOut.value = toLocalISO(afterTomorrow);
-
-            checkIn.addEventListener('change', () => {
-                if (!checkIn.value) return;
-                const nextDay = new Date(checkIn.value + 'T12:00:00');
-                nextDay.setDate(nextDay.getDate() + 1);
-                const minCheckout = toLocalISO(nextDay);
-                checkOut.min = minCheckout;
-                if (!checkOut.value || checkOut.value <= checkIn.value) {
-                    checkOut.value = minCheckout;
-                }
-            });
-        });
-
-        // Menu mobile
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const openIcon = document.getElementById('menuIconOpen');
-            const closeIcon = document.getElementById('menuIconClose');
-            const button = document.getElementById('mobileMenuBtn');
-            const willOpen = menu.classList.contains('hidden');
-
-            menu.classList.toggle('hidden');
-            openIcon.classList.toggle('hidden');
-            closeIcon.classList.toggle('hidden');
-            button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
-            button.setAttribute('aria-label', willOpen ? 'Fechar menu' : 'Abrir menu');
-        }
-
-        // Acordeão do FAQ
-        function toggleFaq(button) {
-            const item = button.parentElement;
-            const wasActive = item.classList.contains('active');
-
-            document.querySelectorAll('.faq-item').forEach((el) => {
-                el.classList.remove('active');
-                const btn = el.querySelector('button');
-                if (btn) btn.setAttribute('aria-expanded', 'false');
-            });
-
-            if (!wasActive) {
-                item.classList.add('active');
-                button.setAttribute('aria-expanded', 'true');
-            }
-        }
-
-        // Controle de modais
-        function refreshScrollLock() {
-            const hasOpenModal = !!document.querySelector('.modal-open');
-            document.body.classList.toggle('overflow-hidden', hasOpenModal);
-        }
-
-        function openModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal) return;
-            lastFocusedElement = document.activeElement;
-            modal.classList.remove('hidden');
-            modal.classList.add('flex', 'modal-open');
-            modal.setAttribute('aria-hidden', 'false');
-            refreshScrollLock();
-
-            const focusTarget = modal.querySelector('[data-autofocus]') || modal.querySelector('button, input, select, textarea, a[href]');
-            if (focusTarget) {
-                window.setTimeout(() => focusTarget.focus(), 50);
-            }
-        }
-
-        function closeModal(id) {
-            const modal = document.getElementById(id);
-            if (!modal || !modal.classList.contains('modal-open')) return;
-            modal.classList.add('hidden');
-            modal.classList.remove('flex', 'modal-open');
-            modal.setAttribute('aria-hidden', 'true');
-            refreshScrollLock();
-
-            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
-                lastFocusedElement.focus();
-            }
-            lastFocusedElement = null;
-        }
-
-        function showModalData(data) {
-            const tag = document.getElementById('modalTag');
-            const title = document.getElementById('modalTitle');
-            const img = document.getElementById('modalImg');
-            const body = document.getElementById('modalBody');
-
-            tag.textContent = data.tag;
-            title.textContent = data.title;
-            img.src = data.img;
-            img.alt = data.alt || data.title;
-            body.innerHTML = data.html;
-
-            openModal('contentModal');
-        }
-
-        function closeContentModal() {
-            closeModal('contentModal');
-        }
-
-        function openBookingModal() {
-            openModal('bookingModal');
-        }
-
-        function closeBookingModal() {
-            closeModal('bookingModal');
-        }
-
-        // Conteúdo dos modais
-        const modalDatabase = {
-            pousada: {
-                tag: 'Nossa essência',
-                title: 'Sobre a Pousada Musa',
-                img: 'img/pousada-960.webp',
-                html: `
-                    <p>A Pousada Musa fica em Engenhos, Iguape, no litoral sul de São Paulo, cercada pela Mata Atlântica. É um lugar de ritmo lento, jardins, árvores frutíferas e muito canto de pássaro.</p>
-                    <p>As suítes são confortáveis, com camas elogiadas por quem já se hospedou e banheiros novos. A proposta é simples: descansar bem, comer bem e aproveitar a natureza ao redor.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
-                        <div>✓ Suítes confortáveis</div>
-                        <div>✓ Jardins e árvores frutíferas</div>
-                        <div>✓ Observação de aves</div>
-                        <div>✓ Ambiente acolhedor e LGBTQ+ friendly</div>
-                    </div>
-                    <p class="text-musa-terracotta font-semibold">Valores e disponibilidade são confirmados pelo WhatsApp.</p>
-                `
-            },
-            piscina: {
-                tag: 'Bem-estar & natureza',
-                title: 'Piscina Natural',
-                img: 'img/piscina-960.webp',
-                html: `
-                    <p>Uma área de água natural cercada por pedras, jardins e vegetação, com peixes e som de água corrente. Um dos cantos mais tranquilos da pousada.</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
-                        <div><strong>Ambiente:</strong> ao ar livre, junto ao jardim</div>
-                        <div><strong>Destaque:</strong> água natural e contato com a mata</div>
-                    </div>
-                    <p>Combine o banho com uma volta pelos jardins e uma sessão de observação de aves.</p>
-                `
-            },
-            jardim: {
-                tag: 'Natureza ao redor',
-                title: 'Jardins & Árvores Frutíferas',
-                img: 'img/jardim-960.webp',
-                html: `
-                    <p>Os jardins e as árvores frutíferas atraem aves ao longo do dia. Saíras e outras espécies da Mata Atlântica circulam por aqui; colhereiros já foram registrados na região.</p>
-                    <p>Reserve um tempo para caminhar sem pressa, sentar à sombra e observar.</p>
-                `
-            },
-            aves: {
-                tag: 'Guia de observação',
-                title: 'Aves da Mata Atlântica',
-                img: 'img/aves-960.webp',
-                html: `
-                    <p>Cercada por Mata Atlântica e árvores frutíferas, a Musa tem um comedouro movimentado e jardins que atraem aves durante o dia. Estas são algumas espécies já fotografadas na pousada e na região:</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <img src="img/aves-480.webp" srcset="img/aves-480.webp 480w, img/aves-960.webp 960w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="318" alt="Saíra-sete-cores" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
-                            <span class="text-[11px] text-emerald-700 font-semibold uppercase">Comedouro & jardim</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Saíra-sete-cores</h4>
-                            <p class="text-xs text-musa-muted mt-1">Ave colorida da Mata Atlântica, vista nos jardins e no comedouro.</p>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <img src="img/colhereiro-480.webp" srcset="img/colhereiro-480.webp 480w, img/colhereiro-960.webp 960w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="318" alt="Colhereiro" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
-                            <span class="text-[11px] text-amber-700 font-semibold uppercase">Área alagada & entorno</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Colhereiro</h4>
-                            <p class="text-xs text-musa-muted mt-1">Ave rosada de bico achatado, registrada na região da pousada.</p>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <img src="img/tie-480.webp" srcset="img/tie-480.webp 480w, img/tie.webp 1000w" sizes="(min-width: 640px) 300px, 45vw" width="480" height="724" alt="Tiê-sangue" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy" decoding="async">
-                            <span class="text-[11px] text-red-700 font-semibold uppercase">Jardins</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Tiê-sangue</h4>
-                            <p class="text-xs text-musa-muted mt-1">Pássaro vermelho vibrante da Mata Atlântica, fotografado na pousada.</p>
-                        </div>
-                    </div>
-                    <p class="text-xs text-musa-muted">Dica: as primeiras horas do dia costumam ser as melhores para observar e fotografar. Leve câmera ou binóculo.</p>
-                `
-            },
-            varanda: {
-                tag: 'Descanso',
-                title: 'Varanda & Jardins',
-                img: 'img/pousada-960.webp',
-                html: `
-                    <p>A varanda da casa é um convite a desacelerar: sombra, vista para o jardim e o som dos pássaros ao fundo.</p>
-                    <p>Um bom lugar para ler, conversar ou simplesmente não fazer nada.</p>
-                `
-            },
-            mapa: {
-                tag: 'Localização',
-                title: 'Como chegar à Pousada Musa',
-                img: 'img/hero-960.webp',
-                html: `
-                    <p><strong>Endereço:</strong> Rod. Pref. Casemiro Teixeira, Km 48 — Engenhos, Iguape/SP, 11920-000.</p>
-                    <p><strong>Plus Code:</strong> 8FVH+QW</p>
-                    <p><strong>WhatsApp:</strong> (11) 95299-1990</p>
-                    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=-24.6555191,-47.5202416" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-musa-terracotta hover:text-musa-terracottaDark border-b border-musa-terracotta pb-1 transition-colors">Traçar rota no Google Maps →</a>
-                `
-            }
-        };
-
-        const galleryDatabase = {
-            entrada: {
-                title: 'Entrada da Musa',
-                img: 'img/hero-960.webp',
-                text: 'O portal de madeira e o caminho de entrada, cercados pela vegetação.'
-            },
-            pousada: {
-                title: 'Varanda e jardim',
-                img: 'img/pousada-960.webp',
-                text: 'A área externa da pousada, com varanda e vista para o jardim.'
-            },
-            piscina: {
-                title: 'Piscina natural',
-                img: 'img/piscina-960.webp',
-                text: 'Água natural, pedras e vegetação ao redor.'
-            },
-            jardim: {
-                title: 'Jardins e lago',
-                img: 'img/jardim-960.webp',
-                text: 'Jardins, árvores frutíferas e o lago da pousada.'
-            },
-            aves: {
-                title: 'Saíra-sete-cores',
-                img: 'img/aves-960.webp',
-                text: 'Uma das espécies já fotografadas nos jardins da Musa.'
-            },
-            colhereiro: {
-                title: 'Colhereiro',
-                img: 'img/colhereiro-960.webp',
-                text: 'Ave registrada na região, em meio à Mata Atlântica.'
-            }
-        };
-
-        function openExperienceModal(key) {
-            const data = modalDatabase[key];
-            if (data) showModalData(data);
-        }
-
-        function openInfoModal(key) {
-            const data = modalDatabase[key];
-            if (data) showModalData(data);
-        }
-
-        function openPhoto(key) {
-            const data = galleryDatabase[key];
-            if (!data) return;
-            showModalData({
-                tag: 'Galeria',
-                title: data.title,
-                img: data.img,
-                html: `<p>${data.text}</p>`
-            });
-        }
-
-        // Reserva via WhatsApp
-        function submitBooking(event) {
-            event.preventDefault();
-
-            const checkIn = document.getElementById('checkIn').value;
-            const checkOut = document.getElementById('checkOut').value;
-            const name = document.getElementById('guestName').value.trim();
-
-            if (!checkIn || !checkOut || checkOut <= checkIn) {
-                window.alert('Confira as datas: o check-out precisa ser depois do check-in.');
-                return;
-            }
-
-            if (!name) {
-                window.alert('Por favor, informe seu nome.');
-                return;
-            }
-
-            const guests = document.getElementById('guestsSelect').selectedOptions[0].text;
-            const accommodation = document.getElementById('accommodationSelect').selectedOptions[0].text;
-            const notes = document.getElementById('guestNotes').value.trim();
-            const interests = Array.from(document.querySelectorAll('input[name="interesse"]:checked')).map((input) => input.value);
-
-            const lines = [
-                'Olá! Gostaria de consultar disponibilidade na Pousada Musa.',
-                `Nome: ${name}`,
-                `Check-in: ${formatDateBR(checkIn)}`,
-                `Check-out: ${formatDateBR(checkOut)}`,
-                `Hóspedes: ${guests}`,
-                `Acomodação: ${accommodation}`,
-                interests.length ? `Interesses: ${interests.join(', ')}` : '',
-                notes ? `Observações: ${notes}` : ''
-            ].filter(Boolean);
-
-            const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(lines.join('\n'))}`;
-            const opened = window.open(url, '_blank');
-
-            if (!opened) {
-                window.location.href = url;
-            } else {
-                closeBookingModal();
-            }
-        }
-
-        // Fechar com ESC, clique no fundo e foco preso no modal
-        document.querySelectorAll('[data-modal]').forEach((modal) => {
-            modal.addEventListener('click', (event) => {
-                if (event.target === modal) {
-                    closeModal(modal.id);
-                }
-            });
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeContentModal();
-                closeBookingModal();
-            }
-
-            if (event.key !== 'Tab') return;
-
-            const openModalElement = document.querySelector('.modal-open');
-            if (!openModalElement) return;
-
-            const focusables = Array.from(openModalElement.querySelectorAll(
-                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-            )).filter((el) => el.offsetParent !== null);
-
-            if (!focusables.length) return;
-
-            const first = focusables[0];
-            const last = focusables[focusables.length - 1];
-
-            if (event.shiftKey && document.activeElement === first) {
-                event.preventDefault();
-                last.focus();
-            } else if (!event.shiftKey && document.activeElement === last) {
-                event.preventDefault();
-                first.focus();
-            }
-        });
+    <!-- ================= TEXTOS DE INTERFACE DA RESERVA ================= -->
+    <script type="application/json" id="booking-i18n">
+    {
+        "invalidDates": "Confira as datas: o check-out precisa ser depois do check-in.",
+        "missingName": "Por favor, informe seu nome."
+    }
     </script>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script src="js/main.js" defer></script>
+
 </body>
 </html>

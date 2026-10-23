@@ -3,7 +3,7 @@
 Backlog do site da Pousada Musa, priorizado para transformar o protótipo em um site oficial, confiável e publicado.
 
 **Última atualização:** 23/10/2026
-**Estado atual:** site preenchido com dados públicos do Google Maps, fotos reais da listagem, galeria, avaliações e reserva via WhatsApp. Tailwind agora é compilado localmente, as imagens têm variantes responsivas e o CSS/JS não dependem mais do CDN. Ainda faltam confirmações de direitos, preços, detalhes das acomodações, política de privacidade e publicação.
+**Estado atual:** site preenchido com dados públicos do Google Maps, fotos reais da listagem, galeria, avaliações e reserva via WhatsApp. Tailwind é compilado localmente, as imagens têm variantes responsivas, o CSS/JS não dependem mais do CDN e o site tem versões em **português, inglês, espanhol e francês**. Ainda faltam confirmações de direitos, preços, detalhes das acomodações, política de privacidade, revisão das traduções e domínio próprio.
 
 > Documentação do que já existe: [README.md](./README.md).
 
@@ -27,8 +27,8 @@ Status: `[ ]` pendente · `[x]` concluído · `[~]` em andamento
 |---|---|---|---|
 | P0 — Bloqueadores | 5 | 1 | 2 |
 | P1 — Qualidade | 8 | 1 | 6 |
-| P2 — Evolução | 8 | 0 | 1 |
-| Bugs conhecidos | 12 (+7 novos) | 12 corrigidos + 1 obsoleto | 1 parcial + 5 abertos |
+| P2 — Evolução | 8 | 2 | 2 |
+| Bugs conhecidos | 12 (+7 novos) | 12 corrigidos + 1 obsoleto | 2 parciais + 4 abertos |
 
 > **Leitura rápida:** o site já está tecnicamente funcional e com dados reais. O que impede chamá-lo de oficial é a confirmação de direitos das fotos/depoimentos, os dados comerciais (preços, acomodações, regras), a política de privacidade e o domínio.
 
@@ -95,10 +95,10 @@ As fotos de banco de imagens foram substituídas por imagens da listagem do Goog
 - [ ] Confirmar a autoria das fotos e a autorização de uso
 - [ ] Confirmar autorização das fotos enviadas por hóspedes (avaliações)
 - [ ] Fotografar interiores das acomodações, café da manhã e áreas comuns
-- [ ] Gerar versões em múltiplos tamanhos (480, 960, 1600 px) ou `srcset`
+- [x] Gerar variantes de 480 e 960 px com `srcset`/`sizes` (a original continua disponível para telas grandes)
 - [ ] Avaliar AVIF além de WebP
 - [ ] Substituir a foto do hero por uma imagem oficial, se houver
-- [ ] Atualizar a imagem OG quando o domínio existir (URL absoluta)
+- [x] Usar URL absoluta na imagem OG (hoje GitHub Pages; atualizar quando o domínio for definido)
 
 **Pronto quando:** todas as imagens forem próprias ou autorizadas, com `alt`, peso adequado e URL absoluta na OG.
 
@@ -157,16 +157,18 @@ As fotos de banco de imagens foram substituídas por imagens da listagem do Goog
 
 ### P0-05 · Publicar e configurar o domínio
 
-- [ ] Escolher hospedagem estática: Netlify, Cloudflare Pages, Vercel ou GitHub Pages
-- [ ] Fazer o primeiro deploy (Netlify Drop é o caminho mais rápido)
+**Status:** deploy de teste ativo no GitHub Pages em <https://gmsarti.github.io/site-musa/>. O domínio próprio continua pendente.
+
+- [x] Escolher hospedagem estática para o teste: GitHub Pages
+- [x] Fazer o primeiro deploy de teste (GitHub Pages)
+- [x] Configurar deploy automático a partir do `main`
 - [ ] Registrar o domínio (ex.: `pousadamusa.com.br` no Registro.br)
 - [ ] Configurar DNS conforme a hospedagem
 - [ ] Confirmar HTTPS e redirecionamento de `www`
-- [ ] Configurar deploy automático a partir do GitHub
-- [ ] Testar o site publicado em celular e desktop
+- [ ] Testar o site publicado em celular e desktop reais
 - [ ] Enviar uma reserva de teste em produção
 - [ ] Configurar página 404
-- [ ] Atualizar `og:url`, `og:image` absoluta e URL canônica
+- [ ] Atualizar `hreflang`, `og:url` e canonical para o domínio próprio (hoje apontam para o GitHub Pages)
 
 **Pronto quando:** o site estiver acessível por um domínio próprio, com HTTPS e reserva testada.
 
@@ -218,18 +220,22 @@ O `css/styles.css` é gerado e versionado no repositório para permitir deploy e
 - [x] `alt` descritivo nas imagens
 - [x] `og:site_name` e `og:image:alt`
 - [x] Criar `robots.txt` (permitindo indexação)
+- [x] `hreflang` para `pt-BR`, `en`, `es`, `fr` e `x-default`
+- [x] `og:locale` e `og:locale:alternate` por idioma
+- [x] Seletor de idiomas com `hreflang`, `lang` e `aria-current="page"`
+- [x] Adicionar `og:url` (temporário, GitHub Pages)
+- [x] Usar URL absoluta em `og:image` (temporária, GitHub Pages)
 
 **Ainda falta:**
 
 - [ ] Definir URL canônica
-- [ ] Adicionar `og:url`
-- [ ] Usar URL absoluta em `og:image`
-- [ ] Criar `sitemap.xml` — depende da URL definitiva do domínio
+- [ ] Atualizar `hreflang`, `og:url` e `og:image` para o domínio oficial
+- [ ] Criar `sitemap.xml` com as quatro rotas — depende da URL definitiva do domínio
 - [ ] Cadastrar no Google Search Console
 - [ ] Criar/atualizar o Google Business Profile
 - [ ] Revisar o SEO depois do domínio definido
 
-**Pronto quando:** o site tiver título, descrição, imagem social absoluta, favicon, canonical, sitemap e Search Console verificados.
+**Pronto quando:** o site tiver título, descrição, imagem social absoluta, favicon, `hreflang`, canonical, sitemap e Search Console verificados.
 
 ---
 
@@ -272,6 +278,8 @@ O `css/styles.css` é gerado e versionado no repositório para permitir deploy e
 - [x] `aria-expanded` nos botões de menu e FAQ
 - [x] Navegação completa por teclado nos componentes principais
 - [x] Contraste revisado (Lighthouse 100)
+- [x] Alvos de toque dos links de contato com pelo menos 24 px
+- [x] Lighthouse 100 em acessibilidade, boas práticas e SEO nas quatro páginas
 - [x] `alt` descritivo nas fotos
 - [x] `<main>` e hierarquia de títulos
 - [x] Fechar com `ESC` e clique no fundo
@@ -356,10 +364,12 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ### P2-01 · Separar CSS e JavaScript
 
-- [ ] Extrair o `<style>` para `css/styles.css` ou `src/input.css`
-- [ ] Extrair o `<script>` para `js/main.js`
-- [ ] Separar os dados de modais em `js/data.js`
-- [ ] Revisar se o build do Tailwind cobre os arquivos JS
+**Status: concluído.** O CSS está em `src/input.css`/`css/styles.css`, o comportamento em `js/main.js` e o conteúdo dos modais em elementos `<template>` no HTML. Não foi necessário criar `js/data.js`.
+
+- [x] Extrair o `<style>` para `css/styles.css` ou `src/input.css`
+- [x] Extrair o `<script>` para `js/main.js`
+- [x] Separar os dados de modais em `<template>` (em vez de `js/data.js`)
+- [x] Revisar se o build do Tailwind cobre os arquivos JS (`content: ['./index.html', './js/**/*.js']`)
 - [ ] Adicionar lint/formatador (ESLint + Prettier), se o projeto crescer
 
 ### P2-02 · Dados estruturados (Schema.org)
@@ -378,10 +388,17 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ### P2-04 · Internacionalização
 
-- [ ] Decidir se haverá versão em inglês e/ou espanhol
-- [ ] Estruturar rotas (`/en/`, `/es/`) ou seletor de idioma
-- [ ] Traduzir conteúdo e metadados
-- [ ] Adicionar `hreflang`
+**Status: concluído.** O site tem quatro rotas estáticas: `/` (pt-BR), `/en/`, `/es/` e `/fr/`. As páginas traduzidas são geradas por `scripts/build-i18n.mjs` a partir do `index.html` e de `scripts/i18n-data.mjs`.
+
+- [x] Decidir os idiomas: inglês, espanhol e francês, além do português
+- [x] Estruturar rotas estáticas (`/en/`, `/es/`, `/fr/`) e seletor de idioma no desktop e no mobile
+- [x] Traduzir conteúdo, metadados, modais, formulário, validações e FAQ
+- [x] Adicionar `hreflang` (incluindo `x-default`) e `og:locale`/`og:locale:alternate`
+- [x] Manter a mensagem do WhatsApp em português e avisar isso no formulário
+- [x] Exibir a avaliação traduzida com o original em `<details lang="pt-BR">`
+- [x] Validar as quatro páginas com `npm test`
+- [ ] Revisar as traduções com falantes nativos antes da publicação oficial
+- [ ] Atualizar as URLs absolutas quando o domínio oficial for definido
 
 ### P2-05 · Conteúdo e blog
 
@@ -399,7 +416,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ### P2-07 · CI/CD e monitoramento
 
-- [ ] Deploy automático a partir do `main`
+- [x] Deploy automático a partir do `main` (GitHub Pages)
 - [ ] Preview deploy por pull request
 - [ ] Monitoramento de disponibilidade (UptimeRobot)
 - [ ] Alertas de erro
@@ -433,7 +450,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 | B-13 | Fotos vêm do Google Maps; autoria e autorização não confirmadas | `img/` | **Alta** | **Aberto** | Confirmar com a pousada e os autores das fotos |
 | B-14 | Depoimentos do Google são públicos, mas a autorização de uso não foi confirmada | Seção de avaliações | Média | **Aberto** | Confirmar com os autores e com a pousada |
 | B-15 | Preços, suítes, check-in/out e regras ainda são desconhecidos | Conteúdo | Média | **Aberto** | Levantar dados com a pousada (P0-01) |
-| B-16 | `og:image` é relativa e não há canonical/`og:url` | `<head>` | Média | **Aberto** | Resolver após definir o domínio |
+| B-16 | `hreflang`, `og:url` e `og:image` usam URLs do GitHub Pages e ainda não há canonical | `<head>` | Média | **Parcial** | Atualizar para o domínio próprio e adicionar canonical |
 | B-17 | Mapa incorporado pode definir cookies do Google | Seção de localização | Média | **Aberto** | Aviso de cookies/privacidade (P0-04) |
 | B-18 | Tailwind via CDN gerava aviso de produção | `<head>` | Baixa | **Corrigido** | CSS compilado em `css/styles.css` e carregado por `<link>` |
 | B-19 | `closeModal()` devolvia o foco mesmo quando o modal já estava fechado (ESC sem modal aberto roubava o foco) | `closeModal()` | Baixa | **Corrigido** | Retorno antecipado se o modal não estiver aberto; foco resetado após fechar |
@@ -451,6 +468,7 @@ Antes de executar o restante do backlog, é preciso definir:
 5. **Qual domínio será usado?** Necessário para canonical, `og:url`, e-mail e publicação.
 6. **O site continuará como one-page ou terá páginas separadas?** Recomendação: manter one-page até haver conteúdo suficiente para um blog.
 7. **Haverá analytics?** Define a necessidade de aviso de cookies.
+8. **Quem revisará as traduções?** Inglês, espanhol e francês já estão implementados, mas precisam de revisão por falantes nativos antes da publicação oficial.
 
 ---
 
@@ -474,17 +492,20 @@ Antes de executar o restante do backlog, é preciso definir:
 - [ ] Criar política de privacidade
 - [ ] Confirmar e-mail, Instagram e horário de atendimento
 - [ ] Testar o fluxo de reserva no celular
-- [ ] Publicar em uma hospedagem estática para teste
+- [x] Publicar em uma hospedagem estática para teste (GitHub Pages)
+- [ ] Revisar as traduções com falantes nativos
 
 ### Sprint 2 — Lançar oficialmente
 
 - [ ] Registrar domínio e configurar DNS/HTTPS
-- [ ] Atualizar canonical, `og:url` e `og:image` absoluta
+- [x] Publicar `og:url` e `og:image` absolutos (temporários, GitHub Pages)
+- [ ] Atualizar canonical, `hreflang`, `og:url` e `og:image` para o domínio oficial
 - [x] Compilar o Tailwind
 - [ ] Rodar Lighthouse mobile e otimizar performance
-- [ ] Criar `robots.txt` e `sitemap.xml`
+- [x] Criar `robots.txt`
+- [ ] Criar `sitemap.xml` com as quatro rotas
 - [ ] Configurar Google Search Console e Google Business Profile
-- [ ] Testes finais em dispositivos e navegadores
+- [ ] Testes finais em dispositivos e navegadores, incluindo as páginas traduzidas
 
 ### Sprint 3 — Evoluir
 
@@ -493,6 +514,7 @@ Antes de executar o restante do backlog, é preciso definir:
 - [ ] Conteúdo/blog sobre aves e Iguape
 - [ ] Motor de reservas, se necessário
 - [ ] Integração com Instagram e vídeo curto
+- [x] Versões em inglês, espanhol e francês (P2-04)
 
 ---
 
@@ -507,7 +529,9 @@ O site só deve ser divulgado como oficial quando:
 - [ ] Uma reserva de teste chegar ao WhatsApp com todos os dados
 - [ ] Política de privacidade estiver publicada
 - [ ] Domínio próprio com HTTPS estiver ativo
+- [ ] `hreflang`, `og:url` e canonical estiverem consistentes no domínio oficial
 - [ ] `robots.txt`, `sitemap.xml` e canonical estiverem configurados
+- [ ] Traduções revisadas por falantes nativos
 - [ ] Lighthouse mobile ≥ 90 em Performance, Acessibilidade e SEO
 - [ ] Site funcionar em iPhone, Android, Safari e Chrome
 - [ ] Contatos e redes sociais estiverem corretos e clicáveis
