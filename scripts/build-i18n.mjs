@@ -4,14 +4,23 @@
  * A página em português continua sendo a fonte da estrutura e dos textos.
  * Rode com: npm run build:i18n
  */
+import { createHash } from 'node:crypto';
 import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildAlternates, buildOgLocale, buildSwitcher, languages } from './i18n-data.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const source = readFileSync(resolve(root, 'index.html'), 'utf8');
 const warnings = [];
+
+// Versão do CSS/JS no link (?v=hash): muda quando o conteúdo muda e o navegador não usa o cache antigo
+const assetVersion = createHash('sha256')
+    .update(readFileSync(resolve(root, 'css/styles.css')))
+    .update(readFileSync(resolve(root, 'js/main.js')))
+    .digest('hex')
+    .slice(0, 8);
+const original = readFileSync(resolve(root, 'index.html'), 'utf8');
+const source = original.replace(/(css\/styles\.css|js\/main\.js)(?:\?v=\w+)?"/g, `$1?v=${assetVersion}"`);
 
 function replaceBlock(html, startMarker, endMarker, content) {
     const pattern = new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`);
@@ -86,8 +95,8 @@ for (const [code, config] of Object.entries(languages)) {
     // Caminhos relativos para as subpastas
     if (config.lang !== 'pt-BR') {
         html = html.replace(/(?<![\w/])img\//g, '../img/');
-        html = replaceExact(html, code, 'href="css/styles.css"', 'href="../css/styles.css"');
-        html = replaceExact(html, code, 'src="js/main.js"', 'src="../js/main.js"');
+        html = replaceExact(html, code, 'href="css/styles.css', 'href="../css/styles.css');
+        html = replaceExact(html, code, 'src="js/main.js', 'src="../js/main.js');
     }
 
     // Textos de interface da reserva
@@ -107,6 +116,11 @@ if (warnings.length) {
     console.error(`✗ ${warnings.length} aviso(s); nenhuma página foi gravada:`);
     for (const warning of warnings) console.error(`  - ${warning}`);
     process.exit(1);
+}
+
+if (source !== original) {
+    writeFileSync(resolve(root, 'index.html'), source);
+    console.log('✓ index.html (versão dos assets)');
 }
 
 for (const { code, html } of outputs) {

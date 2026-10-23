@@ -137,7 +137,7 @@ python3 -m http.server 8000
 | Comando | O que faz |
 |---|---|
 | `npm run build:css` | Compila `src/input.css` em `css/styles.css` minificado |
-| `npm run build:i18n` | Gera `en/index.html`, `es/index.html` e `fr/index.html` a partir do `index.html`; falha sem gravar nada se algum trecho a traduzir não for encontrado |
+| `npm run build:i18n` | Gera `en/index.html`, `es/index.html` e `fr/index.html` a partir do `index.html` e atualiza o `?v=` do CSS/JS em todas as páginas (evita cache antigo no navegador); falha sem gravar nada se algum trecho a traduzir não for encontrado |
 | `npm run watch:css` | Recompila o CSS enquanto você edita |
 | `npm run build` | Roda `build:css` e depois `build:i18n` |
 | `npm test` | Verifica as 4 páginas: `lang`, `hreflang`, `og:locale`, seletor de idioma, `<title>`/description traduzidos, IDs duplicados, âncoras, `aria-controls`, `alt`, `width`/`height` e arquivos referenciados |
