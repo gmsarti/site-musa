@@ -27,13 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const today = new Date();
     const tomorrow = new Date(today);
     tomorrow.setDate(today.getDate() + 1);
-    const afterTomorrow = new Date(today);
-    afterTomorrow.setDate(today.getDate() + 3);
+    const defaultCheckOut = new Date(today);
+    defaultCheckOut.setDate(today.getDate() + 3);
 
     checkIn.min = toLocalISO(today);
     checkIn.value = toLocalISO(tomorrow);
     checkOut.min = toLocalISO(tomorrow);
-    checkOut.value = toLocalISO(afterTomorrow);
+    checkOut.value = toLocalISO(defaultCheckOut);
 
     checkIn.addEventListener('change', () => {
         if (!checkIn.value) return;
@@ -78,6 +78,25 @@ function toggleMobileMenu() {
             : (button.dataset.openLabel || 'Abrir menu')
     );
 }
+
+function closeMobileMenu({ restoreFocus = false } = {}) {
+    const menu = document.getElementById('mobileMenu');
+    if (!menu || menu.classList.contains('hidden')) return;
+    const focusWasInside = menu.contains(document.activeElement);
+    toggleMobileMenu();
+    if (restoreFocus && focusWasInside) {
+        document.getElementById('mobileMenuBtn')?.focus();
+    }
+}
+
+// Fechar o menu ao clicar fora dele
+document.addEventListener('click', (event) => {
+    const menu = document.getElementById('mobileMenu');
+    const button = document.getElementById('mobileMenuBtn');
+    if (!menu || !button) return;
+    if (menu.contains(event.target) || button.contains(event.target)) return;
+    closeMobileMenu();
+});
 
 // Acordeão do FAQ
 function toggleFaq(button) {
@@ -249,6 +268,8 @@ function submitBooking(event) {
     if (!opened) {
         window.location.href = url;
     } else {
+        // Impede que a aba do WhatsApp controle esta página
+        opened.opener = null;
         closeBookingModal();
     }
 }
@@ -266,6 +287,7 @@ document.addEventListener('keydown', (event) => {
     if (event.key === 'Escape') {
         closeContentModal();
         closeBookingModal();
+        closeMobileMenu({ restoreFocus: true });
     }
 
     if (event.key !== 'Tab') return;

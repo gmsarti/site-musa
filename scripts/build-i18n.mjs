@@ -22,6 +22,14 @@ function replaceBlock(html, startMarker, endMarker, content) {
     return html.replace(pattern, `${startMarker}\n    ${content}\n    ${endMarker}`);
 }
 
+function replaceExact(html, lang, find, replace) {
+    if (!html.includes(find)) {
+        warnings.push(`[${lang}] trecho não encontrado: ${JSON.stringify(find.slice(0, 90))}`);
+        return html;
+    }
+    return html.replace(find, replace);
+}
+
 function applyReplacements(html, lang, replacements) {
     for (const [find, replace] of replacements) {
         if (find instanceof RegExp) {
@@ -40,30 +48,32 @@ function applyReplacements(html, lang, replacements) {
     return html;
 }
 
+const outputs = [];
+
 for (const [code, config] of Object.entries(languages)) {
     let html = source;
 
     // Idioma do documento
-    html = html.replace('<html lang="pt-BR"', `<html lang="${config.lang}"`);
+    html = replaceExact(html, code, '<html lang="pt-BR"', `<html lang="${config.lang}"`);
 
     // Metadados
-    html = html.replace(
+    html = replaceExact(html, code,
         '<title>Pousada MUSA | Hospedagem e observação de aves em Iguape/SP</title>',
         `<title>${config.title}</title>`
     );
-    html = html.replace(
+    html = replaceExact(html, code,
         '<meta name="description" content="Pousada em Iguape/SP, cercada pela Mata Atlântica. Suítes confortáveis, jardins, piscina natural e observação de aves. Fale com a gente pelo WhatsApp.">',
         `<meta name="description" content="${config.description}">`
     );
-    html = html.replace(
+    html = replaceExact(html, code,
         '<meta property="og:title" content="Pousada MUSA | Iguape/SP">',
         `<meta property="og:title" content="${config.ogTitle}">`
     );
-    html = html.replace(
+    html = replaceExact(html, code,
         '<meta property="og:description" content="Refúgio na Mata Atlântica com suítes confortáveis, jardins, piscina natural e observação de aves.">',
         `<meta property="og:description" content="${config.ogDescription}">`
     );
-    html = html.replace(
+    html = replaceExact(html, code,
         '<meta property="og:image:alt" content="Entrada da Pousada Musa, em Iguape/SP">',
         `<meta property="og:image:alt" content="${config.ogImageAlt}">`
     );
@@ -71,14 +81,13 @@ for (const [code, config] of Object.entries(languages)) {
     // Blocos de idioma
     html = replaceBlock(html, '<!-- i18n:alternates:start -->', '<!-- i18n:alternates:end -->', buildAlternates());
     html = replaceBlock(html, '<!-- i18n:og-locale:start -->', '<!-- i18n:og-locale:end -->', buildOgLocale(config.lang, config.ogLocale, config.ogAlternates, config.url));
-    html = replaceBlock(html, '<!-- i18n:switcher-desktop:start -->', '<!-- i18n:switcher-desktop:end -->', buildSwitcher(config.lang, config.switcherLabel));
-    html = replaceBlock(html, '<!-- i18n:switcher-mobile:start -->', '<!-- i18n:switcher-mobile:end -->', buildSwitcher(config.lang, config.switcherLabel, true));
+    html = replaceBlock(html, '<!-- i18n:switcher:start -->', '<!-- i18n:switcher:end -->', buildSwitcher(config.lang));
 
     // Caminhos relativos para as subpastas
     if (config.lang !== 'pt-BR') {
         html = html.replace(/(?<![\w/])img\//g, '../img/');
-        html = html.replace('href="css/styles.css"', 'href="../css/styles.css"');
-        html = html.replace('src="js/main.js"', 'src="../js/main.js"');
+        html = replaceExact(html, code, 'href="css/styles.css"', 'href="../css/styles.css"');
+        html = replaceExact(html, code, 'src="js/main.js"', 'src="../js/main.js"');
     }
 
     // Textos de interface da reserva
@@ -90,13 +99,19 @@ for (const [code, config] of Object.entries(languages)) {
     // Traduções
     html = applyReplacements(html, code, config.replacements);
 
+    outputs.push({ code, html });
+}
+
+// Com qualquer aviso, nenhuma página é gravada e o build falha
+if (warnings.length) {
+    console.error(`✗ ${warnings.length} aviso(s); nenhuma página foi gravada:`);
+    for (const warning of warnings) console.error(`  - ${warning}`);
+    process.exit(1);
+}
+
+for (const { code, html } of outputs) {
     const output = resolve(root, code, 'index.html');
     mkdirSync(dirname(output), { recursive: true });
     writeFileSync(output, html);
     console.log(`✓ ${code}/index.html`);
-}
-
-if (warnings.length) {
-    console.warn(`\n${warnings.length} aviso(s):`);
-    for (const warning of warnings) console.warn(`  - ${warning}`);
 }

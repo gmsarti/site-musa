@@ -1,0 +1,34 @@
+# Confere se os arquivos gerados estão atualizados e se o site passa nas verificações.
+# O deploy continua sendo feito pelo GitHub Pages a partir do main.
+name: Verificação
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: Build (CSS e páginas de idioma)
+        run: npm run build
+
+      - name: Arquivos gerados estão commitados
+        run: |
+          if ! git diff --exit-code; then
+            echo "::error::Arquivos gerados desatualizados. Rode \"npm run build\" e faça commit do resultado."
+            exit 1
+          fi
+
+      - run: npm test

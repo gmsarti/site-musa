@@ -6,9 +6,9 @@
 import { existsSync, readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { SITE } from './i18n-data.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const SITE = 'https://gmsarti.github.io/site-musa';
 const errors = [];
 
 const alternates = {
@@ -37,6 +37,15 @@ function resolveRef(pageDir, ref) {
     return resolve(root, pageDir, clean);
 }
 
+function headMeta(html) {
+    return {
+        title: html.match(/<title>([^<]*)<\/title>/)?.[1],
+        description: html.match(/<meta name="description" content="([^"]*)"/)?.[1]
+    };
+}
+
+const sourceMeta = headMeta(readFileSync(resolve(root, 'index.html'), 'utf8'));
+
 let totalImages = 0;
 let totalIds = 0;
 let totalRefs = 0;
@@ -62,6 +71,11 @@ for (const page of pages) {
     }
     if (!/<meta name="description" content="[^"]+"/.test(html)) {
         errors.push(`${prefix}falta a meta description`);
+    }
+    if (page.lang !== 'pt-BR') {
+        const meta = headMeta(html);
+        if (meta.title === sourceMeta.title) errors.push(`${prefix}<title> não foi traduzido`);
+        if (meta.description === sourceMeta.description) errors.push(`${prefix}meta description não foi traduzida`);
     }
     if (!/<meta property="og:image" content="[^"]+"/.test(html)) {
         errors.push(`${prefix}falta a imagem Open Graph (og:image)`);
@@ -102,13 +116,13 @@ for (const page of pages) {
         }
     }
     const currentCount = (html.match(/aria-current="page"/g) ?? []).length;
-    if (currentCount < 2) {
-        errors.push(`${prefix}seletor de idioma incompleto (aria-current="page" ${currentCount}x)`);
+    if (currentCount !== 1) {
+        errors.push(`${prefix}seletor de idioma deveria ter 1 item atual (aria-current="page" ${currentCount}x)`);
     }
     for (const name of ['Português', 'English', 'Español', 'Français']) {
         const count = (html.match(new RegExp(`aria-label="${name}"`, 'g')) ?? []).length;
-        if (count < 2) {
-            errors.push(`${prefix}seletor de idioma incompleto: ${name} (${count}x)`);
+        if (count !== 1) {
+            errors.push(`${prefix}seletor de idioma deveria ter 1 link para ${name} (${count}x)`);
         }
     }
     const currentRe = new RegExp(

@@ -417,6 +417,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 ### P2-07 · CI/CD e monitoramento
 
 - [x] Deploy automático a partir do `main` (GitHub Pages)
+- [x] Verificação no CI: build, arquivos gerados commitados e `npm test` (`.github/workflows/check.yml`)
 - [ ] Preview deploy por pull request
 - [ ] Monitoramento de disponibilidade (UptimeRobot)
 - [ ] Alertas de erro
@@ -454,6 +455,10 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 | B-17 | Mapa incorporado pode definir cookies do Google | Seção de localização | Média | **Aberto** | Aviso de cookies/privacidade (P0-04) |
 | B-18 | Tailwind via CDN gerava aviso de produção | `<head>` | Baixa | **Corrigido** | CSS compilado em `css/styles.css` e carregado por `<link>` |
 | B-19 | `closeModal()` devolvia o foco mesmo quando o modal já estava fechado (ESC sem modal aberto roubava o foco) | `closeModal()` | Baixa | **Corrigido** | Retorno antecipado se o modal não estiver aberto; foco resetado após fechar |
+| B-20 | Trocas de título/metadados no build i18n falhavam em silêncio e avisos não interrompiam o build | `scripts/build-i18n.mjs` | Média | **Corrigido** | Todas as trocas verificadas; com avisos, nenhuma página é gravada e o build sai com código 1 |
+| B-21 | Navegação e seletor de idioma "desktop" com `hidden` permanente (marcação morta) | `<header>` | Baixa | **Corrigido** | Removidos; o menu compacto virou `<nav aria-label="Navegação principal">` |
+| B-22 | Menu compacto não fechava com ESC nem com clique fora | `js/main.js` | Baixa | **Corrigido** | `closeMobileMenu()` no ESC (devolve o foco ao botão) e no clique fora |
+| B-23 | Janela do WhatsApp aberta por `window.open` recebia `window.opener` | `submitBooking()` | Baixa | **Corrigido** | `opened.opener = null` |
 
 ---
 

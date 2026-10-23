@@ -137,15 +137,15 @@ python3 -m http.server 8000
 | Comando | O que faz |
 |---|---|
 | `npm run build:css` | Compila `src/input.css` em `css/styles.css` minificado |
-| `npm run build:i18n` | Gera `en/index.html`, `es/index.html` e `fr/index.html` a partir do `index.html` |
+| `npm run build:i18n` | Gera `en/index.html`, `es/index.html` e `fr/index.html` a partir do `index.html`; falha sem gravar nada se algum trecho a traduzir não for encontrado |
 | `npm run watch:css` | Recompila o CSS enquanto você edita |
 | `npm run build` | Roda `build:css` e depois `build:i18n` |
-| `npm test` | Verifica as 4 páginas: `lang`, `hreflang`, `og:locale`, seletor de idioma, IDs duplicados, âncoras, `aria-controls`, `alt`, `width`/`height` e arquivos referenciados |
+| `npm test` | Verifica as 4 páginas: `lang`, `hreflang`, `og:locale`, seletor de idioma, `<title>`/description traduzidos, IDs duplicados, âncoras, `aria-controls`, `alt`, `width`/`height` e arquivos referenciados |
 | `npm run serve` | Sobe um servidor local em <http://localhost:8000> |
 
 **Sempre que adicionar ou remover classes do Tailwind, rode `npm run build:css`.** **Sempre que alterar textos do `index.html` ou as traduções em `scripts/i18n-data.mjs`, rode `npm run build:i18n`.** O CSS e as páginas geradas precisam ser commitados junto com a alteração.
 
-O `scripts/check-site.mjs` não tem dependências externas e pode rodar em CI. Ele falha se o HTML voltar a carregar o CDN do Tailwind, se alguma imagem/arquivo local deixar de existir ou se uma página traduzida ficar com `lang`, `hreflang`, `og:locale` ou seletor de idioma inconsistentes.
+O `scripts/check-site.mjs` não tem dependências externas. O workflow `.github/workflows/check.yml` roda `npm ci`, `npm run build`, confere com `git diff --exit-code` se os arquivos gerados estão commitados e roda `npm test` a cada push e pull request no `main`. Ele falha se o HTML voltar a carregar o CDN do Tailwind, se alguma imagem/arquivo local deixar de existir ou se uma página traduzida ficar com `lang`, `hreflang`, `og:locale` ou seletor de idioma inconsistentes.
 
 ---
 
@@ -285,7 +285,7 @@ As quatro versões têm as mesmas seções e âncoras; mudam apenas o idioma e a
 2. Preenche datas, acomodação, número de hóspedes, nome, observações e interesse principal.
 3. O site valida as datas e o nome e monta uma mensagem organizada **em português**, para a equipe da pousada.
 4. O WhatsApp abre em nova aba com a mensagem pronta para envio. O formulário avisa, em cada idioma, que a solicitação é enviada em português.
-5. Nenhum dado é armazenado no site; a conversa acontece no WhatsApp.
+5. O site não guarda os dados do formulário; a conversa acontece no WhatsApp. O mapa e as fontes são carregados do Google.
 
 Não há pagamento, confirmação automática nem consulta de calendário em tempo real. Valores e disponibilidade são confirmados no atendimento.
 

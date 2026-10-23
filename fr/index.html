@@ -73,27 +73,7 @@
                     <span class="font-serif text-2xl tracking-[0.18em] text-musa-terracotta font-normal">MUSA</span>
                 </a>
 
-                <nav class="hidden items-center gap-7 text-[13.5px] font-medium text-musa-text/90" aria-label="Navigation principale">
-                    <a href="#pousada" class="hover:text-musa-terracotta transition-colors">La Pousada</a>
-                    <a href="#acomodacoes" class="hover:text-musa-terracotta transition-colors">Chambres</a>
-                    <a href="#aves" class="hover:text-musa-terracotta transition-colors">Observation des oiseaux</a>
-                    <a href="#experiencias" class="hover:text-musa-terracotta transition-colors">Expériences</a>
-                    <a href="#localizacao" class="hover:text-musa-terracotta transition-colors">Localisation</a>
-                </nav>
-
                 <div class="flex items-center gap-3">
-                    <!-- i18n:switcher-desktop:start -->
-    <nav class="hidden items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="Langue">
-                        <a href="../" hreflang="pt-BR" lang="pt-BR" aria-label="Português" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">PT</a>
-                        <span class="text-stone-400" aria-hidden="true">/</span>
-                        <a href="../en/" hreflang="en" lang="en" aria-label="English" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">EN</a>
-                        <span class="text-stone-400" aria-hidden="true">/</span>
-                        <a href="../es/" hreflang="es" lang="es" aria-label="Español" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">ES</a>
-                        <span class="text-stone-400" aria-hidden="true">/</span>
-                        <span class="px-1.5 py-1 text-musa-terracotta" aria-current="page" aria-label="Français" lang="fr">FR</span>
-                    </nav>
-    <!-- i18n:switcher-desktop:end -->
-
                     <button type="button" onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs tracking-wider uppercase font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
                         Réserver
                     </button>
@@ -109,8 +89,8 @@
                 </div>
             </div>
 
-            <!-- Menu mobile -->
-            <div id="mobileMenu" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-stone-200 bg-musa-bg p-4 shadow-xl flex flex-col gap-3 text-sm font-medium text-musa-text z-50">
+            <!-- Menu compacto (navegação principal e idiomas) -->
+            <nav id="mobileMenu" aria-label="Navigation principale" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-stone-200 bg-musa-bg p-4 shadow-xl flex flex-col gap-3 text-sm font-medium text-musa-text z-50">
                 <a href="#pousada" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">La Pousada</a>
                 <a href="#acomodacoes" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Chambres</a>
                 <a href="#aves" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Observation des oiseaux</a>
@@ -118,12 +98,15 @@
                 <a href="#localizacao" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Localisation</a>
                 <a href="#contato" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Contact</a>
 
-                <!-- i18n:switcher-mobile:start -->
+                <!-- i18n:switcher:start -->
     <div class="flex items-center gap-3 pt-2 text-xs font-semibold uppercase tracking-wider text-musa-muted border-t border-stone-200">
-                    <a href="../" hreflang="pt-BR" lang="pt-BR" aria-label="Português" class="py-1.5 hover:text-musa-terracotta">PT</a><a href="../en/" hreflang="en" lang="en" aria-label="English" class="py-1.5 hover:text-musa-terracotta">EN</a><a href="../es/" hreflang="es" lang="es" aria-label="Español" class="py-1.5 hover:text-musa-terracotta">ES</a><span class="py-1.5 text-musa-terracotta" aria-current="page" aria-label="Français" lang="fr">FR</span>
+                    <a href="../" hreflang="pt-BR" lang="pt-BR" aria-label="Português" class="py-1.5 hover:text-musa-terracotta">PT</a>
+                    <a href="../en/" hreflang="en" lang="en" aria-label="English" class="py-1.5 hover:text-musa-terracotta">EN</a>
+                    <a href="../es/" hreflang="es" lang="es" aria-label="Español" class="py-1.5 hover:text-musa-terracotta">ES</a>
+                    <span class="py-1.5 text-musa-terracotta" aria-current="page" aria-label="Français" lang="fr">FR</span>
                 </div>
-    <!-- i18n:switcher-mobile:end -->
-            </div>
+    <!-- i18n:switcher:end -->
+            </nav>
         </header>
 
         <main id="conteudo" tabindex="-1">
@@ -141,7 +124,7 @@
 
             <div class="relative z-10 px-6 max-w-2xl mx-auto flex flex-col items-center">
                 <span class="text-xs uppercase tracking-[0.25em] text-stone-200/90 mb-2 bg-black/25 backdrop-blur-sm px-3.5 py-1 rounded-full border border-white/15">
-                    Iguape • Mata Atlântica
+                    Iguape • Forêt atlantique
                 </span>
                 <h1 class="font-serif text-4xl sm:text-6xl font-normal tracking-wide hero-text-shadow mb-3">
                     <span class="text-white">Pousada</span> <span class="text-musa-goldLight">Musa</span>
@@ -709,7 +692,7 @@
                 </div>
 
                 <div id="bookingPrivacy" class="bg-stone-200/70 p-4 rounded-xl border border-stone-300 text-xs text-musa-muted leading-relaxed">
-                    En envoyant, WhatsApp s'ouvre avec le message prêt. Les tarifs et la disponibilité sont confirmés lors de l'échange. Aucune donnée n'est stockée sur ce site.<br>
+                    En envoyant, WhatsApp s'ouvre avec le message prêt. Les tarifs et la disponibilité sont confirmés lors de l'échange. Ce site ne conserve pas les données du formulaire ; la carte et les polices sont chargées depuis Google.<br>
                     <span class="text-musa-terracotta font-medium">La demande est envoyée en portugais à l'équipe de la pousada.</span>
                 </div>
 

@@ -2,7 +2,7 @@
 // A página em português (index.html) é a fonte da estrutura.
 // Execute "npm run build:i18n" após alterar textos ou traduções.
 
-const SITE = 'https://gmsarti.github.io/site-musa';
+export const SITE = 'https://gmsarti.github.io/site-musa';
 
 const LANGUAGE_LINKS = {
     'pt-BR': '../',
@@ -30,35 +30,17 @@ function switcherItems(currentLang) {
         const code = LANGUAGE_CODES[lang];
         const name = LANGUAGE_NAMES[lang];
         if (lang === currentLang) {
-            return `<span class="px-1.5 py-1 text-musa-terracotta" aria-current="page" aria-label="${name}" lang="${lang}">${code}</span>`;
-        }
-        return `<a href="${LANGUAGE_LINKS[lang]}" hreflang="${lang}" lang="${lang}" aria-label="${name}" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">${code}</a>`;
-    });
-}
-
-function switcherItemsMobile(currentLang) {
-    return ['pt-BR', 'en', 'es', 'fr'].map((lang) => {
-        const code = LANGUAGE_CODES[lang];
-        const name = LANGUAGE_NAMES[lang];
-        if (lang === currentLang) {
             return `<span class="py-1.5 text-musa-terracotta" aria-current="page" aria-label="${name}" lang="${lang}">${code}</span>`;
         }
         return `<a href="${LANGUAGE_LINKS[lang]}" hreflang="${lang}" lang="${lang}" aria-label="${name}" class="py-1.5 hover:text-musa-terracotta">${code}</a>`;
     });
 }
 
-export function buildSwitcher(lang, label, mobile = false) {
-    const items = mobile ? switcherItemsMobile(lang) : switcherItems(lang);
-    const separator = mobile ? '' : '\n                        <span class="text-stone-400" aria-hidden="true">/</span>\n                        ';
-    const content = items.join(separator);
-    if (mobile) {
-        return `<div class="flex items-center gap-3 pt-2 text-xs font-semibold uppercase tracking-wider text-musa-muted border-t border-stone-200">
-                    ${content}
+// Seletor de idioma do menu compacto
+export function buildSwitcher(lang) {
+    return `<div class="flex items-center gap-3 pt-2 text-xs font-semibold uppercase tracking-wider text-musa-muted border-t border-stone-200">
+                    ${switcherItems(lang).join('\n                    ')}
                 </div>`;
-    }
-    return `<nav class="hidden items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="${label}">
-                        ${content}
-                    </nav>`;
 }
 
 export function buildAlternates() {
@@ -91,7 +73,6 @@ export const languages = {
         ogLocale: 'en_US',
         ogAlternates: ['pt_BR', 'es_ES', 'fr_FR'],
         url: `${SITE}/en/`,
-        switcherLabel: 'Language',
         booking: {
             invalidDates: 'Please check the dates: check-out must be after check-in.',
             missingName: 'Please enter your name.'
@@ -249,7 +230,7 @@ export const languages = {
             [`> Observação de aves`, `> Birdwatching`],
             [`> Descanso`, `> Rest`],
             [`> Natureza`, `> Nature`],
-            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.`, `When you submit, WhatsApp opens with the message ready to send. Rates and availability are confirmed in the chat. No data is stored on this website.`],
+            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Este site não guarda os dados do formulário; o mapa e as fontes são carregados do Google.`, `When you submit, WhatsApp opens with the message ready to send. Rates and availability are confirmed in the chat. This website does not store form data; the map and fonts are loaded from Google.`],
             [`A solicitação é enviada em português para a equipe da pousada.`, `Your request is sent in Portuguese to the inn's team.`],
             [`>Cancelar<`, `>Cancel<`],
             [`aria-label="Falar com a Pousada Musa no WhatsApp"`, `aria-label="Chat with Pousada Musa on WhatsApp"`],
@@ -303,7 +284,6 @@ export const languages = {
         ogLocale: 'es_ES',
         ogAlternates: ['pt_BR', 'en_US', 'fr_FR'],
         url: `${SITE}/es/`,
-        switcherLabel: 'Idioma',
         booking: {
             invalidDates: 'Revisa las fechas: la salida debe ser posterior a la llegada.',
             missingName: 'Por favor, indica tu nombre.'
@@ -325,6 +305,7 @@ export const languages = {
             [`>Reservar Estadia<`, `>Reservar estancia<`],
             [/(>\s*)Conhecer a Pousada(\s*<\/button>)/g, `$1Conocer la posada$2`],
             [/(>\s*)Falar no WhatsApp(\s*<\/a>)/g, `$1Hablar por WhatsApp$2`],
+            [`Iguape • Mata Atlântica`, `Iguape • Mata Atlántica`],
             [`Refúgio na Mata Atlântica &amp; Observação de Aves`, `Refugio en la Mata Atlántica y observación de aves`],
             [`5,0 no Google · 2 avaliações`, `5,0 en Google · 2 opiniones`],
             [`5,0 no Google`, `5,0 en Google`],
@@ -453,7 +434,7 @@ export const languages = {
             [`Interesse principal`, `Interés principal`],
             [`> Observação de aves`, `> Observación de aves`],
             [`> Natureza`, `> Naturaleza`],
-            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.`, `Al enviar, WhatsApp se abre con el mensaje listo. Las tarifas y la disponibilidad se confirman en la atención. No se almacena ningún dato en este sitio.`],
+            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Este site não guarda os dados do formulário; o mapa e as fontes são carregados do Google.`, `Al enviar, WhatsApp se abre con el mensaje listo. Las tarifas y la disponibilidad se confirman en la atención. Este sitio no guarda los datos del formulario; el mapa y las fuentes se cargan desde Google.`],
             [`A solicitação é enviada em português para a equipe da pousada.`, `La solicitud se envía en portugués al equipo de la posada.`],
             [/(>\s*)Enviar pelo WhatsApp(\s*<\/button>)/g, `$1Enviar por WhatsApp$2`],
             [`aria-label="Falar com a Pousada Musa no WhatsApp"`, `aria-label="Hablar con la Pousada Musa por WhatsApp"`],
@@ -506,7 +487,6 @@ export const languages = {
         ogLocale: 'fr_FR',
         ogAlternates: ['pt_BR', 'en_US', 'es_ES'],
         url: `${SITE}/fr/`,
-        switcherLabel: 'Langue',
         booking: {
             invalidDates: 'Vérifiez les dates : le départ doit être après l\'arrivée.',
             missingName: 'Veuillez indiquer votre nom.'
@@ -529,6 +509,7 @@ export const languages = {
             [`>Reservar Estadia<`, `>Réserver votre séjour<`],
             [/(>\s*)Conhecer a Pousada(\s*<\/button>)/g, `$1Découvrir la pousada$2`],
             [/(>\s*)Falar no WhatsApp(\s*<\/a>)/g, `$1Discuter sur WhatsApp$2`],
+            [`Iguape • Mata Atlântica`, `Iguape • Forêt atlantique`],
             [`Refúgio na Mata Atlântica &amp; Observação de Aves`, `Refuge dans la forêt atlantique et observation des oiseaux`],
             [`5,0 no Google · 2 avaliações`, `5,0 sur Google · 2 avis`],
             [`5,0 no Google`, `5,0 sur Google`],
@@ -659,7 +640,7 @@ export const languages = {
             [`> Observação de aves`, `> Observation des oiseaux`],
             [`> Descanso`, `> Repos`],
             [`> Natureza`, `> Nature`],
-            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.`, `En envoyant, WhatsApp s'ouvre avec le message prêt. Les tarifs et la disponibilité sont confirmés lors de l'échange. Aucune donnée n'est stockée sur ce site.`],
+            [`Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Este site não guarda os dados do formulário; o mapa e as fontes são carregados do Google.`, `En envoyant, WhatsApp s'ouvre avec le message prêt. Les tarifs et la disponibilité sont confirmés lors de l'échange. Ce site ne conserve pas les données du formulaire ; la carte et les polices sont chargées depuis Google.`],
             [`A solicitação é enviada em português para a equipe da pousada.`, `La demande est envoyée en portugais à l'équipe de la pousada.`],
             [`>Cancelar<`, `>Annuler<`],
             [/(>\s*)Enviar pelo WhatsApp(\s*<\/button>)/g, `$1Envoyer via WhatsApp$2`],
