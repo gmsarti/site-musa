@@ -1,9 +1,9 @@
 # Pendências e Roadmap — Site Musa
 
-Backlog do site da Pousada Musa, priorizado para tirar o protótipo do papel e colocar uma versão confiável no ar.
+Backlog do site da Pousada Musa, priorizado para transformar o protótipo em um site oficial, confiável e publicado.
 
 **Última atualização:** 23/10/2026
-**Estado atual:** protótipo visual estático funcional, com conteúdo fictício e reserva simulada.
+**Estado atual:** site preenchido com dados públicos do Google Maps, fotos reais da listagem, galeria, avaliações e reserva via WhatsApp. Ainda faltam confirmações de direitos, preços, detalhes das acomodações, política de privacidade e publicação.
 
 > Documentação do que já existe: [README.md](./README.md).
 
@@ -13,7 +13,7 @@ Backlog do site da Pousada Musa, priorizado para tirar o protótipo do papel e c
 
 | Prioridade | Significado |
 |---|---|
-| **P0** | Bloqueia o lançamento. Não publicar sem resolver. |
+| **P0** | Bloqueia o lançamento. Não publicar como oficial sem resolver. |
 | **P1** | Qualidade e confiança. Deve entrar antes ou logo após o lançamento. |
 | **P2** | Evolução. Faz sentido depois que o site estiver estável. |
 
@@ -23,12 +23,14 @@ Status: `[ ]` pendente · `[x]` concluído · `[~]` em andamento
 
 ## Resumo
 
-| Frente | Itens | Concluídos |
-|---|---|---|
-| P0 — Bloqueadores | 5 | 0 |
-| P1 — Qualidade | 8 | 0 |
-| P2 — Evolução | 8 | 0 |
-| Bugs conhecidos | 12 | 0 |
+| Frente | Itens | Concluídos | Em andamento |
+|---|---|---|---|
+| P0 — Bloqueadores | 5 | 1 | 2 |
+| P1 — Qualidade | 8 | 0 | 4 |
+| P2 — Evolução | 8 | 0 | 1 |
+| Bugs conhecidos | 12 (+6 novos) | 10 corrigidos + 1 obsoleto | 1 parcial + 6 abertos |
+
+> **Leitura rápida:** o site já está tecnicamente funcional e com dados reais. O que impede chamá-lo de oficial é a confirmação de direitos das fotos/depoimentos, os dados comerciais (preços, acomodações, regras), a política de privacidade e o domínio.
 
 ---
 
@@ -36,92 +38,100 @@ Status: `[ ]` pendente · `[x]` concluído · `[~]` em andamento
 
 ### P0-01 · Validar e substituir todo o conteúdo fictício
 
-Tudo no site foi criado para um mockup. Publicar sem validação significa anunciar preços e características erradas.
+O conteúdo inventado do mockup foi removido. O que restou veio da listagem pública do Google Maps, das fotos e das avaliações.
 
-- [ ] Confirmar se a pousada é real e se o site é oficial
-- [ ] Endereço completo e confirmado (hoje: "Estrada Ecológica da Juréia, Km 8")
-- [ ] Telefone/WhatsApp oficial (hoje: "(13) 99742-8810")
-- [ ] E-mail, Instagram e demais redes
+**Já confirmado e aplicado:**
+
+- [x] Nome: Pousada MUSA
+- [x] Categoria: Pousada
+- [x] Endereço: Rod. Pref. Casemiro Teixeira, Km 48 — Engenhos, Iguape/SP, 11920-000
+- [x] Telefone/WhatsApp: (11) 95299-1990
+- [x] Coordenadas: `-24.6555191, -47.5202416`
+- [x] Plus Code: `8FVH+QW`
+- [x] Avaliação: 5,0 no Google (2 avaliações)
+- [x] Atributo: empresa que acolhe a comunidade LGBTQ+
+- [x] Remoção de preços, suítes, hectares, chalés, espécies, solar, Starlink, endereço/telefone antigos e experiências não confirmadas
+- [x] Textos de aves baseados nas fotos e avaliações (saíra-sete-cores, colhereiro, tiê-sangue)
+- [x] Revisão de ortografia e tom de voz
+- [x] Frase de mockup no rodapé removida
+
+**Ainda falta confirmar com a pousada:**
+
 - [ ] Preços e o que cada diária inclui
-  - [ ] Suíte Saíra: R$ 580
-  - [ ] Chalé Bromélia: R$ 790
-  - [ ] Cabana da Mata: R$ 950
-- [ ] Capacidade real de cada acomodação
-- [ ] Número de chalés, área da reserva e demais números institucionais
-- [ ] Revisar todas as afirmações que exigem comprovação:
-  - [ ] "42 hectares de reserva particular"
-  - [ ] "Apenas 8 chalés"
-  - [ ] "+180 espécies catalogadas"
-  - [ ] "100% do aquecimento é solar"
-  - [ ] "Wi-Fi Starlink"
-  - [ ] Distâncias (200 km de SP, 220 km de Curitiba, 15 min do centro)
-- [ ] Revisar textos do FAQ (acesso pela estrada de terra, itens inclusos etc.)
-- [ ] Corrigir a frase de mockup no rodapé: "Hospedagem estática leve e rápida"
-- [ ] Definir política de cancelamento, check-in/check-out e regras de hóspedes
-- [ ] Revisar ortografia e tom de voz
+- [ ] Nomes, capacidades e detalhes reais de cada acomodação
+- [ ] Horários de check-in e check-out
+- [ ] Política de cancelamento e regras de hóspedes
+- [ ] Café da manhã ou refeições inclusas
+- [ ] E-mail, Instagram, Facebook e site oficial
+- [ ] CNPJ / razão social
+- [ ] Horário de atendimento
+- [ ] Acessibilidade, pet friendly, estacionamento e outras comodidades
+- [ ] Distâncias oficiais (São Paulo, Curitiba, centro de Iguape etc.)
+- [ ] Número correto de acomodações e hóspedes
 
-**Pronto quando:** nenhuma informação do site for inventada ou não confirmada pelo responsável.
+**Pronto quando:** nenhuma informação do site for inventada ou não confirmada pelo responsável, e os dados comerciais estiverem publicados.
 
 ---
 
 ### P0-02 · Substituir as fotos por imagens reais
 
-Hoje há 19 referências a imagens externas do Unsplash e fallbacks do placehold.co.
+As fotos de banco de imagens foram substituídas por imagens da listagem do Google Maps (6 fotos da pousada + 3 de avaliação), otimizadas localmente.
 
-- [ ] Fotografar (ou contratar fotógrafo) quartos, café da manhã, áreas comuns, trilhas e aves
-- [ ] Obter autorização de uso das imagens, especialmente se houver pessoas identificáveis
-- [ ] Comprimir para WebP/AVIF com [Squoosh](https://squoosh.app) ou similar
-- [ ] Gerar versões em múltiplos tamanhos (ex.: 480, 960, 1600 px)
-- [ ] Salvar em `img/` e atualizar os `src` do `index.html`
-- [ ] Escrever `alt` descritivo e específico para cada foto
-- [ ] Remover os fallbacks `placehold.co` depois que as imagens locais estiverem estáveis
-- [ ] Definir uma imagem para compartilhamento (Open Graph, 1200×630)
+**Já feito:**
 
-**Pronto quando:** nenhuma imagem depender de Unsplash e todas tiverem `alt` e peso adequado.
+- [x] Baixar as fotos da listagem
+- [x] Selecionar as imagens que representam a pousada
+- [x] Converter para WebP (hero, pousada, piscina, jardim, aves, colhereiro, tiê)
+- [x] Criar `img/og.jpg` (1200×630) para compartilhamento
+- [x] Criar `img/favicon.svg`
+- [x] Atualizar os `src` do `index.html`
+- [x] Escrever `alt` descritivo e específico
+- [x] Adicionar `loading="lazy"`, `width`/`height` e `fetchpriority="high"` no hero
+- [x] Remover fallbacks do `placehold.co` e dependências do Unsplash
+- [x] Criar galeria com 6 fotos e modal de ampliação
+
+**Ainda falta:**
+
+- [ ] Confirmar a autoria das fotos e a autorização de uso
+- [ ] Confirmar autorização das fotos enviadas por hóspedes (avaliações)
+- [ ] Fotografar interiores das acomodações, café da manhã e áreas comuns
+- [ ] Gerar versões em múltiplos tamanhos (480, 960, 1600 px) ou `srcset`
+- [ ] Avaliar AVIF além de WebP
+- [ ] Substituir a foto do hero por uma imagem oficial, se houver
+- [ ] Atualizar a imagem OG quando o domínio existir (URL absoluta)
+
+**Pronto quando:** todas as imagens forem próprias ou autorizadas, com `alt`, peso adequado e URL absoluta na OG.
 
 ---
 
 ### P0-03 · Fazer a reserva funcionar de verdade
 
-**Problema:** `submitBooking()` só remove o `hidden` da caixa de sucesso. Nenhum dado é enviado. Além disso, os campos têm `id` mas não têm `name`, então um backend de formulário não receberia os valores.
+**Status:** concluído para WhatsApp. A reserva abre o aplicativo com a mensagem pronta; não há backend nem armazenamento no site.
 
-**Decisões necessárias:**
+**Já feito:**
 
-- [ ] Escolher o canal: WhatsApp, e-mail (Formspree/Netlify Forms) ou motor de reservas
+- [x] Escolher WhatsApp como canal inicial
+- [x] Montar a mensagem com nome, datas, acomodação, hóspedes, interesses e observações
+- [x] Abrir `https://wa.me/5511952991990?text=...` com `encodeURIComponent`
+- [x] Adicionar `name` em todos os campos
+- [x] Remover a mensagem falsa de "sucesso"
+- [x] Bloquear datas passadas (`min` no check-in)
+- [x] Garantir check-out depois do check-in
+- [x] Atualizar o `min` do check-out quando o check-in muda
+- [x] Adicionar botão flutuante de WhatsApp
+- [x] Adicionar fallback caso o pop-up seja bloqueado
+- [x] Testar o fluxo no navegador e conferir a URL gerada
+
+**Ainda falta:**
+
+- [ ] Testar em celular real (iPhone e Android)
 - [ ] Definir quem responde e em quanto tempo
 - [ ] Definir se haverá confirmação automática
-
-**Se a escolha for WhatsApp (recomendado para começar):**
-
-- [ ] Montar a mensagem com nome, datas, acomodação e hóspedes
-- [ ] Abrir `https://wa.me/55DDDNUMERO?text=...` com `encodeURIComponent`
-- [ ] Testar no celular e no desktop, incluindo bloqueador de pop-up
-- [ ] Remover a mensagem de "sucesso" que promete envio inexistente
-- [ ] Considerar um botão flutuante de WhatsApp no site
-
-**Se a escolha for formulário por e-mail:**
-
-- [ ] Adicionar `name` em todos os campos
-- [ ] Configurar o serviço (Formspree, Netlify Forms, Basin)
-- [ ] Configurar destinatário, assunto e resposta automática
-- [ ] Adicionar proteção anti-spam (honeypot ou captcha)
-- [ ] Criar página/estado de sucesso real
-
-**Se a escolha for motor de reservas:**
-
-- [ ] Escolher fornecedor (Beds24, Little Hotelier, Booking.com etc.)
-- [ ] Trocar o botão por link para o motor
-- [ ] Manter o formulário atual apenas como contato, se fizer sentido
-
-**Validações obrigatórias:**
-
-- [ ] Bloquear datas passadas (`min` no check-in)
-- [ ] Garantir check-out depois do check-in
-- [ ] Limitar hóspedes conforme a capacidade da acomodação
-- [ ] Recalcular o total quando qualquer campo mudar
+- [ ] Limitar hóspedes conforme a capacidade real de cada acomodação
 - [ ] Não prometer disponibilidade sem checar o calendário real
+- [ ] Avaliar motor de reservas se o volume justificar
 
-**Pronto quando:** uma solicitação de teste chegar de fato ao canal escolhido, com todos os dados corretos.
+**Pronto quando:** uma solicitação de teste chegar ao WhatsApp da pousada com todos os dados corretos, no desktop e no celular.
 
 ---
 
@@ -134,8 +144,12 @@ Hoje há 19 referências a imagens externas do Unsplash e fallbacks do placehold
 - [ ] Evitar coletar dados desnecessários (só o necessário para a reserva)
 - [ ] Publicar política de cancelamento e regras da pousada
 - [ ] Exibir CNPJ/razão social no rodapé, se aplicável
-- [ ] Verificar direitos de uso das fotos e depoimentos
-- [ ] Não usar depoimentos, prêmios ou certificações sem comprovação
+- [ ] Confirmar direitos de uso das fotos
+- [ ] Confirmar direitos de uso dos depoimentos
+- [ ] Não usar prêmios ou certificações sem comprovação
+- [ ] Revisar o mapa incorporado do Google (cookies de terceiros)
+
+> O formulário atual não armazena dados: ele apenas monta uma mensagem e abre o WhatsApp. Ainda assim, a política de privacidade é necessária porque o site usa Google Fonts, Google Maps e WhatsApp.
 
 **Pronto quando:** o site tiver política de privacidade acessível e o fluxo de reserva explicar o uso dos dados.
 
@@ -148,10 +162,11 @@ Hoje há 19 referências a imagens externas do Unsplash e fallbacks do placehold
 - [ ] Registrar o domínio (ex.: `pousadamusa.com.br` no Registro.br)
 - [ ] Configurar DNS conforme a hospedagem
 - [ ] Confirmar HTTPS e redirecionamento de `www`
-- [ ] Configurar deploy automático a partir do GitHub (opcional no início)
+- [ ] Configurar deploy automático a partir do GitHub
 - [ ] Testar o site publicado em celular e desktop
 - [ ] Enviar uma reserva de teste em produção
 - [ ] Configurar página 404
+- [ ] Atualizar `og:url`, `og:image` absoluta e URL canônica
 
 **Pronto quando:** o site estiver acessível por um domínio próprio, com HTTPS e reserva testada.
 
@@ -179,32 +194,52 @@ O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runti
 
 ### P1-02 · SEO on-page
 
-- [ ] Adicionar `<meta name="description">` com texto real e persuasivo
-- [ ] Adicionar Open Graph (`og:title`, `og:description`, `og:image`, `og:url`, `og:type`)
-- [ ] Adicionar Twitter Card
-- [ ] Criar favicon e ícones para iOS/Android
+**Já feito:**
+
+- [x] `<title>` descritivo
+- [x] `<meta name="description">`
+- [x] Open Graph (`og:title`, `og:description`, `og:image`, `og:type`, `og:locale`)
+- [x] Twitter Card
+- [x] Favicon SVG
+- [x] Hierarquia de títulos (um `h1`, `h2` por seção)
+- [x] Texto real nos links
+- [x] Conteúdo cobre "pousada em Iguape", "observação de aves" e "Mata Atlântica"
+- [x] `alt` descritivo nas imagens
+
+**Ainda falta:**
+
 - [ ] Definir URL canônica
+- [ ] Adicionar `og:url`
+- [ ] Usar URL absoluta em `og:image`
 - [ ] Criar `robots.txt`
 - [ ] Criar `sitemap.xml`
-- [ ] Revisar hierarquia de títulos (um `h1`, `h2` por seção)
-- [ ] Usar texto real nos links (evitar "clique aqui")
-- [ ] Verificar se o conteúdo cobre as buscas relevantes: "pousada em Iguape", "observação de aves", "Mata Atlântica"
 - [ ] Cadastrar no Google Search Console
 - [ ] Criar/atualizar o Google Business Profile
+- [ ] Revisar o SEO depois do domínio definido
 
-**Pronto quando:** o site tiver título, descrição, imagem social, favicon, sitemap e Search Console verificados.
+**Pronto quando:** o site tiver título, descrição, imagem social absoluta, favicon, canonical, sitemap e Search Console verificados.
 
 ---
 
 ### P1-03 · Desempenho
 
-- [ ] Converter imagens para WebP/AVIF
-- [ ] Adicionar `loading="lazy"` nas imagens abaixo da primeira dobra
-- [ ] Adicionar `width`/`height` ou `aspect-ratio` para evitar layout shift
-- [ ] Servir a imagem do hero com prioridade (`fetchpriority="high"`) e sem lazy
+**Já feito:**
+
+- [x] Converter imagens para WebP
+- [x] Adicionar `loading="lazy"` nas imagens abaixo da primeira dobra
+- [x] Adicionar `width`/`height` para reduzir layout shift
+- [x] Servir o hero com `fetchpriority="high"` e sem lazy
+- [x] Remover dependências externas de imagem (Unsplash/placehold)
+- [x] Criar imagem OG otimizada
+
+**Ainda falta:**
+
 - [ ] Auto-hospedar as fontes ou limitar os pesos carregados
-- [ ] Remover dependências externas desnecessárias
+- [ ] Compilar o Tailwind (P1-01)
+- [ ] Gerar `srcset`/`sizes` para diferentes telas
+- [ ] Avaliar AVIF
 - [ ] Rodar Lighthouse no celular e buscar ≥ 90 em Performance
+- [ ] Revisar o peso total da página (hero e piscina ainda têm ~270 KB cada)
 
 **Pronto quando:** Lighthouse mobile com Performance ≥ 90 e sem avisos críticos.
 
@@ -212,18 +247,28 @@ O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runti
 
 ### P1-04 · Acessibilidade
 
-- [ ] Adicionar `role="dialog"` e `aria-modal="true"` nos modais
-- [ ] Prender o foco dentro do modal enquanto aberto
-- [ ] Devolver o foco ao botão que abriu o modal
-- [ ] Bloquear a rolagem do `body` com modal aberto
-- [ ] Adicionar `aria-expanded` nos botões de menu e FAQ
-- [ ] Garantir navegação completa por teclado
-- [ ] Revisar contraste de textos sobre imagens e sobre o pêssego
+**Já feito:**
+
+- [x] `role="dialog"` e `aria-modal="true"` nos modais
+- [x] Foco preso dentro do modal enquanto aberto
+- [x] Devolver o foco ao botão que abriu o modal
+- [x] Bloquear a rolagem do `body` com modal aberto
+- [x] `aria-expanded` nos botões de menu e FAQ
+- [x] Navegação completa por teclado nos componentes principais
+- [x] Contraste revisado (Lighthouse 100)
+- [x] `alt` descritivo nas fotos
+- [x] `<main>` e hierarquia de títulos
+- [x] Fechar com `ESC` e clique no fundo
+
+**Ainda falta:**
+
 - [ ] Adicionar link "pular para o conteúdo"
 - [ ] Revisar `alt` de imagens decorativas (usar `alt=""`)
 - [ ] Testar com VoiceOver
+- [ ] Testar navegação só por teclado em todos os fluxos
+- [ ] Revisar contraste em estados de hover/focus
 
-**Pronto quando:** Lighthouse Accessibility ≥ 95 e o site for navegável só com teclado.
+**Pronto quando:** Lighthouse Accessibility ≥ 95 (já em 100) e o site for navegável só com teclado e leitor de tela.
 
 ---
 
@@ -237,13 +282,21 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ### P1-06 · Contato e redes sociais
 
-- [ ] Transformar o telefone em link `tel:`
-- [ ] Transformar o WhatsApp em link `https://wa.me/...`
-- [ ] Adicionar e-mail com `mailto:`
+**Já feito:**
+
+- [x] Telefone como link `tel:`
+- [x] WhatsApp como link `https://wa.me/...`
+- [x] Mapa real incorporado (Google Maps)
+- [x] Link para rota
+- [x] Rodapé revisado com endereço, telefone, WhatsApp e avaliação
+- [x] Botão flutuante de WhatsApp
+
+**Ainda falta:**
+
+- [ ] Adicionar e-mail com `mailto:` (se houver)
 - [ ] Adicionar Instagram e outras redes reais
-- [ ] Incorporar mapa real (Google Maps) ou link para rota
 - [ ] Adicionar horário de atendimento
-- [ ] Revisar o rodapé inteiro
+- [ ] Confirmar o número oficial e o formato ideal de exibição
 
 **Pronto quando:** todos os contatos forem clicáveis e levarem aos canais corretos.
 
@@ -267,10 +320,12 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 - [ ] iPhone (Safari) e Android (Chrome)
 - [ ] Larguras 360, 390, 768, 1024 e 1440 px
 - [ ] Safari, Chrome, Firefox e Edge
-- [ ] Modais, menu mobile, FAQ e cálculo de diárias
+- [ ] Modais, menu mobile, FAQ e galeria
 - [ ] Navegação por teclado
 - [ ] Teste de formulário com dados inválidos
 - [ ] Teste com internet lenta (3G simulado)
+- [ ] Teste do mapa incorporado e do botão de rota
+- [ ] Teste do link do WhatsApp no celular
 
 **Pronto quando:** não houver quebra visual ou erro funcional nos cenários acima.
 
@@ -289,7 +344,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 ### P2-02 · Dados estruturados (Schema.org)
 
 - [ ] Adicionar JSON-LD de `LodgingBusiness`
-- [ ] Incluir endereço, telefone, faixa de preço, fotos e comodidades
+- [ ] Incluir endereço, telefone, fotos e comodidades
 - [ ] Adicionar `FAQPage` para o acordeão
 - [ ] Validar no Rich Results Test
 
@@ -331,8 +386,8 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ### P2-08 · Galeria e prova social
 
-- [ ] Galeria de fotos reais
-- [ ] Depoimentos verificáveis de hóspedes
+- [x] Galeria de fotos reais
+- [x] Depoimentos verificáveis de hóspedes (Google Maps)
 - [ ] Integração com Instagram (com cuidado para não pesar a página)
 - [ ] Vídeo curto do refúgio
 
@@ -340,67 +395,82 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 
 ## Bugs conhecidos
 
-| ID | Descrição | Onde | Severidade | Correção sugerida |
-|---|---|---|---|---|
-| B-01 | Envio da reserva é simulado; nenhum dado sai do navegador | `submitBooking()` | **Alta** | Implementar WhatsApp/formulário/motor (P0-03) |
-| B-02 | Campos do formulário têm `id`, mas não `name` | Modal de reserva | **Alta** | Adicionar `name` em todos os campos |
-| B-03 | Datas passadas e check-out anterior ao check-in são aceitos | `checkIn`, `checkOut`, `calculateEstimate()` | **Alta** | Usar `min`, validar no `change` e no submit |
-| B-04 | Datas padrão usam `toISOString()` e podem adiantar um dia no fuso do Brasil após ~21h | Listener de `DOMContentLoaded` | Média | Formatar data local (`getFullYear`, `getMonth`, `getDate`) |
-| B-05 | Comentário diz que fecha ao clicar fora, mas só ESC funciona | `contentModal`, `bookingModal` | Média | Adicionar listener de clique no backdrop |
-| B-06 | `max-height: 320px` pode cortar respostas longas do FAQ no celular | `.faq-answer` | Média | Aumentar o limite ou calcular a altura real |
-| B-07 | `img#modalImg` inicia com `src=""` | Modal de conteúdo | Baixa | Remover o `src` inicial ou usar placeholder |
-| B-08 | Âncoras podem ficar escondidas atrás do header fixo | Todas as seções | Média | Adicionar `scroll-mt-24` ou equivalente |
-| B-09 | Preços duplicados no `<select>` e nos textos dos modais; nº de hóspedes não afeta o total | Modal de reserva | Média | Centralizar tarifas em um único objeto |
-| B-10 | Modais sem foco preso, `aria-modal` ou bloqueio de scroll | Todos os modais | Média | Implementar padrão de diálogo acessível |
-| B-11 | Contatos do rodapé não são clicáveis | Rodapé | Média | Usar `tel:`, `mailto:` e `wa.me` |
-| B-12 | Sem `meta description`, Open Graph, favicon, sitemap ou `robots.txt` | `<head>` | Média | Resolver em P1-02 |
+| ID | Descrição | Onde | Severidade | Status | Correção sugerida |
+|---|---|---|---|---|---|
+| B-01 | Envio da reserva era simulado | `submitBooking()` | Alta | **Corrigido** | Agora abre o WhatsApp com a mensagem pronta |
+| B-02 | Campos do formulário tinham `id`, mas não `name` | Modal de reserva | Alta | **Corrigido** | `name` adicionado em todos os campos |
+| B-03 | Datas passadas e check-out anterior ao check-in eram aceitos | `checkIn`, `checkOut` | Alta | **Corrigido** | `min`, validação no `change` e no submit |
+| B-04 | Datas padrão usavam `toISOString()` e podiam adiantar um dia | `DOMContentLoaded` | Média | **Corrigido** | Formatação local com `getFullYear`, `getMonth`, `getDate` |
+| B-05 | Comentário dizia que fechava ao clicar fora, mas só ESC funcionava | Modais | Média | **Corrigido** | Listener de clique no backdrop |
+| B-06 | `max-height: 320px` podia cortar respostas longas do FAQ | `.faq-answer` | Média | **Corrigido** | Limite aumentado para 620px |
+| B-07 | `img#modalImg` iniciava com `src=""` | Modal de conteúdo | Baixa | **Corrigido** | `src` inicial com imagem local |
+| B-08 | Âncoras podiam ficar escondidas atrás do header fixo | Todas as seções | Média | **Corrigido** | `scroll-margin-top` via CSS |
+| B-09 | Preços duplicados e total não recalculado | Modal de reserva | Média | **Obsoleto** | Preços removidos; valores são confirmados no WhatsApp |
+| B-10 | Modais sem foco preso, `aria-modal` ou bloqueio de scroll | Modais | Média | **Corrigido** | `aria-modal`, foco preso, retorno de foco e scroll lock |
+| B-11 | Contatos do rodapé não eram clicáveis | Rodapé | Média | **Corrigido** | `tel:` e `wa.me` |
+| B-12 | Sem meta description, Open Graph, favicon, sitemap ou robots | `<head>` | Média | **Parcial** | Meta/OG/favicon feitos; sitemap/robots pendentes |
+| B-13 | Fotos vêm do Google Maps; autoria e autorização não confirmadas | `img/` | **Alta** | **Aberto** | Confirmar com a pousada e os autores das fotos |
+| B-14 | Depoimentos do Google são públicos, mas a autorização de uso não foi confirmada | Seção de avaliações | Média | **Aberto** | Confirmar com os autores e com a pousada |
+| B-15 | Preços, suítes, check-in/out e regras ainda são desconhecidos | Conteúdo | Média | **Aberto** | Levantar dados com a pousada (P0-01) |
+| B-16 | `og:image` é relativa e não há canonical/`og:url` | `<head>` | Média | **Aberto** | Resolver após definir o domínio |
+| B-17 | Mapa incorporado pode definir cookies do Google | Seção de localização | Média | **Aberto** | Aviso de cookies/privacidade (P0-04) |
+| B-18 | Tailwind via CDN gera aviso de produção | `<head>` | Baixa | **Aberto** | Compilar o Tailwind (P1-01) |
 
 ---
 
 ## Decisões pendentes
 
-Antes de executar o backlog, é preciso definir:
+Antes de executar o restante do backlog, é preciso definir:
 
-1. **A pousada é real ou o site é um estudo/portfólio?** Isso muda o nível de rigor legal e de conteúdo.
-2. **Qual será o canal oficial de reservas?** WhatsApp, e-mail ou motor de reservas.
-3. **Quem fornece fotos, textos e preços?** Sem isso, P0-01 e P0-02 ficam bloqueados.
-4. **Qual domínio será usado?** Necessário para SEO, e-mail e publicação.
-5. **O site continuará como one-page ou terá páginas separadas?** Recomendação: manter one-page até haver conteúdo suficiente para um blog.
-6. **Haverá analytics?** Define a necessidade de aviso de cookies.
+1. **Quem é o responsável oficial pelo site e pela pousada?** Isso define quem aprova textos, fotos e preços.
+2. **As fotos e os depoimentos podem ser publicados?** Sem essa confirmação, o site não deve ser divulgado como oficial.
+3. **Quais são os preços, acomodações, check-in/check-out e regras?** Sem isso, o site continua genérico.
+4. **Qual será o canal oficial de reservas?** WhatsApp é o atual; um motor de reservas só se o volume justificar.
+5. **Qual domínio será usado?** Necessário para canonical, `og:url`, e-mail e publicação.
+6. **O site continuará como one-page ou terá páginas separadas?** Recomendação: manter one-page até haver conteúdo suficiente para um blog.
+7. **Haverá analytics?** Define a necessidade de aviso de cookies.
 
 ---
 
 ## Ordem sugerida
 
-### Sprint 0 — Colocar no ar para teste (1 dia)
+### Sprint 0 — Base confiável (concluído)
 
-- [ ] Deploy no Netlify Drop ou Cloudflare Pages
-- [ ] Testar no celular
-- [ ] Corrigir bugs B-03, B-05 e B-08
-- [ ] Adicionar `meta description` e favicon provisórios
+- [x] Preencher o site com dados públicos do Google Maps
+- [x] Remover conteúdo fictício
+- [x] Substituir fotos de banco de imagens por fotos reais da listagem
+- [x] Criar galeria, avaliações e localização
+- [x] Integrar reserva via WhatsApp
+- [x] Corrigir bugs de data, modal, foco e contato
+- [x] Adicionar meta description, Open Graph, favicon e imagem OG
+- [x] Atingir Lighthouse 100 em acessibilidade, boas práticas e SEO
 
-### Sprint 1 — Tornar confiável (1 semana)
+### Sprint 1 — Tornar oficial (próximo)
 
-- [ ] P0-01: validar conteúdo
-- [ ] P0-03: integrar reserva por WhatsApp
-- [ ] P0-02: primeiras fotos reais
-- [ ] P0-04: política de privacidade
-- [ ] P1-06: contatos clicáveis
+- [ ] Confirmar direitos das fotos e depoimentos
+- [ ] Levantar preços, acomodações, check-in/out e regras
+- [ ] Criar política de privacidade
+- [ ] Confirmar e-mail, Instagram e horário de atendimento
+- [ ] Testar o fluxo de reserva no celular
+- [ ] Publicar em uma hospedagem estática para teste
 
-### Sprint 2 — Lançar oficialmente (1 semana)
+### Sprint 2 — Lançar oficialmente
 
-- [ ] Domínio e DNS
-- [ ] P1-01: build do Tailwind
-- [ ] P1-02: SEO completo
-- [ ] P1-03 e P1-04: performance e acessibilidade
-- [ ] P1-08: testes finais
+- [ ] Registrar domínio e configurar DNS/HTTPS
+- [ ] Atualizar canonical, `og:url` e `og:image` absoluta
+- [ ] Compilar o Tailwind
+- [ ] Rodar Lighthouse mobile e otimizar performance
+- [ ] Criar `robots.txt` e `sitemap.xml`
+- [ ] Configurar Google Search Console e Google Business Profile
+- [ ] Testes finais em dispositivos e navegadores
 
 ### Sprint 3 — Evoluir
 
-- [ ] P1-07: analytics
-- [ ] P2-02 e P2-03: schema e Google Business Profile
-- [ ] P2-05: conteúdo
-- [ ] P2-06: motor de reservas, se necessário
+- [ ] Analytics
+- [ ] Schema.org (`LodgingBusiness` e `FAQPage`)
+- [ ] Conteúdo/blog sobre aves e Iguape
+- [ ] Motor de reservas, se necessário
+- [ ] Integração com Instagram e vídeo curto
 
 ---
 
@@ -409,10 +479,13 @@ Antes de executar o backlog, é preciso definir:
 O site só deve ser divulgado como oficial quando:
 
 - [ ] Nenhum dado fictício ou não comprovado permanecer
-- [ ] Todas as fotos forem próprias e autorizadas
-- [ ] Uma reserva de teste chegar ao canal oficial com todos os dados
+- [ ] Todas as fotos forem próprias ou autorizadas
+- [ ] Os depoimentos tiverem autorização de uso
+- [ ] Preços, acomodações, check-in/out e regras estiverem publicados
+- [ ] Uma reserva de teste chegar ao WhatsApp com todos os dados
 - [ ] Política de privacidade estiver publicada
 - [ ] Domínio próprio com HTTPS estiver ativo
+- [ ] `robots.txt`, `sitemap.xml` e canonical estiverem configurados
 - [ ] Lighthouse mobile ≥ 90 em Performance, Acessibilidade e SEO
 - [ ] Site funcionar em iPhone, Android, Safari e Chrome
 - [ ] Contatos e redes sociais estiverem corretos e clicáveis

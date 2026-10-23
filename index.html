@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pousada Musa | Refúgio na Montanha & Passarinhada em Iguape</title>
-    
-    <!-- Tailwind CSS via CDN (Sem necessidade de compilação) -->
+    <title>Pousada MUSA | Hospedagem e observação de aves em Iguape/SP</title>
+    <meta name="description" content="Pousada em Iguape/SP, cercada pela Mata Atlântica. Suítes confortáveis, jardins, piscina natural e observação de aves. Fale com a gente pelo WhatsApp.">
+    <meta name="theme-color" content="#A84B2B">
+
+    <!-- Open Graph / redes sociais -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Pousada MUSA | Iguape/SP">
+    <meta property="og:description" content="Refúgio na Mata Atlântica com suítes confortáveis, jardins, piscina natural e observação de aves.">
+    <meta property="og:image" content="img/og.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+
+    <!-- Tailwind CSS via CDN (protótipo; compilar antes de produção) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Lora (Serifada Elegante) e Plus Jakarta Sans (Sem Serifa Limpa) -->
+
+    <!-- Google Fonts: Lora (serifada) e Plus Jakarta Sans (sem serifa) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 
-    <!-- Configuração de Cores e Fontes da Identidade Visual Musa -->
+    <!-- Configuração de cores e fontes da identidade visual Musa -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         musa: {
-                            bg: '#F4EFE6',         /* Creme/Bege suave do fundo */
-                            terracotta: '#A84B2B', /* Terracota escuro (botões e rodapé) */
+                            bg: '#F4EFE6',
+                            terracotta: '#A84B2B',
                             terracottaDark: '#8C3B1F',
-                            peach: '#D8916C',      /* Terracota claro/pêssego (seção suítes) */
-                            gold: '#A88E5B',       /* Dourado/Oliva terroso (FAQ e ícones) */
-                            goldLight: '#D5B878',  /* Dourado claro do título Hero */
-                            text: '#4A3F35',       /* Marrom escuro para textos */
-                            muted: '#7A6F64'       /* Tom suave para subtítulos */
+                            peach: '#D8916C',
+                            gold: '#A88E5B',
+                            goldDark: '#7A6338',
+                            goldLight: '#D5B878',
+                            text: '#4A3F35',
+                            muted: '#6B6055'
                         }
                     },
                     fontFamily: {
@@ -40,13 +55,12 @@
     </script>
 
     <style>
-        /* Estilos customizados para detalhes finos fieis à imagem */
         body {
             background-color: #E6DFD3;
             color: #4A3F35;
         }
-        
-        /* Moldura dupla arredondada dos cards verticais */
+
+        /* Moldura dupla arredondada dos cards */
         .musa-card-frame {
             border: 1.5px solid #C8B598;
             padding: 6px;
@@ -60,36 +74,40 @@
             box-shadow: 0 15px 30px -10px rgba(168, 75, 43, 0.2);
         }
 
-        /* Animação suave para os modais e acordeão */
+        /* Acordeão do FAQ */
         .faq-answer {
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.35s ease-out, padding 0.35s ease;
+            transition: max-height 0.35s ease-out;
         }
         .faq-item.active .faq-answer {
-            max-height: 320px;
+            max-height: 620px;
         }
         .faq-item.active .faq-icon {
             transform: rotate(45deg);
         }
 
-        /* Sombra suave no texto do Hero */
+        /* Sombra suave no texto do hero */
         .hero-text-shadow {
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.55);
+        }
+
+        /* Evita que o header fixo cubra as âncoras */
+        section[id] {
+            scroll-margin-top: 6rem;
         }
     </style>
 </head>
 <body class="font-sans antialiased selection:bg-musa-terracotta selection:text-white py-0 md:py-6 px-0 md:px-4">
 
-    <!-- Container Principal (Simula a folha da página da imagem com largura elegante) -->
+    <!-- Container principal -->
     <div class="max-w-5xl mx-auto bg-musa-bg shadow-2xl md:rounded-t-2xl md:rounded-b-xl overflow-hidden border border-stone-300/60">
 
-        <!-- ================= 1. CABEÇALHO / NAVBAR ================= -->
+        <!-- ================= CABEÇALHO ================= -->
         <header class="sticky top-0 z-40 bg-musa-bg/95 backdrop-blur-md border-b border-stone-200/80 px-6 lg:px-12 py-4 transition-all">
             <div class="flex items-center justify-between">
-                <!-- Logotipo MUSA com círculos concêntricos -->
-                <a href="#" class="flex items-center gap-3 group focus:outline-none">
-                    <svg class="w-10 h-10 text-musa-gold transition-transform duration-500 group-hover:rotate-90" viewBox="0 0 44 44" fill="none">
+                <a href="#" class="flex items-center gap-3 group focus:outline-none" aria-label="Pousada Musa — início">
+                    <svg class="w-10 h-10 text-musa-gold transition-transform duration-500 group-hover:rotate-90" viewBox="0 0 44 44" fill="none" aria-hidden="true">
                         <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.3"/>
                         <circle cx="22" cy="22" r="16.5" stroke="currentColor" stroke-width="1.1"/>
                         <circle cx="22" cy="22" r="13" stroke="currentColor" stroke-width="1"/>
@@ -100,119 +118,117 @@
                     <span class="font-serif text-2xl tracking-[0.18em] text-musa-terracotta font-normal">MUSA</span>
                 </a>
 
-                <!-- Navegação Desktop -->
-                <nav class="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-musa-text/90">
+                <nav class="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-musa-text/90" aria-label="Navegação principal">
                     <a href="#pousada" class="hover:text-musa-terracotta transition-colors">A Pousada</a>
                     <a href="#acomodacoes" class="hover:text-musa-terracotta transition-colors">Acomodações</a>
                     <a href="#aves" class="hover:text-musa-terracotta transition-colors">Observação de Aves</a>
                     <a href="#experiencias" class="hover:text-musa-terracotta transition-colors">Experiências</a>
-                    <a href="#contato" class="hover:text-musa-terracotta transition-colors">Contato</a>
+                    <a href="#localizacao" class="hover:text-musa-terracotta transition-colors">Localização</a>
                 </nav>
 
-                <!-- Botão Reservar & Menu Mobile -->
                 <div class="flex items-center gap-3">
-                    <button onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs tracking-wider uppercase font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
-                        Reservar Agora
+                    <button type="button" onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs tracking-wider uppercase font-semibold px-5 py-2.5 rounded-full shadow-sm hover:shadow transition-all active:scale-95">
+                        Reservar
                     </button>
 
-                    <!-- Botão Hamburger Mobile -->
-                    <button id="mobileMenuBtn" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-musa-text hover:text-musa-terracotta focus:outline-none" aria-label="Abrir Menu">
-                        <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-musa-text hover:text-musa-terracotta focus:outline-none" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+                        <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
-                        <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg id="menuIconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                         </svg>
                     </button>
                 </div>
             </div>
 
-            <!-- Menu Mobile Retrátil -->
+            <!-- Menu mobile -->
             <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 mt-3 border-t border-stone-200 flex flex-col gap-3 text-sm font-medium text-musa-text">
                 <a href="#pousada" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">A Pousada</a>
                 <a href="#acomodacoes" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Acomodações</a>
                 <a href="#aves" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Observação de Aves</a>
                 <a href="#experiencias" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Experiências</a>
-                <a href="#contato" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Contato & Como Chegar</a>
+                <a href="#localizacao" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Localização</a>
+                <a href="#contato" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Contato</a>
             </div>
         </header>
 
-        <!-- ================= 2. HERO SECTION ================= -->
-        <section id="pousada" class="relative h-[440px] sm:h-[520px] w-full overflow-hidden flex items-center justify-center text-center">
-            <!-- Imagem de Fundo da Varanda e Mata Atlântica com Neblina -->
-            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=85" 
-                 onerror="this.src='https://placehold.co/1600x900/3b4d3b/F4EFE6?text=Pousada+Musa+-+Refugio+na+Mata+Atlantica'"
-                 alt="Varanda de madeira com redes e vista para a Mata Atlântica" 
-                 class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000 hover:scale-100">
-            
-            <!-- Overlay Gradiente Escuro para contraste perfeito -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/45 via-black/35 to-black/60"></div>
+        <main>
 
-            <!-- Conteúdo Centralizado -->
+        <!-- ================= HERO ================= -->
+        <section id="pousada" class="relative h-[480px] sm:h-[560px] w-full overflow-hidden flex items-center justify-center text-center">
+            <img src="img/hero.webp" width="1400" height="629"
+                 alt="Entrada da Pousada Musa, com portal de madeira, caminho e vegetação da Mata Atlântica"
+                 class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000 hover:scale-100"
+                 fetchpriority="high">
+
+            <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/65"></div>
+
             <div class="relative z-10 px-6 max-w-2xl mx-auto flex flex-col items-center">
                 <span class="text-xs uppercase tracking-[0.25em] text-stone-200/90 mb-2 bg-black/25 backdrop-blur-sm px-3.5 py-1 rounded-full border border-white/15">
-                    Iguape • Reserva da Mata Atlântica
+                    Iguape • Mata Atlântica
                 </span>
                 <h1 class="font-serif text-4xl sm:text-6xl font-normal tracking-wide hero-text-shadow mb-3">
                     <span class="text-white">Pousada</span> <span class="text-musa-goldLight">Musa</span>
                 </h1>
                 <p class="text-stone-100 text-base sm:text-xl font-light tracking-wide hero-text-shadow mb-8">
-                    Refúgio na Montanha &amp; Passarinhada
+                    Refúgio na Mata Atlântica &amp; Observação de Aves
                 </p>
                 <div class="flex flex-wrap items-center justify-center gap-3">
-                    <button onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-sm font-medium px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
+                    <button type="button" onclick="openBookingModal()" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-sm font-medium px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5">
                         Reservar Estadia
                     </button>
-                    <button onclick="openInfoModal('pousada')" class="bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/30 text-sm font-medium px-6 py-3 rounded-full transition-all">
-                        Conhecer História
+                    <button type="button" onclick="openInfoModal('pousada')" class="bg-white/15 hover:bg-white/25 text-white backdrop-blur-md border border-white/30 text-sm font-medium px-6 py-3 rounded-full transition-all">
+                        Conhecer a Pousada
                     </button>
                 </div>
+                <a href="https://www.google.com/maps/place/Pousada+MUSA/@-24.6555191,-47.5202416,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!2sPousada+MUSA!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq!3m5!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq?entry=ttu"
+                   target="_blank" rel="noopener"
+                   class="mt-5 inline-flex items-center gap-2 text-xs text-stone-100/90 hover:text-white transition-colors">
+                    <span class="text-musa-goldLight tracking-widest" aria-hidden="true">★★★★★</span>
+                    <span>5,0 no Google · 2 avaliações</span>
+                </a>
             </div>
         </section>
 
-        <!-- ================= 3. SEÇÃO OBSERVAÇÃO DE AVES ================= -->
-        <section id="aves" class="py-10 sm:py-14 px-0 sm:px-6 lg:px-12 bg-musa-bg">
+        <!-- ================= OBSERVAÇÃO DE AVES ================= -->
+        <section id="aves" class="py-12 sm:py-16 px-6 lg:px-12 bg-musa-bg">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
-                <!-- Coluna Esquerda: Foto do Pássaro (Saíra / Tangara) -->
-                <div class="md:col-span-6 overflow-hidden sm:rounded-lg shadow-md relative group cursor-pointer" onclick="openBirdModal()">
-                    <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=1000&q=85" 
-                         onerror="this.src='https://placehold.co/800x520/2d5a27/ffffff?text=Saira-Sete-Cores'"
-                         alt="Pássaro colorido da Mata Atlântica em galho com musgo" 
-                         class="w-full h-[280px] sm:h-[320px] object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                        <span>+180 espécies catalogadas • Clique para ver o guia</span>
-                    </div>
-                </div>
+                <button type="button" onclick="openInfoModal('aves')" class="md:col-span-6 overflow-hidden sm:rounded-lg shadow-md relative group cursor-pointer text-left w-full">
+                    <img src="img/aves.webp" width="1200" height="795"
+                         alt="Saíra-sete-cores pousada em um galho, com bromélia ao fundo"
+                         class="w-full h-[300px] sm:h-[340px] object-cover transition-transform duration-700 group-hover:scale-105"
+                         loading="lazy">
+                    <span class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white text-xs px-3 py-1.5 rounded-full flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" aria-hidden="true"></span>
+                        <span>Aves da Mata Atlântica • Clique para conhecer</span>
+                    </span>
+                </button>
 
-                <!-- Coluna Direita: Texto e Ícones Minimalistas Dourados -->
-                <div class="md:col-span-6 px-6 sm:px-4 flex items-center justify-between gap-6">
+                <div class="md:col-span-6 px-2 sm:px-4 flex items-center justify-between gap-6">
                     <div class="max-w-md">
                         <h2 class="font-serif text-3xl sm:text-4xl text-musa-terracotta leading-tight mb-4">
                             Observação<br>de Aves
                         </h2>
                         <p class="text-sm text-musa-text/90 leading-relaxed mb-5">
-                            Em meio à biodiversidade intocada da Mata Atlântica, nossas trilhas e comedouros naturais oferecem avistamentos inesquecíveis de saíras, tucanos e beija-flores raros, despertando uma profunda conexão com a natureza.
+                            Cercada por árvores frutíferas e pela Mata Atlântica, a Musa tem um comedouro movimentado e jardins que atraem aves ao longo do dia. Saíras, colhereiros e tiês-sangue já foram fotografados na região.
                         </p>
-                        <button onclick="openBirdModal()" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-musa-terracotta hover:text-musa-terracottaDark border-b border-musa-terracotta pb-1 transition-colors">
-                            <span>Explorar Catálogo de Aves</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                        <button type="button" onclick="openInfoModal('aves')" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-musa-terracotta hover:text-musa-terracottaDark border-b border-musa-terracotta pb-1 transition-colors">
+                            <span>Conhecer as aves</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                         </button>
                     </div>
 
-                    <!-- Ícones lineares dourados (Pássaro e Binóculos como na imagem) -->
                     <div class="flex flex-col items-center gap-6 shrink-0 text-musa-gold pr-2">
-                        <!-- Ícone Pássaro -->
-                        <button onclick="openBirdModal()" title="Ver espécies de aves" class="hover:scale-110 transition-transform focus:outline-none">
-                            <svg class="w-11 h-11" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" onclick="openInfoModal('aves')" title="Ver aves" aria-label="Ver aves" class="hover:scale-110 transition-transform focus:outline-none">
+                            <svg class="w-11 h-11" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M35 15c-3 0-5.5 2-6.5 4.5C24 21 17 24 10 30c4 0 8-1 11-3-1 3-3 5-6 6 6 0 13-2 17-7 2.5-3 3.5-7 3.5-9.5 0-.8 1.5-1.5 3.5-1.5l-2-2c-.7 0-1.3.5-2 2z"/>
                                 <circle cx="33.5" cy="17.5" r="1" fill="currentColor"/>
                                 <path d="M22 33v6m5-7v7"/>
                             </svg>
                         </button>
-                        <!-- Ícone Binóculos -->
-                        <button onclick="openBirdModal()" title="Dicas de Passarinhada" class="hover:scale-110 transition-transform focus:outline-none">
-                            <svg class="w-11 h-11" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <button type="button" onclick="openInfoModal('aves')" title="Dicas de observação" aria-label="Dicas de observação" class="hover:scale-110 transition-transform focus:outline-none">
+                            <svg class="w-11 h-11" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <circle cx="14" cy="31" r="6"/>
                                 <circle cx="34" cy="31" r="6"/>
                                 <path d="M10 28l4-14h4l2 14"/>
@@ -226,213 +242,306 @@
             </div>
         </section>
 
-        <!-- ================= 4. SEÇÃO NOSSAS SUÍTES ================= -->
+        <!-- ================= SUÍTES ================= -->
         <section id="acomodacoes" class="grid grid-cols-1 md:grid-cols-12 bg-musa-peach text-white">
-            <!-- Coluna Esquerda: Bloco Terracota Claro / Pêssego -->
             <div class="md:col-span-6 p-8 sm:p-12 lg:p-14 flex flex-col justify-center">
-                <span class="font-serif text-base sm:text-lg text-white/90 tracking-wide mb-1">
-                    Aconchego Natural
+                <span class="font-serif text-base sm:text-lg text-[#3A312A] tracking-wide mb-1">
+                    Aconchego na Mata
                 </span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-normal mb-4">
+                <h2 class="font-serif text-3xl sm:text-4xl font-normal mb-4 text-[#3A312A]">
                     Nossas Suítes
                 </h2>
-                <p class="text-sm text-white/95 leading-relaxed mb-6 max-w-md font-light">
-                    Nossas suítes não possuem TV para permitir uma imersão autêntica nos sons da floresta. Com enxoval de algodão orgânico, varanda privativa com rede e vista para o vale, cada detalhe convida ao descanso profundo.
+                <p class="text-sm text-[#3A312A] leading-relaxed mb-4 max-w-md font-light">
+                    Suítes confortáveis, com camas elogiadas por quem já se hospedou e banheiros novos. Um lugar para desacelerar, ouvir os pássaros e dormir bem.
                 </p>
-                
-                <!-- Seletor interativo de suítes -->
-                <div class="flex flex-wrap gap-2 mb-6">
-                    <button onclick="openSuiteModal('saira')" class="bg-white/20 hover:bg-white hover:text-musa-terracotta text-white text-xs font-medium px-3.5 py-2 rounded-full border border-white/40 transition-all">
-                        Suíte Saíra (Casal)
-                    </button>
-                    <button onclick="openSuiteModal('bromelia')" class="bg-white/20 hover:bg-white hover:text-musa-terracotta text-white text-xs font-medium px-3.5 py-2 rounded-full border border-white/40 transition-all">
-                        Chalé Bromélia (Hidromassagem)
-                    </button>
-                    <button onclick="openSuiteModal('mata')" class="bg-white/20 hover:bg-white hover:text-musa-terracotta text-white text-xs font-medium px-3.5 py-2 rounded-full border border-white/40 transition-all">
-                        Cabana da Mata (Família)
-                    </button>
-                </div>
+                <p class="text-xs text-[#3A312A] leading-relaxed mb-6 max-w-md">
+                    Os valores, a disponibilidade e os detalhes de cada acomodação são confirmados diretamente pelo WhatsApp.
+                </p>
 
-                <div>
-                    <button onclick="openSuiteModal('saira')" class="inline-flex items-center gap-2 bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-6 py-3 rounded-full shadow transition-all">
-                        <span>Ver Fotos &amp; Tarifas das Suítes</span>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" onclick="openBookingModal()" class="inline-flex items-center gap-2 bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-6 py-3 rounded-full shadow transition-all">
+                        <span>Consultar disponibilidade</span>
                     </button>
+                    <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20as%20acomoda%C3%A7%C3%B5es%20da%20Pousada%20Musa."
+                       target="_blank" rel="noopener"
+                       class="inline-flex items-center gap-2 bg-white/40 hover:bg-white text-[#3A312A] text-xs uppercase tracking-wider font-semibold px-6 py-3 rounded-full border border-white/60 transition-all">
+                        Falar no WhatsApp
+                    </a>
                 </div>
             </div>
 
-            <!-- Coluna Direita: Foto do Quarto Aconchegante -->
-            <div class="md:col-span-6 relative min-h-[300px] sm:min-h-[360px] overflow-hidden group cursor-pointer" onclick="openSuiteModal('saira')">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1100&q=85" 
-                     onerror="this.src='https://placehold.co/900x600/c99e7c/ffffff?text=Suites+Aconchegantes+Musa'"
-                     alt="Suíte com cama de casal em tons terrosos e varanda para a mata" 
-                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-80"></div>
-                <div class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-musa-text text-xs font-medium px-3.5 py-1.5 rounded-full shadow">
-                    Clique para explorar as 3 categorias →
-                </div>
-            </div>
+            <button type="button" onclick="openBookingModal()" class="md:col-span-6 relative min-h-[320px] sm:min-h-[380px] overflow-hidden group cursor-pointer w-full text-left">
+                <img src="img/pousada.webp" width="1200" height="539"
+                     alt="Área externa da Pousada Musa, com varanda, jardim e vegetação"
+                     class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                     loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-80"></div>
+                <span class="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm text-musa-text text-xs font-medium px-3.5 py-1.5 rounded-full shadow">
+                    Fale com a gente →
+                </span>
+            </button>
         </section>
 
-        <!-- ================= 5. GALERIA DE EXPERIÊNCIAS ================= -->
+        <!-- ================= EXPERIÊNCIAS ================= -->
         <section id="experiencias" class="py-12 sm:py-16 px-6 lg:px-16 bg-musa-bg">
             <div class="text-center max-w-xl mx-auto mb-10">
-                <span class="text-xs uppercase tracking-[0.2em] text-musa-gold font-semibold">Vivências Autênticas</span>
-                <h2 class="font-serif text-2xl sm:text-3xl text-musa-terracotta mt-1">Experiências na Pousada</h2>
-                <p class="text-xs sm:text-sm text-musa-muted mt-2">Clique em qualquer experiência abaixo para consultar detalhes, horários e dicas.</p>
+                <span class="text-xs uppercase tracking-[0.2em] text-musa-goldDark font-semibold">Vivências na Musa</span>
+                <h2 class="font-serif text-2xl sm:text-3xl text-musa-terracotta mt-1">Experiências</h2>
+                <p class="text-xs sm:text-sm text-musa-muted mt-2">Clique em cada experiência para ver detalhes e fotos.</p>
             </div>
 
-            <!-- Linha Superior: 3 Cards Verticais com Moldura Dupla Fina -->
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto mb-6">
-                
-                <!-- Card 1: Piscina Natural -->
-                <div onclick="openExperienceModal('piscina')" class="musa-card-frame cursor-pointer group">
-                    <div class="relative h-64 sm:h-60 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=700&q=80" 
-                             onerror="this.src='https://placehold.co/500x600/2b5c4f/ffffff?text=Piscina+Natural'"
-                             alt="Piscina Natural cercada por plantas tropicais" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+                <button type="button" onclick="openExperienceModal('piscina')" class="musa-card-frame cursor-pointer group text-left w-full">
+                    <div class="relative h-64 rounded-2xl overflow-hidden">
+                        <img src="img/piscina.webp" width="1200" height="539"
+                             alt="Piscina natural da Pousada Musa, com pedras, plantas e água corrente"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
                         <div class="absolute bottom-3 inset-x-3 text-center">
                             <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Piscina Natural</h3>
-                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Água corrente da nascente • Ver mais</span>
+                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Água natural e jardins • Ver mais</span>
                         </div>
                     </div>
-                </div>
+                </button>
 
-                <!-- Card 2: Café da Manhã -->
-                <div onclick="openExperienceModal('cafe')" class="musa-card-frame cursor-pointer group">
-                    <div class="relative h-64 sm:h-60 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=700&q=80" 
-                             onerror="this.src='https://placehold.co/500x600/8c583a/ffffff?text=Cafe+da+Manha'"
-                             alt="Mesa de café da manhã com frutas tropicais e pães artesanais" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <button type="button" onclick="openExperienceModal('jardim')" class="musa-card-frame cursor-pointer group text-left w-full">
+                    <div class="relative h-64 rounded-2xl overflow-hidden">
+                        <img src="img/jardim.webp" width="1200" height="539"
+                             alt="Jardins da Pousada Musa, com lago, plantas tropicais e árvores"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
                         <div class="absolute bottom-3 inset-x-3 text-center">
-                            <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Café da Manhã</h3>
-                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Pães de fermentação natural • Ver mais</span>
+                            <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Jardins &amp; Árvores Frutíferas</h3>
+                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Mata Atlântica ao redor • Ver mais</span>
                         </div>
                     </div>
-                </div>
+                </button>
 
-                <!-- Card 3: Lounge ao Ar Livre -->
-                <div onclick="openExperienceModal('lounge')" class="musa-card-frame cursor-pointer group">
-                    <div class="relative h-64 sm:h-60 rounded-2xl overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=700&q=80" 
-                             onerror="this.src='https://placehold.co/500x600/4b5338/ffffff?text=Lounge+ao+Ar+Livre'"
-                             alt="Lounge ao ar livre com fogo de chão e cadeiras de madeira" 
-                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <button type="button" onclick="openExperienceModal('aves')" class="musa-card-frame cursor-pointer group text-left w-full">
+                    <div class="relative h-64 rounded-2xl overflow-hidden">
+                        <img src="img/aves.webp" width="1200" height="795"
+                             alt="Saíra-sete-cores em galho na Pousada Musa"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             loading="lazy">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
                         <div class="absolute bottom-3 inset-x-3 text-center">
-                            <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Lounge ao Ar Livre</h3>
-                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Fogo de chão sob as estrelas • Ver mais</span>
+                            <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Observação de Aves</h3>
+                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">Comedouro e espécies da mata • Ver mais</span>
                         </div>
                     </div>
-                </div>
+                </button>
 
-            </div>
-
-            <!-- Linha Inferior: 2 Cards Horizontais Largos -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-                
-                <!-- Card 4: Passeios de Barco & Pesca -->
-                <div onclick="openExperienceModal('barco')" class="relative h-44 sm:h-48 rounded-2xl overflow-hidden shadow-md cursor-pointer group border border-stone-300">
-                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" 
-                         onerror="this.src='https://placehold.co/700x400/2b4c5c/ffffff?text=Passeios+de+Barco'"
-                         alt="Barco tradicional em rio calmo cercado por manguezal e mata" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div class="absolute bottom-3.5 left-4 right-4 flex items-end justify-between">
-                        <div>
-                            <h3 class="font-serif text-white text-base sm:text-lg">Passeios de Barco &amp; Pesca</h3>
-                            <p class="text-[11px] text-stone-200/90">Lagamar de Iguape e Ilha Comprida</p>
+                <button type="button" onclick="openExperienceModal('varanda')" class="musa-card-frame cursor-pointer group text-left w-full">
+                    <div class="relative h-64 rounded-2xl overflow-hidden">
+                        <img src="img/pousada.webp" width="1200" height="539"
+                             alt="Varanda da Pousada Musa com vista para o jardim"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                             loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/15 to-transparent"></div>
+                        <div class="absolute bottom-3 inset-x-3 text-center">
+                            <h3 class="font-serif text-white text-base sm:text-lg tracking-wide">Varanda &amp; Descanso</h3>
+                            <span class="text-[11px] text-stone-200 opacity-0 group-hover:opacity-100 transition-opacity block mt-0.5">O ritmo da floresta • Ver mais</span>
                         </div>
-                        <span class="bg-white/20 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/30 group-hover:bg-musa-terracotta transition-colors">Detalhes</span>
                     </div>
-                </div>
-
-                <!-- Card 5: Trilhas na Mata -->
-                <div onclick="openExperienceModal('trilhas')" class="relative h-44 sm:h-48 rounded-2xl overflow-hidden shadow-md cursor-pointer group border border-stone-300">
-                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=800&q=80" 
-                         onerror="this.src='https://placehold.co/700x400/2d4c2b/ffffff?text=Trilhas+na+Mata'"
-                         alt="Trilha iluminada pelo sol em meio às árvores da Mata Atlântica" 
-                         class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-                    <div class="absolute bottom-3.5 left-4 right-4 flex items-end justify-between">
-                        <div>
-                            <h3 class="font-serif text-white text-base sm:text-lg">Trilhas na Mata</h3>
-                            <p class="text-[11px] text-stone-200/90">Caminhadas guiadas e cachoeiras secretas</p>
-                        </div>
-                        <span class="bg-white/20 backdrop-blur-md text-white text-xs px-2.5 py-1 rounded-full border border-white/30 group-hover:bg-musa-terracotta transition-colors">Detalhes</span>
-                    </div>
-                </div>
-
+                </button>
             </div>
         </section>
 
-        <!-- ================= 6. FAQ ACORDEÃO INTERATIVO ================= -->
-        <section class="pb-14 px-6 lg:px-16 bg-musa-bg">
-            <div class="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-sm border border-white/20 divide-y divide-white/25 bg-musa-gold text-white">
-                
-                <!-- Pergunta 1 -->
+        <!-- ================= GALERIA ================= -->
+        <section id="galeria" class="py-12 sm:py-16 px-6 lg:px-16 bg-musa-bg">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="text-xs uppercase tracking-[0.2em] text-musa-goldDark font-semibold">Fotos reais</span>
+                <h2 class="font-serif text-2xl sm:text-3xl text-musa-terracotta mt-1">A Musa em imagens</h2>
+                <p class="text-xs sm:text-sm text-musa-muted mt-2">Clique em uma foto para ampliar.</p>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4">
+                <button type="button" onclick="openPhoto('entrada')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/hero.webp" width="1400" height="629" alt="Entrada da Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Entrada</span>
+                </button>
+                <button type="button" onclick="openPhoto('pousada')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/pousada.webp" width="1200" height="539" alt="Varanda e jardim da Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Varanda</span>
+                </button>
+                <button type="button" onclick="openPhoto('piscina')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/piscina.webp" width="1200" height="539" alt="Piscina natural da Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Piscina natural</span>
+                </button>
+                <button type="button" onclick="openPhoto('jardim')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/jardim.webp" width="1200" height="539" alt="Jardins e lago da Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Jardins</span>
+                </button>
+                <button type="button" onclick="openPhoto('aves')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/aves.webp" width="1200" height="795" alt="Saíra-sete-cores na Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Saíra-sete-cores</span>
+                </button>
+                <button type="button" onclick="openPhoto('colhereiro')" class="group relative aspect-[4/3] overflow-hidden rounded-xl border border-stone-300/70 bg-stone-200 text-left">
+                    <img src="img/colhereiro.webp" width="1200" height="795" alt="Colhereiro em galho na região da Pousada Musa" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy">
+                    <span class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-3 text-xs text-white">Colhereiro</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- ================= AVALIAÇÕES ================= -->
+        <section id="avaliacoes" class="py-12 sm:py-16 px-6 lg:px-16 bg-[#EDE6DA]">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="text-xs uppercase tracking-[0.2em] text-musa-goldDark font-semibold">Quem já se hospedou</span>
+                <h2 class="font-serif text-2xl sm:text-3xl text-musa-terracotta mt-1">O que dizem os hóspedes</h2>
+                <a href="https://www.google.com/maps/place/Pousada+MUSA/@-24.6555191,-47.5202416,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!2sPousada+MUSA!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq!3m5!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq?entry=ttu"
+                   target="_blank" rel="noopener"
+                   class="mt-2 inline-flex items-center gap-2 text-xs text-musa-muted hover:text-musa-terracotta transition-colors">
+                    <span class="text-musa-gold tracking-widest" aria-hidden="true">★★★★★</span>
+                    <span>5,0 no Google · 2 avaliações</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                <figure class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+                    <div class="text-musa-gold text-sm tracking-widest" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <blockquote class="mt-3 text-sm text-musa-text/90 leading-relaxed">
+                        “As suítes são ótimas, camas confortáveis, banheiro novo. Muitas árvores de frutas que atraem diversos pássaros lindos de ficar observando.”
+                    </blockquote>
+                    <figcaption class="mt-4 text-xs text-musa-muted">Veronica Piccini · Google Maps</figcaption>
+                </figure>
+                <figure class="bg-white rounded-2xl border border-stone-200 p-6 shadow-sm">
+                    <div class="text-musa-gold text-sm tracking-widest" aria-label="5 de 5 estrelas">★★★★★</div>
+                    <blockquote class="mt-3 text-sm text-musa-text/90 leading-relaxed">
+                        “Pousada agradável e acolhedora. Comida boa. Eu fotografo pássaros e o lugar é ótimo pra isso. Comedouro bem movimentado com aves da Mata Atlântica.”
+                    </blockquote>
+                    <figcaption class="mt-4 text-xs text-musa-muted">Gustavo Sarti · Google Maps</figcaption>
+                </figure>
+            </div>
+
+            <p class="text-center text-[11px] text-musa-muted mt-5">
+                Depoimentos publicados no Google Maps. <a href="https://www.google.com/maps/place/Pousada+MUSA/@-24.6555191,-47.5202416,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!2sPousada+MUSA!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq!3m5!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq?entry=ttu" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-musa-terracotta">Ver no Google</a>.
+            </p>
+        </section>
+
+        <!-- ================= LOCALIZAÇÃO ================= -->
+        <section id="localizacao" class="py-12 sm:py-16 px-6 lg:px-16 bg-musa-bg">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-4xl mx-auto">
+                <div class="md:col-span-5">
+                    <span class="text-xs uppercase tracking-[0.2em] text-musa-goldDark font-semibold">Como chegar</span>
+                    <h2 class="font-serif text-2xl sm:text-3xl text-musa-terracotta mt-1 mb-4">Onde estamos</h2>
+
+                    <address class="not-italic text-sm text-musa-text/90 leading-relaxed space-y-3">
+                        <p>
+                            <strong class="block text-xs uppercase tracking-wider text-musa-muted mb-0.5">Endereço</strong>
+                            Rod. Pref. Casemiro Teixeira, Km 48<br>
+                            Engenhos, Iguape/SP · 11920-000
+                        </p>
+                        <p>
+                            <strong class="block text-xs uppercase tracking-wider text-musa-muted mb-0.5">Plus Code</strong>
+                            8FVH+QW
+                        </p>
+                        <p>
+                            <strong class="block text-xs uppercase tracking-wider text-musa-muted mb-0.5">Contato</strong>
+                            <a href="tel:+5511952991990" class="hover:text-musa-terracotta transition-colors">(11) 95299-1990</a><br>
+                            <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pousada%20Musa." target="_blank" rel="noopener" class="hover:text-musa-terracotta transition-colors">WhatsApp da pousada</a>
+                        </p>
+                    </address>
+
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <a href="https://www.google.com/maps/dir/?api=1&amp;destination=-24.6555191,-47.5202416" target="_blank" rel="noopener" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-5 py-2.5 rounded-full shadow transition-all">
+                            Traçar rota
+                        </a>
+                        <button type="button" onclick="openBookingModal()" class="bg-white hover:bg-stone-100 text-musa-terracotta text-xs uppercase tracking-wider font-semibold px-5 py-2.5 rounded-full border border-musa-terracotta/40 transition-all">
+                            Consultar datas
+                        </button>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7">
+                    <iframe
+                        src="https://maps.google.com/maps?q=-24.6555191,-47.5202416&amp;z=15&amp;output=embed"
+                        width="100%" height="340"
+                        style="border:0"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Mapa da Pousada Musa em Iguape/SP"
+                        class="w-full h-80 rounded-2xl border border-stone-300 shadow-sm"></iframe>
+                    <p class="text-[11px] text-musa-muted mt-2 text-center">Mapa do Google. Toque em “Traçar rota” para abrir no aplicativo.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= FAQ ================= -->
+        <section id="faq" class="pb-14 px-6 lg:px-16 bg-musa-bg">
+            <div class="max-w-3xl mx-auto rounded-lg overflow-hidden shadow-sm border border-white/20 divide-y divide-white/25 bg-musa-goldDark text-white">
                 <div class="faq-item active">
-                    <button onclick="toggleFaq(this)" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
-                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">Como chegar em Iguape?</span>
-                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300">+</span>
+                    <button type="button" onclick="toggleFaq(this)" aria-expanded="true" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
+                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">Onde fica a Pousada Musa?</span>
+                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer bg-black/10 px-5">
                         <p class="py-3.5 text-xs sm:text-sm text-stone-100 leading-relaxed font-light">
-                            Saindo de São Paulo (aprox. 200 km / 3h de viagem), siga pela <strong>Rodovia Régis Bittencourt (BR-116)</strong> sentido Curitiba até o km 465 (acesso a Pariquera-Açu) e continue pela SP-222 até Iguape. Nossa pousada fica na Estrada da Juréia, km 8 — o trecho final possui 2 km de estrada de terra bem conservada, acessível para qualquer veículo de passeio. Enviamos o pino exato de GPS após a reserva.
+                            Estamos na <strong>Rodovia Prefeito Casemiro Teixeira, Km 48, Engenhos, Iguape/SP</strong> (CEP 11920-000), no litoral sul de São Paulo. O Plus Code é <strong>8FVH+QW</strong>. Use o botão “Traçar rota” acima para abrir o caminho no Google Maps.
                         </p>
                     </div>
                 </div>
 
-                <!-- Pergunta 2 -->
                 <div class="faq-item">
-                    <button onclick="toggleFaq(this)" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
-                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">O que levar para a observação?</span>
-                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300">+</span>
+                    <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
+                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">Como funciona a observação de aves?</span>
+                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer bg-black/10 px-5">
                         <p class="py-3.5 text-xs sm:text-sm text-stone-100 leading-relaxed font-light">
-                            Recomendamos roupas leves em tons neutros ou terrosos (verde-oliva, cáqui, marrom) para não espantar as aves, calçados fechados antiderrapantes para as trilhas, capa de chuva leve, protetor solar e repelente biodegradável. Emprestamos binóculos 8x42 e guias de campo ilustrados gratuitamente na recepção!
+                            A pousada fica cercada por Mata Atlântica e árvores frutíferas, com um comedouro movimentado. Saíra-sete-cores, colhereiro e tiê-sangue já foram fotografados na pousada e na região. As primeiras horas do dia costumam ser as melhores para observar. Leve câmera ou binóculo.
                         </p>
                     </div>
                 </div>
 
-                <!-- Pergunta 3 (Substituindo o texto de exemplo da imagem por dúvida útil real) -->
                 <div class="faq-item">
-                    <button onclick="toggleFaq(this)" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
-                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">Quais comodidades estão inclusas na diária?</span>
-                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300">+</span>
+                    <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
+                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">Como faço para reservar?</span>
+                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300" aria-hidden="true">+</span>
                     </button>
                     <div class="faq-answer bg-black/10 px-5">
                         <p class="py-3.5 text-xs sm:text-sm text-stone-100 leading-relaxed font-light">
-                            Todas as diárias incluem nosso <strong>café da manhã artesanal</strong> completo, chá da tarde com bolo quentinho, acesso livre às trilhas privativas, piscina natural, mirante de observação de aves com comedouros abastecidos ao amanhecer, Wi-Fi Starlink nas áreas comuns e estacionamento privativo.
+                            Clique em “Reservar” e preencha datas, número de hóspedes e seu nome. O site abre o WhatsApp com a mensagem pronta. Valores, disponibilidade e detalhes da acomodação são confirmados no atendimento. Não há pagamento pelo site.
                         </p>
                     </div>
                 </div>
 
+                <div class="faq-item">
+                    <button type="button" onclick="toggleFaq(this)" aria-expanded="false" class="w-full px-5 py-3.5 text-left flex items-center justify-between hover:bg-black/5 transition-colors focus:outline-none">
+                        <span class="text-sm sm:text-[15px] font-normal tracking-wide">A pousada é LGBTQ+ friendly?</span>
+                        <span class="faq-icon text-xl font-light leading-none transition-transform duration-300" aria-hidden="true">+</span>
+                    </button>
+                    <div class="faq-answer bg-black/10 px-5">
+                        <p class="py-3.5 text-xs sm:text-sm text-stone-100 leading-relaxed font-light">
+                            Sim. A Pousada Musa é uma empresa que acolhe a comunidade LGBTQ+, conforme informado na listagem do Google.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- ================= 7. RODAPÉ (FUNDO TERRACOTA ESCURO) ================= -->
+        </main>
+
+        <!-- ================= RODAPÉ ================= -->
         <footer id="contato" class="bg-musa-terracotta text-white pt-10 pb-8 px-6 lg:px-16 relative overflow-hidden">
             <div class="max-w-3xl mx-auto">
-                
-                <!-- Parte Superior: Logo MUSA Centralizado + Mapa do Brasil à Direita -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 items-center gap-6 pb-8 border-b border-white/25">
-                    
-                    <!-- Informações rápidas à esquerda -->
-                    <div class="text-center sm:text-left text-xs text-orange-100/80 space-y-1 order-2 sm:order-1">
+                    <div class="text-center sm:text-left text-xs text-orange-50 space-y-1 order-2 sm:order-1">
                         <p class="font-semibold text-white uppercase tracking-wider mb-1">Pousada Musa</p>
-                        <p>Estrada Ecológica da Juréia, Km 8</p>
-                        <p>Iguape - Litoral Sul de SP</p>
-                        <p class="pt-1">WhatsApp: (13) 99742-8810</p>
+                        <p>Rod. Pref. Casemiro Teixeira, Km 48</p>
+                        <p>Engenhos · Iguape/SP · 11920-000</p>
+                        <p class="pt-1">
+                            <a href="tel:+5511952991990" class="hover:text-white transition-colors">(11) 95299-1990</a>
+                        </p>
+                        <p>
+                            <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pousada%20Musa." target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-white transition-colors">WhatsApp</a>
+                        </p>
                     </div>
 
-                    <!-- Logo Central -->
                     <div class="flex flex-col items-center justify-center order-1 sm:order-2">
-                        <svg class="w-12 h-12 text-musa-goldLight mb-2" viewBox="0 0 44 44" fill="none">
+                        <svg class="w-12 h-12 text-musa-goldLight mb-2" viewBox="0 0 44 44" fill="none" aria-hidden="true">
                             <circle cx="22" cy="22" r="20" stroke="currentColor" stroke-width="1.3"/>
                             <circle cx="22" cy="22" r="16.5" stroke="currentColor" stroke-width="1.1"/>
                             <circle cx="22" cy="22" r="13" stroke="currentColor" stroke-width="1"/>
@@ -441,434 +550,526 @@
                             <circle cx="22" cy="22" r="2.5" fill="currentColor"/>
                         </svg>
                         <span class="font-serif text-2xl tracking-[0.22em] text-white">MUSA</span>
+                        <a href="https://www.google.com/maps/place/Pousada+MUSA/@-24.6555191,-47.5202416,17z/data=!3m1!4b1!4m14!1m7!3m6!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!2sPousada+MUSA!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq!3m5!1s0x94daa7227629baf9:0xff74e0fb73f3ce89!8m2!3d-24.6555191!4d-47.5202416!16s%2Fg%2F11nw714kdq?entry=ttu" target="_blank" rel="noopener" class="text-[11px] text-orange-50 hover:text-white transition-colors mt-1">
+                            <span class="text-musa-goldLight tracking-widest" aria-hidden="true">★★★★★</span> 5,0 no Google
+                        </a>
                     </div>
 
-                    <!-- Mapa do Brasil em Dourado à Direita com Pino em Iguape-SP -->
-                    <div class="flex flex-col items-center sm:items-end justify-center order-3">
-                        <div class="relative group cursor-pointer" onclick="openInfoModal('mapa')" title="Clique para ver o mapa de acesso">
-                            <svg class="w-20 h-20 text-musa-goldLight drop-shadow" viewBox="0 0 100 100" fill="currentColor">
-                                <path d="M36,12 L46,10 L55,15 L68,18 L79,26 L90,32 L88,43 L80,52 L77,64 L66,73 L60,84 L51,93 L45,88 L49,78 L43,69 L37,65 L35,55 L24,49 L14,43 L12,33 L21,26 L26,17 Z" />
-                            </svg>
-                            <!-- Pino pulsante marcando o Litoral Sul de SP -->
-                            <span class="absolute bottom-[26%] right-[33%] flex h-3 w-3">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-3 w-3 bg-white border-2 border-musa-terracotta"></span>
-                            </span>
-                        </div>
-                        <span class="text-[11px] text-orange-100/80 mt-1">Iguape • SP, Brasil</span>
+                    <div class="flex flex-col items-center sm:items-end justify-center order-3 text-center sm:text-right">
+                        <p class="text-xs text-orange-50 mb-3 max-w-[180px]">Atendimento direto com a pousada, sem taxas de intermediários.</p>
+                        <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20consultar%20disponibilidade%20na%20Pousada%20Musa." target="_blank" rel="noopener" class="bg-white text-musa-terracotta hover:bg-stone-100 text-xs uppercase tracking-wider font-semibold px-5 py-2.5 rounded-full shadow transition-all">
+                            Reservar pelo WhatsApp
+                        </a>
                     </div>
-
                 </div>
 
-                <!-- Links de Navegação do Rodapé -->
-                <div class="pt-5 flex flex-wrap items-center justify-center gap-6 text-xs text-orange-100/90">
+                <div class="pt-5 flex flex-wrap items-center justify-center gap-6 text-xs text-orange-50">
                     <a href="#pousada" class="hover:text-white transition-colors">A Pousada</a>
                     <a href="#acomodacoes" class="hover:text-white transition-colors">Acomodações</a>
                     <a href="#aves" class="hover:text-white transition-colors">Observação de Aves</a>
                     <a href="#experiencias" class="hover:text-white transition-colors">Experiências</a>
-                    <button onclick="openBookingModal()" class="hover:text-white underline underline-offset-4 transition-colors">Reservas &amp; Contato</button>
+                    <a href="#localizacao" class="hover:text-white transition-colors">Localização</a>
+                    <button type="button" onclick="openBookingModal()" class="hover:text-white underline underline-offset-4 transition-colors">Reservas</button>
                 </div>
 
-                <p class="text-center text-[11px] text-orange-200/60 mt-6">
-                    © 2026 Pousada Musa • Turismo Sustentável na Mata Atlântica. Hospedagem estática leve e rápida.
+                <p class="text-center text-[11px] text-orange-50/90 mt-6">
+                    Empresa que acolhe a comunidade LGBTQ+.
+                </p>
+                <p class="text-center text-[11px] text-orange-50/90 mt-2">
+                    © 2026 Pousada Musa · Iguape/SP · Fotos: Pousada MUSA / Google Maps
                 </p>
             </div>
         </footer>
 
     </div>
 
-    <!-- ========================================================================= -->
-    <!-- MODAIS INTERATIVOS (Permitem navegar e explorar cada detalhe do site)     -->
-    <!-- ========================================================================= -->
-
-    <!-- MODAL GENÉRICO DE CONTEÚDO (Experiências, Suítes, Catálogo de Aves) -->
-    <div id="contentModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-        <div class="bg-musa-bg text-musa-text max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden border border-stone-300 animate-fadeIn max-h-[90vh] flex flex-col">
-            <!-- Imagem do Topo do Modal -->
+    <!-- ================= MODAL DE CONTEÚDO ================= -->
+    <div id="contentModal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="bg-musa-bg text-musa-text max-w-2xl w-full rounded-2xl shadow-2xl overflow-hidden border border-stone-300 max-h-[90vh] flex flex-col" tabindex="-1">
             <div class="relative h-56 sm:h-64 w-full shrink-0">
-                <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+                <img id="modalImg" src="img/pousada.webp" alt="" class="w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent"></div>
-                <button onclick="closeContentModal()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition-colors" aria-label="Fechar">
-                    ✕
-                </button>
+                <button type="button" data-autofocus onclick="closeContentModal()" class="absolute top-4 right-4 bg-black/50 hover:bg-black/80 text-white w-9 h-9 rounded-full flex items-center justify-center transition-colors" aria-label="Fechar">✕</button>
                 <div class="absolute bottom-4 left-6 right-6">
-                    <span id="modalTag" class="text-[11px] uppercase tracking-widest bg-musa-terracotta text-white px-3 py-1 rounded-full">Experiência</span>
-                    <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl text-white mt-2">Título</h3>
+                    <span id="modalTag" class="text-[11px] uppercase tracking-widest bg-musa-terracotta text-white px-3 py-1 rounded-full">Pousada</span>
+                    <h3 id="modalTitle" class="font-serif text-2xl sm:text-3xl text-white mt-2">Sobre a Pousada Musa</h3>
                 </div>
             </div>
 
-            <!-- Corpo do Modal com rolagem -->
             <div id="modalBody" class="p-6 sm:p-8 overflow-y-auto space-y-4 text-sm leading-relaxed">
                 <!-- Preenchido via JavaScript -->
             </div>
 
-            <!-- Rodapé do Modal -->
             <div class="px-6 py-4 bg-stone-200/70 border-t border-stone-300 flex items-center justify-between shrink-0">
-                <button onclick="closeContentModal()" class="text-xs font-medium text-musa-muted hover:text-musa-text px-4 py-2">
+                <button type="button" onclick="closeContentModal()" class="text-xs font-medium text-musa-muted hover:text-musa-text px-4 py-2">
                     ← Voltar ao site
                 </button>
-                <button onclick="closeContentModal(); openBookingModal();" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-6 py-2.5 rounded-full shadow transition-all">
-                    Incluir na Minha Reserva
+                <button type="button" onclick="closeContentModal(); openBookingModal();" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-6 py-2.5 rounded-full shadow transition-all">
+                    Reservar pelo WhatsApp
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- MODAL DE RESERVA INTERATIVO -->
-    <div id="bookingModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-        <div class="bg-musa-bg text-musa-text max-w-lg w-full rounded-2xl shadow-2xl overflow-hidden border border-stone-300 max-h-[92vh] flex flex-col">
+    <!-- ================= MODAL DE RESERVA ================= -->
+    <div id="bookingModal" data-modal class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/70 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="bookingTitle" aria-hidden="true">
+        <div class="bg-musa-bg text-musa-text max-w-lg w-full rounded-2xl shadow-2xl overflow-hidden border border-stone-300 max-h-[92vh] flex flex-col" tabindex="-1">
             <div class="bg-musa-terracotta text-white px-6 py-5 flex items-center justify-between">
                 <div>
-                    <span class="text-[11px] uppercase tracking-widest text-orange-200">Reserva Direta Sem Taxas</span>
-                    <h3 class="font-serif text-2xl">Reservar Estadia na Musa</h3>
+                    <span class="text-[11px] uppercase tracking-widest text-orange-50">Atendimento direto pelo WhatsApp</span>
+                    <h3 id="bookingTitle" class="font-serif text-2xl">Reservar Estadia</h3>
                 </div>
-                <button onclick="closeBookingModal()" class="text-white/80 hover:text-white w-8 h-8 rounded-full flex items-center justify-center text-lg">✕</button>
+                <button type="button" data-autofocus onclick="closeBookingModal()" class="text-white/80 hover:text-white w-8 h-8 rounded-full flex items-center justify-center text-lg" aria-label="Fechar">✕</button>
             </div>
 
             <form id="bookingForm" onsubmit="submitBooking(event)" class="p-6 space-y-4 overflow-y-auto text-sm">
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Check-in</label>
-                        <input type="date" id="checkIn" required onchange="calculateEstimate()" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
+                        <label for="checkIn" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Check-in</label>
+                        <input type="date" id="checkIn" name="checkIn" required class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Check-out</label>
-                        <input type="date" id="checkOut" required onchange="calculateEstimate()" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
+                        <label for="checkOut" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Check-out</label>
+                        <input type="date" id="checkOut" name="checkOut" required class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
                     </div>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Acomodação</label>
-                        <select id="suiteSelect" onchange="calculateEstimate()" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
-                            <option value="580">Suíte Saíra (R$ 580/noite)</option>
-                            <option value="790">Chalé Bromélia c/ Hidro (R$ 790/noite)</option>
-                            <option value="950">Cabana da Mata Família (R$ 950/noite)</option>
+                        <label for="accommodationSelect" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Preferência de acomodação</label>
+                        <select id="accommodationSelect" name="accommodation" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
+                            <option value="casal">Opção para casal</option>
+                            <option value="familia">Opção para família</option>
+                            <option value="a-combinar">A combinar / quero sugestão</option>
                         </select>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Hóspedes</label>
-                        <select id="guestsSelect" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
-                            <option value="1">1 Adulto</option>
-                            <option value="2" selected>2 Adultos</option>
-                            <option value="3">3 Adultos</option>
-                            <option value="4">Família (até 4 pessoas)</option>
+                        <label for="guestsSelect" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Hóspedes</label>
+                        <select id="guestsSelect" name="guests" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
+                            <option value="1">1 pessoa</option>
+                            <option value="2" selected>2 pessoas</option>
+                            <option value="3">3 pessoas</option>
+                            <option value="4">4 pessoas</option>
+                            <option value="5">5 pessoas</option>
+                            <option value="6+">6 ou mais</option>
                         </select>
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Seu Nome Completo</label>
-                    <input type="text" id="guestName" required placeholder="Ex: Helena Costa" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
+                    <label for="guestName" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Seu nome</label>
+                    <input type="text" id="guestName" name="name" required autocomplete="name" placeholder="Ex: Helena Costa" class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta">
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Interesse Principal</label>
+                    <label for="guestNotes" class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Observações <span class="normal-case font-normal text-musa-muted">(opcional)</span></label>
+                    <textarea id="guestNotes" name="notes" rows="2" placeholder="Ex: quero observar aves, datas flexíveis, crianças..." class="w-full bg-white border border-stone-300 rounded-lg px-3.5 py-2 text-sm focus:outline-none focus:border-musa-terracotta resize-none"></textarea>
+                </div>
+
+                <div>
+                    <span class="block text-xs font-semibold uppercase tracking-wider text-musa-muted mb-1">Interesse principal</span>
                     <div class="flex flex-wrap gap-2 pt-1">
                         <label class="inline-flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-stone-300 cursor-pointer">
-                            <input type="checkbox" checked class="accent-musa-terracotta"> Passarinhada Guiada
+                            <input type="checkbox" name="interesse" value="Observação de aves" checked class="accent-musa-terracotta"> Observação de aves
                         </label>
                         <label class="inline-flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-stone-300 cursor-pointer">
-                            <input type="checkbox" class="accent-musa-terracotta"> Descanso &amp; Silêncio
+                            <input type="checkbox" name="interesse" value="Descanso" class="accent-musa-terracotta"> Descanso
                         </label>
                         <label class="inline-flex items-center gap-1.5 text-xs bg-white px-3 py-1.5 rounded-full border border-stone-300 cursor-pointer">
-                            <input type="checkbox" class="accent-musa-terracotta"> Passeio de Barco
+                            <input type="checkbox" name="interesse" value="Natureza" class="accent-musa-terracotta"> Natureza
                         </label>
                     </div>
                 </div>
 
-                <!-- Resumo do Cálculo -->
-                <div class="bg-stone-200/70 p-4 rounded-xl border border-stone-300 flex items-center justify-between">
-                    <div>
-                        <span class="text-xs text-musa-muted block">Valor Estimado (com café da manhã)</span>
-                        <span id="nightsLabel" class="text-xs font-medium text-musa-text">2 diárias selecionadas</span>
-                    </div>
-                    <span id="totalPrice" class="font-serif text-2xl text-musa-terracotta font-semibold">R$ 1.160</span>
-                </div>
-
-                <!-- Mensagem de Sucesso Oculta -->
-                <div id="bookingSuccess" class="hidden bg-emerald-800 text-white p-4 rounded-xl text-xs leading-relaxed">
-                    ✨ <strong>Pré-reserva solicitada com sucesso!</strong> Recebemos seus dados e enviaremos a confirmação ou link direto para seu WhatsApp em instantes.
+                <div class="bg-stone-200/70 p-4 rounded-xl border border-stone-300 text-xs text-musa-muted leading-relaxed">
+                    Ao enviar, o WhatsApp abre com a mensagem pronta. Valores e disponibilidade são confirmados no atendimento. Nenhum dado é armazenado neste site.
                 </div>
 
                 <div class="pt-2 flex items-center justify-end gap-3">
                     <button type="button" onclick="closeBookingModal()" class="text-xs font-medium text-musa-muted hover:text-musa-text px-4 py-2">Cancelar</button>
                     <button type="submit" class="bg-musa-terracotta hover:bg-musa-terracottaDark text-white text-xs uppercase tracking-wider font-semibold px-7 py-3 rounded-full shadow-md transition-all">
-                        Confirmar Solicitação
+                        Enviar pelo WhatsApp
                     </button>
                 </div>
             </form>
         </div>
     </div>
 
-    <!-- ================= SCRIPTS DE INTERATIVIDADE ================= -->
+    <!-- Botão flutuante do WhatsApp -->
+    <a href="https://wa.me/5511952991990?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20Pousada%20Musa."
+       target="_blank" rel="noopener"
+       aria-label="Falar com a Pousada Musa no WhatsApp"
+       class="fixed bottom-5 right-5 z-40 bg-[#25D366] hover:bg-[#1EBE5A] text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-105">
+        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+    </a>
+
+    <!-- ================= SCRIPTS ================= -->
     <script>
-        // Inicializa datas padrão no formulário de reserva
-        window.addEventListener('DOMContentLoaded', () => {
+        const WHATSAPP_NUMBER = '5511952991990';
+        const WHATSAPP_BASE = 'https://wa.me/' + WHATSAPP_NUMBER;
+        let lastFocusedElement = null;
+
+        // Datas padrão e validação
+        function toLocalISO(date) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        }
+
+        function formatDateBR(iso) {
+            if (!iso) return '';
+            const parts = iso.split('-');
+            return `${parts[2]}/${parts[1]}/${parts[0]}`;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkIn = document.getElementById('checkIn');
+            const checkOut = document.getElementById('checkOut');
+            if (!checkIn || !checkOut) return;
+
             const today = new Date();
             const tomorrow = new Date(today);
             tomorrow.setDate(today.getDate() + 1);
             const afterTomorrow = new Date(today);
             afterTomorrow.setDate(today.getDate() + 3);
 
-            document.getElementById('checkIn').value = tomorrow.toISOString().split('T')[0];
-            document.getElementById('checkOut').value = afterTomorrow.toISOString().split('T')[0];
-            calculateEstimate();
+            checkIn.min = toLocalISO(today);
+            checkIn.value = toLocalISO(tomorrow);
+            checkOut.min = toLocalISO(tomorrow);
+            checkOut.value = toLocalISO(afterTomorrow);
+
+            checkIn.addEventListener('change', () => {
+                if (!checkIn.value) return;
+                const nextDay = new Date(checkIn.value + 'T12:00:00');
+                nextDay.setDate(nextDay.getDate() + 1);
+                const minCheckout = toLocalISO(nextDay);
+                checkOut.min = minCheckout;
+                if (!checkOut.value || checkOut.value <= checkIn.value) {
+                    checkOut.value = minCheckout;
+                }
+            });
         });
 
-        // Menu Mobile
+        // Menu mobile
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
             const openIcon = document.getElementById('menuIconOpen');
             const closeIcon = document.getElementById('menuIconClose');
+            const button = document.getElementById('mobileMenuBtn');
+            const willOpen = menu.classList.contains('hidden');
+
             menu.classList.toggle('hidden');
             openIcon.classList.toggle('hidden');
             closeIcon.classList.toggle('hidden');
+            button.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+            button.setAttribute('aria-label', willOpen ? 'Fechar menu' : 'Abrir menu');
         }
 
-        // Acordeão FAQ
+        // Acordeão do FAQ
         function toggleFaq(button) {
             const item = button.parentElement;
-            const isActive = item.classList.contains('active');
-            
-            // Fecha todos os outros
-            document.querySelectorAll('.faq-item').forEach(el => el.classList.remove('active'));
-            
-            // Abre o clicado se não estava ativo
-            if (!isActive) {
+            const wasActive = item.classList.contains('active');
+
+            document.querySelectorAll('.faq-item').forEach((el) => {
+                el.classList.remove('active');
+                const btn = el.querySelector('button');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+            });
+
+            if (!wasActive) {
                 item.classList.add('active');
+                button.setAttribute('aria-expanded', 'true');
             }
         }
 
-        // Base de dados rica das Experiências, Suítes e Aves
+        // Controle de modais
+        function refreshScrollLock() {
+            const hasOpenModal = !!document.querySelector('.modal-open');
+            document.body.classList.toggle('overflow-hidden', hasOpenModal);
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            lastFocusedElement = document.activeElement;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex', 'modal-open');
+            modal.setAttribute('aria-hidden', 'false');
+            refreshScrollLock();
+
+            const focusTarget = modal.querySelector('[data-autofocus]') || modal.querySelector('button, input, select, textarea, a[href]');
+            if (focusTarget) {
+                window.setTimeout(() => focusTarget.focus(), 50);
+            }
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            if (!modal) return;
+            modal.classList.add('hidden');
+            modal.classList.remove('flex', 'modal-open');
+            modal.setAttribute('aria-hidden', 'true');
+            refreshScrollLock();
+
+            if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+                lastFocusedElement.focus();
+            }
+        }
+
+        function showModalData(data) {
+            const tag = document.getElementById('modalTag');
+            const title = document.getElementById('modalTitle');
+            const img = document.getElementById('modalImg');
+            const body = document.getElementById('modalBody');
+
+            tag.textContent = data.tag;
+            title.textContent = data.title;
+            img.src = data.img;
+            img.alt = data.alt || data.title;
+            body.innerHTML = data.html;
+
+            openModal('contentModal');
+        }
+
+        function closeContentModal() {
+            closeModal('contentModal');
+        }
+
+        function openBookingModal() {
+            openModal('bookingModal');
+        }
+
+        function closeBookingModal() {
+            closeModal('bookingModal');
+        }
+
+        // Conteúdo dos modais
         const modalDatabase = {
-            piscina: {
-                tag: 'Bem-Estar & Natureza',
-                title: 'Piscina Natural de Água Corrente',
-                img: 'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Abastecida diretamente por uma nascente cristalina que desce da encosta da Serra da Juréia, nossa piscina biológica não utiliza cloro nem produtos químicos agressivos.</p>
-                    <div class="grid grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
-                        <div><strong>Horário:</strong> Livre (iluminação indireta até 21h)</div>
-                        <div><strong>Profundidade:</strong> 1,40m com prainha rasa</div>
-                        <div><strong>Toalhas:</strong> Disponíveis nos cestos da varanda</div>
-                        <div><strong>Destaque:</strong> Avistamento frequente de beija-flores</div>
-                    </div>
-                    <p>Ao redor do deck de pedra sabão, espreguiçadeiras de madeira certificada oferecem o lugar ideal para ler um livro ouvindo o som da cachoeira.</p>
-                `
-            },
-            cafe: {
-                tag: 'Gastronomia Caiçara & Orgânica',
-                title: 'Café da Manhã na Varanda',
-                img: 'https://images.unsplash.com/photo-1533089860892-a7c6f0a88666?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Servido diariamente das <strong>7h30 às 10h30</strong> (ou a partir das 5h45 em formato expresso para quem sai para passarinhar cedo), nosso café celebra os pequenos produtores do Vale do Ribeira.</p>
-                    <ul class="list-disc pl-5 space-y-1.5 my-3">
-                        <li>Pães rústicos de fermentação natural assados na manhã e bolo de banana-da-terra.</li>
-                        <li>Geleias caseiras de cambuci, jabuticaba e maracujá da mata.</li>
-                        <li>Frutas tropicais orgânicas colhidas no pomar da pousada.</li>
-                        <li>Ovos caipiras feitos na hora, tapiocas e queijos artesanais da serra.</li>
-                    </ul>
-                `
-            },
-            lounge: {
-                tag: 'Entardecer na Montanha',
-                title: 'Lounge ao Ar Livre & Fogo de Chão',
-                img: 'https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Quando a neblina da serra desce ao entardecer, acendemos nossa lareira ecológica ao ar livre no jardim central.</p>
-                    <p>É o ponto de encontro favorito dos hóspedes para compartilhar os registros fotográficos das aves avistadas no dia, degustar um vinho, assar marshmallows ou simplesmente contemplar o céu estrelado sem poluição luminosa de Iguape.</p>
-                `
-            },
-            barco: {
-                tag: 'Ecoturismo Estuarino',
-                title: 'Passeios de Barco & Pesca no Lagamar',
-                img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Explore o complexo estuarino-lagunar de Iguape, Cananéia e Ilha Comprida — reconhecido pela UNESCO como Patrimônio Natural da Humanidade.</p>
-                    <div class="bg-white p-4 rounded-xl border border-stone-200 space-y-2 text-xs my-3">
-                        <p><strong>• Roteiro Guarás & Botos (3h):</strong> Navegação silenciosa pelos manguezais no fim da tarde para observar revoadas do Guará-vermelho e botos-cinza.</p>
-                        <p><strong>• Pesca Esportiva Sustentável (4h):</strong> Acompanhada por mestre barqueiro caiçara tradicional.</p>
-                    </div>
-                `
-            },
-            trilhas: {
-                tag: 'Imersão Florestal',
-                title: 'Trilhas Privativas na Mata Atlântica',
-                img: 'https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>A Pousada Musa preserva 42 hectares de reserva particular com 3 trilhas sinalizadas e de diferentes níveis:</p>
-                    <ul class="list-disc pl-5 space-y-1.5 my-3">
-                        <li><strong>Trilha das Bromélias (Leve - 40 min):</strong> Ideal para todas as idades, plana e repleta de orquídeas nativas.</li>
-                        <li><strong>Trilha da Nascente (Moderada - 1h20):</strong> Leva até o poço da cachoeira secreta para banho revigorante.</li>
-                        <li><strong>Trilha do Mirante da Juréia (Moderada - 2h):</strong> Vista panorâmica do encontro da serra com o mar de Iguape.</li>
-                    </ul>
-                `
-            },
             pousada: {
-                tag: 'Nossa Essência',
+                tag: 'Nossa essência',
                 title: 'Sobre a Pousada Musa',
-                img: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1000&q=85',
+                img: 'img/pousada.webp',
                 html: `
-                    <p>Nascida do sonho de criar um santuário onde a arquitetura de madeira se funde respeitosamente com a floresta, a <strong>Pousada Musa</strong> possui apenas 8 chalés exclusivos.</p>
-                    <p>Praticamos o turismo regenerativo: 100% do nosso aquecimento é solar, tratamos todas as águas com jardins filtrantes e apoiamos projetos locais de conservação das aves da Mata Atlântica em Iguape.</p>
+                    <p>A Pousada Musa fica em Engenhos, Iguape, no litoral sul de São Paulo, cercada pela Mata Atlântica. É um lugar de ritmo lento, jardins, árvores frutíferas e muito canto de pássaro.</p>
+                    <p>As suítes são confortáveis, com camas elogiadas por quem já se hospedou e banheiros novos. A proposta é simples: descansar bem, comer bem e aproveitar a natureza ao redor.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
+                        <div>✓ Suítes confortáveis</div>
+                        <div>✓ Jardins e árvores frutíferas</div>
+                        <div>✓ Observação de aves</div>
+                        <div>✓ Ambiente acolhedor e LGBTQ+ friendly</div>
+                    </div>
+                    <p class="text-musa-terracotta font-semibold">Valores e disponibilidade são confirmados pelo WhatsApp.</p>
+                `
+            },
+            piscina: {
+                tag: 'Bem-estar & natureza',
+                title: 'Piscina Natural',
+                img: 'img/piscina.webp',
+                html: `
+                    <p>Uma área de água natural cercada por pedras, jardins e vegetação, com peixes e som de água corrente. Um dos cantos mais tranquilos da pousada.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4 bg-white p-4 rounded-xl border border-stone-200 text-xs">
+                        <div><strong>Ambiente:</strong> ao ar livre, junto ao jardim</div>
+                        <div><strong>Destaque:</strong> água natural e contato com a mata</div>
+                    </div>
+                    <p>Combine o banho com uma volta pelos jardins e uma sessão de observação de aves.</p>
+                `
+            },
+            jardim: {
+                tag: 'Natureza ao redor',
+                title: 'Jardins & Árvores Frutíferas',
+                img: 'img/jardim.webp',
+                html: `
+                    <p>Os jardins e as árvores frutíferas atraem aves ao longo do dia. Saíras e outras espécies da Mata Atlântica circulam por aqui; colhereiros já foram registrados na região.</p>
+                    <p>Reserve um tempo para caminhar sem pressa, sentar à sombra e observar.</p>
+                `
+            },
+            aves: {
+                tag: 'Guia de observação',
+                title: 'Aves da Mata Atlântica',
+                img: 'img/aves.webp',
+                html: `
+                    <p>Cercada por Mata Atlântica e árvores frutíferas, a Musa tem um comedouro movimentado e jardins que atraem aves durante o dia. Estas são algumas espécies já fotografadas na pousada e na região:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
+                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                            <img src="img/aves.webp" alt="Saíra-sete-cores" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy">
+                            <span class="text-[11px] text-emerald-700 font-semibold uppercase">Comedouro & jardim</span>
+                            <h4 class="font-serif text-base text-musa-terracotta">Saíra-sete-cores</h4>
+                            <p class="text-xs text-musa-muted mt-1">Ave colorida da Mata Atlântica, vista nos jardins e no comedouro.</p>
+                        </div>
+                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                            <img src="img/colhereiro.webp" alt="Colhereiro" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy">
+                            <span class="text-[11px] text-amber-700 font-semibold uppercase">Área alagada & entorno</span>
+                            <h4 class="font-serif text-base text-musa-terracotta">Colhereiro</h4>
+                            <p class="text-xs text-musa-muted mt-1">Ave rosada de bico achatado, registrada na região da pousada.</p>
+                        </div>
+                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
+                            <img src="img/tie.webp" alt="Tiê-sangue" class="w-full h-32 object-cover rounded-lg mb-2" loading="lazy">
+                            <span class="text-[11px] text-red-700 font-semibold uppercase">Jardins</span>
+                            <h4 class="font-serif text-base text-musa-terracotta">Tiê-sangue</h4>
+                            <p class="text-xs text-musa-muted mt-1">Pássaro vermelho vibrante da Mata Atlântica, fotografado na pousada.</p>
+                        </div>
+                    </div>
+                    <p class="text-xs text-musa-muted">Dica: as primeiras horas do dia costumam ser as melhores para observar e fotografar. Leve câmera ou binóculo.</p>
+                `
+            },
+            varanda: {
+                tag: 'Descanso',
+                title: 'Varanda & Jardins',
+                img: 'img/pousada.webp',
+                html: `
+                    <p>A varanda da casa é um convite a desacelerar: sombra, vista para o jardim e o som dos pássaros ao fundo.</p>
+                    <p>Um bom lugar para ler, conversar ou simplesmente não fazer nada.</p>
                 `
             },
             mapa: {
-                tag: 'Localização Privilegiada',
-                title: 'Iguape • Litoral Sul de São Paulo',
-                img: 'https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1000&q=85',
+                tag: 'Localização',
+                title: 'Como chegar à Pousada Musa',
+                img: 'img/hero.webp',
                 html: `
-                    <p>Estamos situados entre a serra e o mar em <strong>Iguape/SP</strong>, dentro do maior contínuo preservado de Mata Atlântica do Brasil.</p>
-                    <p class="mt-2"><strong>Distâncias:</strong> 200 km de São Paulo (Capital) • 220 km de Curitiba • 15 minutos do Centro Histórico Colonial de Iguape.</p>
+                    <p><strong>Endereço:</strong> Rod. Pref. Casemiro Teixeira, Km 48 — Engenhos, Iguape/SP, 11920-000.</p>
+                    <p><strong>Plus Code:</strong> 8FVH+QW</p>
+                    <p><strong>WhatsApp:</strong> (11) 95299-1990</p>
+                    <a href="https://www.google.com/maps/dir/?api=1&amp;destination=-24.6555191,-47.5202416" target="_blank" rel="noopener" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-musa-terracotta hover:text-musa-terracottaDark border-b border-musa-terracotta pb-1 transition-colors">Traçar rota no Google Maps →</a>
                 `
             }
         };
 
-        // Catálogo das Suítes
-        const suitesDatabase = {
-            saira: {
-                tag: 'Acomodação Casal • 38m²',
-                title: 'Suíte Saíra • Vista Copa das Árvores',
-                img: 'https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Projetada na altura da copa das árvores, a Suíte Saíra proporciona a sensação de despertar dentro da floresta, sem abrir mão do conforto térmico e acústico.</p>
-                    <div class="grid grid-cols-2 gap-2.5 my-3 bg-white p-4 rounded-xl border border-stone-200 text-xs">
-                        <div>✓ Cama Queen Size com lençóis 400 fios</div>
-                        <div>✓ Varanda com rede artesanal de algodão</div>
-                        <div>✓ Chuveiro de alta pressão aquecido a energia solar</div>
-                        <div>✓ Cafeteira prensa francesa + grãos especiais</div>
-                    </div>
-                    <p class="text-musa-terracotta font-semibold">Diária para 2 pessoas com café da manhã: R$ 580</p>
-                `
+        const galleryDatabase = {
+            entrada: {
+                title: 'Entrada da Musa',
+                img: 'img/hero.webp',
+                text: 'O portal de madeira e o caminho de entrada, cercados pela vegetação.'
             },
-            bromelia: {
-                tag: 'Chalé Romântico • 52m²',
-                title: 'Chalé Bromélia com Banheira de Imersão',
-                img: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Totalmente isolado na mata para máxima privacidade, conta com banheira de imersão envidraçada de frente para o jardim de helicônias e lareira ecológica.</p>
-                    <p class="text-musa-terracotta font-semibold mt-3">Diária para 2 pessoas com café da manhã: R$ 790</p>
-                `
+            pousada: {
+                title: 'Varanda e jardim',
+                img: 'img/pousada.webp',
+                text: 'A área externa da pousada, com varanda e vista para o jardim.'
             },
-            mata: {
-                tag: 'Cabana Família • 68m²',
-                title: 'Cabana da Mata (Até 4 Hóspedes)',
-                img: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Amplo deck suspenso com duas redes, quarto principal com cama King e mezanino aconchegante com duas camas de solteiro. Perfeita para famílias que desejam desconectar os filhos das telas e apresentar a natureza viva.</p>
-                    <p class="text-musa-terracotta font-semibold mt-3">Diária para até 4 pessoas com café da manhã: R$ 950</p>
-                `
+            piscina: {
+                title: 'Piscina natural',
+                img: 'img/piscina.webp',
+                text: 'Água natural, pedras e vegetação ao redor.'
+            },
+            jardim: {
+                title: 'Jardins e lago',
+                img: 'img/jardim.webp',
+                text: 'Jardins, árvores frutíferas e o lago da pousada.'
+            },
+            aves: {
+                title: 'Saíra-sete-cores',
+                img: 'img/aves.webp',
+                text: 'Uma das espécies já fotografadas nos jardins da Musa.'
+            },
+            colhereiro: {
+                title: 'Colhereiro',
+                img: 'img/colhereiro.webp',
+                text: 'Ave registrada na região, em meio à Mata Atlântica.'
             }
         };
 
         function openExperienceModal(key) {
             const data = modalDatabase[key];
-            if (!data) return;
-            showModalData(data);
+            if (data) showModalData(data);
         }
 
         function openInfoModal(key) {
             const data = modalDatabase[key];
+            if (data) showModalData(data);
+        }
+
+        function openPhoto(key) {
+            const data = galleryDatabase[key];
             if (!data) return;
-            showModalData(data);
+            showModalData({
+                tag: 'Galeria',
+                title: data.title,
+                img: data.img,
+                html: `<p>${data.text}</p>`
+            });
         }
 
-        function openSuiteModal(key) {
-            const data = suitesDatabase[key];
-            if (!data) return;
-            showModalData(data);
+        // Reserva via WhatsApp
+        function submitBooking(event) {
+            event.preventDefault();
+
+            const checkIn = document.getElementById('checkIn').value;
+            const checkOut = document.getElementById('checkOut').value;
+            const name = document.getElementById('guestName').value.trim();
+
+            if (!checkIn || !checkOut || checkOut <= checkIn) {
+                window.alert('Confira as datas: o check-out precisa ser depois do check-in.');
+                return;
+            }
+
+            if (!name) {
+                window.alert('Por favor, informe seu nome.');
+                return;
+            }
+
+            const guests = document.getElementById('guestsSelect').selectedOptions[0].text;
+            const accommodation = document.getElementById('accommodationSelect').selectedOptions[0].text;
+            const notes = document.getElementById('guestNotes').value.trim();
+            const interests = Array.from(document.querySelectorAll('input[name="interesse"]:checked')).map((input) => input.value);
+
+            const lines = [
+                'Olá! Gostaria de consultar disponibilidade na Pousada Musa.',
+                `Nome: ${name}`,
+                `Check-in: ${formatDateBR(checkIn)}`,
+                `Check-out: ${formatDateBR(checkOut)}`,
+                `Hóspedes: ${guests}`,
+                `Acomodação: ${accommodation}`,
+                interests.length ? `Interesses: ${interests.join(', ')}` : '',
+                notes ? `Observações: ${notes}` : ''
+            ].filter(Boolean);
+
+            const url = `${WHATSAPP_BASE}?text=${encodeURIComponent(lines.join('\n'))}`;
+            const opened = window.open(url, '_blank');
+
+            if (!opened) {
+                window.location.href = url;
+            } else {
+                closeBookingModal();
+            }
         }
 
-        function openBirdModal() {
-            const birdData = {
-                tag: 'Guia de Passarinhada Musa',
-                title: 'Aves Frequentes nos Comedouros da Pousada',
-                img: 'https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=1000&q=85',
-                html: `
-                    <p>Nossa localização em Iguape abriga espécies endêmicas da Mata Atlântica. Confira algumas das aves que você poderá fotografar a poucos metros da varanda:</p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-4">
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <span class="text-[11px] text-emerald-700 font-semibold uppercase">Presença Diária</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Saíra-sete-cores (Tangara seledon)</h4>
-                            <p class="text-xs text-musa-muted mt-1">Visita os comedouros de mamão e banana todas as manhãs em pequenos bandos coloridos.</p>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <span class="text-[11px] text-emerald-700 font-semibold uppercase">Trilhas & Copa</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Tucano-de-bico-preto (Ramphastos vitellinus)</h4>
-                            <p class="text-xs text-musa-muted mt-1">Facilmente avistado nas embaúbas em frente às suítes ao amanhecer.</p>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <span class="text-[11px] text-amber-700 font-semibold uppercase">Jardim de Bromélias</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Rabo-branco-de-garganta-rajada</h4>
-                            <p class="text-xs text-musa-muted mt-1">Beija-flor típico da encosta atlântica, frequenta as flores do lounge.</p>
-                        </div>
-                        <div class="bg-white p-3.5 rounded-xl border border-stone-200">
-                            <span class="text-[11px] text-amber-700 font-semibold uppercase">Raridade do Lagamar</span>
-                            <h4 class="font-serif text-base text-musa-terracotta">Papagaio-de-cara-roxa (Amazona brasiliensis)</h4>
-                            <p class="text-xs text-musa-muted mt-1">Observado nos passeios de barco ao entardecer em Iguape.</p>
-                        </div>
-                    </div>
-                `
-            };
-            showModalData(birdData);
-        }
+        // Fechar com ESC, clique no fundo e foco preso no modal
+        document.querySelectorAll('[data-modal]').forEach((modal) => {
+            modal.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeModal(modal.id);
+                }
+            });
+        });
 
-        function showModalData(data) {
-            document.getElementById('modalTag').textContent = data.tag;
-            document.getElementById('modalTitle').textContent = data.title;
-            document.getElementById('modalImg').src = data.img;
-            document.getElementById('modalBody').innerHTML = data.html;
-            
-            const modal = document.getElementById('contentModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeContentModal() {
-            const modal = document.getElementById('contentModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        // Modal de Reserva e Cálculo Automático
-        function openBookingModal() {
-            document.getElementById('bookingSuccess').classList.add('hidden');
-            const modal = document.getElementById('bookingModal');
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        }
-
-        function closeBookingModal() {
-            const modal = document.getElementById('bookingModal');
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        }
-
-        function calculateEstimate() {
-            const inDate = new Date(document.getElementById('checkIn').value);
-            const outDate = new Date(document.getElementById('checkOut').value);
-            const rate = parseInt(document.getElementById('suiteSelect').value, 10) || 580;
-
-            let nights = Math.round((outDate - inDate) / (1000 * 60 * 60 * 24));
-            if (isNaN(nights) || nights < 1) nights = 1;
-
-            const total = nights * rate;
-            document.getElementById('nightsLabel').textContent = `${nights} ${nights === 1 ? 'diária selecionada' : 'diárias selecionadas'}`;
-            document.getElementById('totalPrice').textContent = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL', minimumFractionDigits: 0 });
-        }
-
-        function submitBooking(e) {
-            e.preventDefault();
-            const successBox = document.getElementById('bookingSuccess');
-            successBox.classList.remove('hidden');
-        }
-
-        // Fechar modais ao clicar fora da caixa ou apertar ESC
-        window.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
                 closeContentModal();
                 closeBookingModal();
+            }
+
+            if (event.key !== 'Tab') return;
+
+            const openModalElement = document.querySelector('.modal-open');
+            if (!openModalElement) return;
+
+            const focusables = Array.from(openModalElement.querySelectorAll(
+                'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+            )).filter((el) => el.offsetParent !== null);
+
+            if (!focusables.length) return;
+
+            const first = focusables[0];
+            const last = focusables[focusables.length - 1];
+
+            if (event.shiftKey && document.activeElement === first) {
+                event.preventDefault();
+                last.focus();
+            } else if (!event.shiftKey && document.activeElement === last) {
+                event.preventDefault();
+                first.focus();
             }
         });
     </script>
