@@ -1,0 +1,33 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / build
+node_modules/
+dist/
+build/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Ambiente e segredos
+.env
+.env.*
+!.env.example
+
+# Temporários
+*.log
+*.tmp
+*.bak
+
+# Deploy
+.netlify/
+.vercel/
+.wrangler/
