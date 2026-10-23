@@ -56,7 +56,7 @@
     <a href="#conteudo" class="skip-link">Skip to content</a>
 
     <!-- Container principal -->
-    <div class="max-w-5xl mx-auto bg-musa-bg shadow-2xl md:rounded-t-2xl md:rounded-b-xl overflow-hidden border border-stone-300/60">
+    <div class="max-w-5xl mx-auto bg-musa-bg shadow-2xl md:rounded-t-2xl md:rounded-b-xl overflow-clip border border-stone-300/60">
 
         <!-- ================= CABEÇALHO ================= -->
         <header class="sticky top-0 z-40 bg-musa-bg/95 backdrop-blur-md border-b border-stone-200/80 px-6 lg:px-12 py-4 transition-all">
@@ -73,7 +73,7 @@
                     <span class="font-serif text-2xl tracking-[0.18em] text-musa-terracotta font-normal">MUSA</span>
                 </a>
 
-                <nav class="hidden lg:flex items-center gap-7 text-[13.5px] font-medium text-musa-text/90" aria-label="Main navigation">
+                <nav class="hidden items-center gap-7 text-[13.5px] font-medium text-musa-text/90" aria-label="Main navigation">
                     <a href="#pousada" class="hover:text-musa-terracotta transition-colors">The Inn</a>
                     <a href="#acomodacoes" class="hover:text-musa-terracotta transition-colors">Rooms</a>
                     <a href="#aves" class="hover:text-musa-terracotta transition-colors">Birdwatching</a>
@@ -83,7 +83,7 @@
 
                 <div class="flex items-center gap-3">
                     <!-- i18n:switcher-desktop:start -->
-    <nav class="hidden lg:flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="Language">
+    <nav class="hidden items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="Language">
                         <a href="../" hreflang="pt-BR" lang="pt-BR" aria-label="Português" class="px-1.5 py-1 hover:text-musa-terracotta transition-colors">PT</a>
                         <span class="text-stone-400" aria-hidden="true">/</span>
                         <span class="px-1.5 py-1 text-musa-terracotta" aria-current="page" aria-label="English" lang="en">EN</span>
@@ -98,7 +98,7 @@
                         Book
                     </button>
 
-                    <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="lg:hidden p-2 text-musa-text hover:text-musa-terracotta" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" data-open-label="Open menu" data-close-label="Close menu">
+                    <button id="mobileMenuBtn" type="button" onclick="toggleMobileMenu()" class="p-2 text-musa-text hover:text-musa-terracotta" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu" data-open-label="Open menu" data-close-label="Close menu">
                         <svg id="menuIconOpen" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                         </svg>
@@ -110,7 +110,7 @@
             </div>
 
             <!-- Menu mobile -->
-            <div id="mobileMenu" class="hidden lg:hidden pt-4 pb-2 mt-3 border-t border-stone-200 flex flex-col gap-3 text-sm font-medium text-musa-text">
+            <div id="mobileMenu" class="hidden absolute right-0 top-full mt-2 w-72 max-w-[calc(100vw-2rem)] rounded-xl border border-stone-200 bg-musa-bg p-4 shadow-xl flex flex-col gap-3 text-sm font-medium text-musa-text z-50">
                 <a href="#pousada" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">The Inn</a>
                 <a href="#acomodacoes" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Rooms</a>
                 <a href="#aves" onclick="toggleMobileMenu()" class="py-1.5 hover:text-musa-terracotta">Birdwatching</a>
@@ -134,7 +134,7 @@
                  srcset="../img/hero-480.webp 480w, ../img/hero-960.webp 960w, ../img/hero.webp 1400w"
                  sizes="(min-width: 1088px) 1024px, 100vw"
                  alt="Entrance to Pousada Musa, with a wooden gate, path and Atlantic Forest vegetation"
-                 class="absolute inset-0 w-full h-full object-cover object-center scale-105 transition-transform duration-1000 hover:scale-100"
+                 class="absolute inset-0 w-full h-full object-cover object-center"
                  fetchpriority="high" decoding="async">
 
             <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/35 to-black/65"></div>

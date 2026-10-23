@@ -56,7 +56,7 @@ export function buildSwitcher(lang, label, mobile = false) {
                     ${content}
                 </div>`;
     }
-    return `<nav class="hidden lg:flex items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="${label}">
+    return `<nav class="hidden items-center gap-1 text-[11px] font-semibold uppercase tracking-wider text-musa-muted" aria-label="${label}">
                         ${content}
                     </nav>`;
 }

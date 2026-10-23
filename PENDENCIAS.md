@@ -349,7 +349,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 - [ ] iPhone (Safari) e Android (Chrome)
 - [ ] Larguras 360, 390, 768, 1024 e 1440 px
 - [ ] Safari, Chrome, Firefox e Edge
-- [ ] Modais, menu mobile, FAQ e galeria
+- [ ] Modais, menu compacto, FAQ e galeria
 - [ ] Navegação por teclado
 - [ ] Teste de formulário com dados inválidos
 - [ ] Teste com internet lenta (3G simulado)
@@ -391,7 +391,7 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 **Status: concluído.** O site tem quatro rotas estáticas: `/` (pt-BR), `/en/`, `/es/` e `/fr/`. As páginas traduzidas são geradas por `scripts/build-i18n.mjs` a partir do `index.html` e de `scripts/i18n-data.mjs`.
 
 - [x] Decidir os idiomas: inglês, espanhol e francês, além do português
-- [x] Estruturar rotas estáticas (`/en/`, `/es/`, `/fr/`) e seletor de idioma no desktop e no mobile
+- [x] Estruturar rotas estáticas (`/en/`, `/es/`, `/fr/`) e seletor de idioma no menu compacto
 - [x] Traduzir conteúdo, metadados, modais, formulário, validações e FAQ
 - [x] Adicionar `hreflang` (incluindo `x-default`) e `og:locale`/`og:locale:alternate`
 - [x] Manter a mensagem do WhatsApp em português e avisar isso no formulário

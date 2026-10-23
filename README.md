@@ -173,7 +173,7 @@ Decisões específicas:
 
 - **A mensagem enviada ao WhatsApp continua em português**, porque é lida pela equipe da pousada. O formulário avisa isso em cada idioma. Os valores internos (`value`) dos interesses e a opção de acomodação também permanecem em português; a interface é traduzida.
 - **Avaliações** aparecem traduzidas, com o texto original em português dentro de um `<details lang="pt-BR">`.
-- **Seletor de idiomas** no cabeçalho desktop e no menu mobile, com `hreflang`, `lang` e `aria-current="page"`.
+- **Seletor de idiomas** no menu compacto, com `hreflang`, `lang` e `aria-current="page"`.
 - **`hreflang` alternates** e **`og:locale`/`og:locale:alternate`** em todas as páginas.
 
 ### URLs temporárias
@@ -251,7 +251,7 @@ As quatro versões têm as mesmas seções e âncoras; mudam apenas o idioma e a
 
 | Seção | Âncora | Conteúdo |
 |---|---|---|
-| Cabeçalho fixo | — | Logo SVG, navegação desktop, seletor de idiomas, menu mobile e botão "Reservar" |
+| Cabeçalho fixo | — | Logo SVG, botão "Reservar" e menu compacto à direita, com navegação e seletor de idiomas |
 | Hero | `#pousada` | Foto da entrada, título, CTAs e nota 5,0 no Google |
 | Observação de aves | `#aves` | Foto da saíra, texto e guia de espécies |
 | Acomodações | `#acomodacoes` | Bloco pêssego, texto sobre as suítes e CTA para o WhatsApp |
@@ -268,7 +268,7 @@ As quatro versões têm as mesmas seções e âncoras; mudam apenas o idioma e a
 
 | Recurso | Função | Estado |
 |---|---|---|
-| Abrir/fechar menu mobile | `toggleMobileMenu()` | Funcional; rótulos traduzidos via `data-open-label`/`data-close-label` |
+| Abrir/fechar menu compacto | `toggleMobileMenu()` | Funcional em qualquer largura; rótulos traduzidos via `data-open-label`/`data-close-label` |
 | Acordeão do FAQ | `toggleFaq()` | Funcional (um item aberto por vez) |
 | Modais de pousada, piscina, jardins, aves, varanda e galeria | `openInfoModal()`, `openExperienceModal()`, `openPhoto()` e `showModal()` | Funcional; conteúdo em `<template>` |
 | Solicitação de reserva pelo WhatsApp | `submitBooking()` | Funcional — monta a mensagem em português e abre `wa.me` |
@@ -307,11 +307,11 @@ Auditoria local após a compilação do Tailwind e as mudanças de acessibilidad
 
 - `lang` correto em cada página (`pt-BR`, `en`, `es`, `fr`), `<main>` e hierarquia de títulos.
 - `hreflang` alternates, `og:locale`/`og:locale:alternate` e `og:url` por idioma.
-- Seletor de idiomas com `hreflang`, `lang` e `aria-current="page"` no desktop e no mobile.
+- Seletor de idiomas no menu compacto, com `hreflang`, `lang` e `aria-current="page"`.
 - Avaliações traduzidas com o texto original em `<details lang="pt-BR">`.
 - `role="dialog"`, `aria-modal="true"` e `aria-labelledby` nos modais.
 - Foco preso, retorno de foco e fechamento por `ESC`/clique no fundo.
-- `aria-expanded` no menu mobile e no FAQ.
+- `aria-expanded` no menu compacto e no FAQ.
 - `aria-label` nos botões de ícone e no botão flutuante.
 - `alt` descritivo nas fotos.
 - Contraste revisado (Lighthouse 100).
