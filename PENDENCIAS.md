@@ -3,7 +3,7 @@
 Backlog do site da Pousada Musa, priorizado para transformar o protótipo em um site oficial, confiável e publicado.
 
 **Última atualização:** 23/10/2026
-**Estado atual:** site preenchido com dados públicos do Google Maps, fotos reais da listagem, galeria, avaliações e reserva via WhatsApp. Ainda faltam confirmações de direitos, preços, detalhes das acomodações, política de privacidade e publicação.
+**Estado atual:** site preenchido com dados públicos do Google Maps, fotos reais da listagem, galeria, avaliações e reserva via WhatsApp. Tailwind agora é compilado localmente, as imagens têm variantes responsivas e o CSS/JS não dependem mais do CDN. Ainda faltam confirmações de direitos, preços, detalhes das acomodações, política de privacidade e publicação.
 
 > Documentação do que já existe: [README.md](./README.md).
 
@@ -26,9 +26,9 @@ Status: `[ ]` pendente · `[x]` concluído · `[~]` em andamento
 | Frente | Itens | Concluídos | Em andamento |
 |---|---|---|---|
 | P0 — Bloqueadores | 5 | 1 | 2 |
-| P1 — Qualidade | 8 | 0 | 4 |
+| P1 — Qualidade | 8 | 1 | 6 |
 | P2 — Evolução | 8 | 0 | 1 |
-| Bugs conhecidos | 12 (+6 novos) | 10 corrigidos + 1 obsoleto | 1 parcial + 6 abertos |
+| Bugs conhecidos | 12 (+7 novos) | 12 corrigidos + 1 obsoleto | 1 parcial + 5 abertos |
 
 > **Leitura rápida:** o site já está tecnicamente funcional e com dados reais. O que impede chamá-lo de oficial é a confirmação de direitos das fotos/depoimentos, os dados comerciais (preços, acomodações, regras), a política de privacidade e o domínio.
 
@@ -176,19 +176,30 @@ As fotos de banco de imagens foram substituídas por imagens da listagem do Goog
 
 ### P1-01 · Compilar o Tailwind para produção
 
-O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runtime, pesa mais e atrasa a renderização.
+**Status: concluído.** O CDN `cdn.tailwindcss.com` foi removido. O site usa um CSS de ~26 KB gerado localmente, com apenas as classes usadas.
 
-- [ ] Criar `package.json` e instalar `tailwindcss@3`
-- [ ] Criar `tailwind.config.js` com as cores `musa.*` e as fontes
-- [ ] Criar `src/input.css` com as diretivas `@tailwind`
-- [ ] Mover os estilos customizados para o CSS de entrada
-- [ ] Gerar `css/styles.css` minificado
-- [ ] Trocar o script do CDN por `<link rel="stylesheet">`
-- [ ] Remover o `<script>tailwind.config = ...</script>` inline
-- [ ] Adicionar script de build no `package.json`
-- [ ] Repetir o build a cada alteração de classe
+- [x] Criar `package.json` e instalar `tailwindcss@3`
+- [x] Criar `tailwind.config.js` com as cores `musa.*` e as fontes
+- [x] Criar `src/input.css` com as diretivas `@tailwind`
+- [x] Mover os estilos customizados para o CSS de entrada
+- [x] Gerar `css/styles.css` minificado
+- [x] Trocar o script do CDN por `<link rel="stylesheet">`
+- [x] Remover o `<script>tailwind.config = ...</script>` inline
+- [x] Adicionar script de build no `package.json`
+- [x] Repetir o build a cada alteração de classe
 
-**Pronto quando:** o site não carregar mais o CDN e o CSS gerado tiver apenas as classes usadas.
+**Comandos:**
+
+```bash
+npm install        # instala o Tailwind (só na primeira vez)
+npm run build:css  # gera css/styles.css minificado
+npm run watch:css  # regenera enquanto edita
+npm test           # verifica HTML, IDs, imagens e arquivos locais
+```
+
+O `css/styles.css` é gerado e versionado no repositório para permitir deploy estático sem etapa de build.
+
+**Pronto quando:** o site não carregar mais o CDN e o CSS gerado tiver apenas as classes usadas. ✅
 
 ---
 
@@ -205,14 +216,15 @@ O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runti
 - [x] Texto real nos links
 - [x] Conteúdo cobre "pousada em Iguape", "observação de aves" e "Mata Atlântica"
 - [x] `alt` descritivo nas imagens
+- [x] `og:site_name` e `og:image:alt`
+- [x] Criar `robots.txt` (permitindo indexação)
 
 **Ainda falta:**
 
 - [ ] Definir URL canônica
 - [ ] Adicionar `og:url`
 - [ ] Usar URL absoluta em `og:image`
-- [ ] Criar `robots.txt`
-- [ ] Criar `sitemap.xml`
+- [ ] Criar `sitemap.xml` — depende da URL definitiva do domínio
 - [ ] Cadastrar no Google Search Console
 - [ ] Criar/atualizar o Google Business Profile
 - [ ] Revisar o SEO depois do domínio definido
@@ -231,15 +243,19 @@ O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runti
 - [x] Servir o hero com `fetchpriority="high"` e sem lazy
 - [x] Remover dependências externas de imagem (Unsplash/placehold)
 - [x] Criar imagem OG otimizada
+- [x] Compilar o Tailwind e remover o CDN (P1-01)
+- [x] Gerar variantes de 480 e 960 px com `srcset`/`sizes` em todas as imagens de conteúdo
+- [x] Pré-carregar o hero responsivo (`rel="preload"` + `imagesrcset`)
+- [x] Limitar os pesos das fontes (Lora 400; Plus Jakarta Sans 300–400–500–600)
+- [x] Remover o carregamento da imagem do modal na primeira dobra (usa variante menor + lazy)
+- [x] Adicionar `decoding="async"` nas imagens
 
 **Ainda falta:**
 
-- [ ] Auto-hospedar as fontes ou limitar os pesos carregados
-- [ ] Compilar o Tailwind (P1-01)
-- [ ] Gerar `srcset`/`sizes` para diferentes telas
+- [ ] Auto-hospedar as fontes (hoje vêm do Google Fonts)
 - [ ] Avaliar AVIF
 - [ ] Rodar Lighthouse no celular e buscar ≥ 90 em Performance
-- [ ] Revisar o peso total da página (hero e piscina ainda têm ~270 KB cada)
+- [ ] Revisar o peso total da página (as imagens originais de 1200–1400 px continuam disponíveis para telas grandes)
 
 **Pronto quando:** Lighthouse mobile com Performance ≥ 90 e sem avisos críticos.
 
@@ -259,14 +275,19 @@ O CDN `cdn.tailwindcss.com` não deve ser usado em produção: gera CSS em runti
 - [x] `alt` descritivo nas fotos
 - [x] `<main>` e hierarquia de títulos
 - [x] Fechar com `ESC` e clique no fundo
+- [x] Link "pular para o conteúdo" (`#conteudo`)
+- [x] Foco visível global em links, botões, campos e elementos com `tabindex`
+- [x] `aria-controls` no FAQ, ligando cada pergunta à resposta
+- [x] `aria-describedby` no formulário, apontando para o aviso de privacidade
+- [x] Respeitar `prefers-reduced-motion`
+- [x] Revisar imagens decorativas (placeholders com `alt=""`; ícones com `aria-hidden="true"`)
+- [x] Corrigir o fechamento de modal já fechado, que podia roubar o foco
 
 **Ainda falta:**
 
-- [ ] Adicionar link "pular para o conteúdo"
-- [ ] Revisar `alt` de imagens decorativas (usar `alt=""`)
 - [ ] Testar com VoiceOver
-- [ ] Testar navegação só por teclado em todos os fluxos
-- [ ] Revisar contraste em estados de hover/focus
+- [ ] Testar navegação só por teclado em todos os fluxos (o ambiente automatizado não reproduz foco de janela)
+- [ ] Revisar contraste em estados de hover
 
 **Pronto quando:** Lighthouse Accessibility ≥ 95 (já em 100) e o site for navegável só com teclado e leitor de tela.
 
@@ -408,13 +429,14 @@ Ver tabela de [bugs](#bugs-conhecidos) abaixo.
 | B-09 | Preços duplicados e total não recalculado | Modal de reserva | Média | **Obsoleto** | Preços removidos; valores são confirmados no WhatsApp |
 | B-10 | Modais sem foco preso, `aria-modal` ou bloqueio de scroll | Modais | Média | **Corrigido** | `aria-modal`, foco preso, retorno de foco e scroll lock |
 | B-11 | Contatos do rodapé não eram clicáveis | Rodapé | Média | **Corrigido** | `tel:` e `wa.me` |
-| B-12 | Sem meta description, Open Graph, favicon, sitemap ou robots | `<head>` | Média | **Parcial** | Meta/OG/favicon feitos; sitemap/robots pendentes |
+| B-12 | Sem meta description, Open Graph, favicon, sitemap ou robots | `<head>` | Média | **Parcial** | Meta/OG/favicon/robots feitos; sitemap pendente do domínio |
 | B-13 | Fotos vêm do Google Maps; autoria e autorização não confirmadas | `img/` | **Alta** | **Aberto** | Confirmar com a pousada e os autores das fotos |
 | B-14 | Depoimentos do Google são públicos, mas a autorização de uso não foi confirmada | Seção de avaliações | Média | **Aberto** | Confirmar com os autores e com a pousada |
 | B-15 | Preços, suítes, check-in/out e regras ainda são desconhecidos | Conteúdo | Média | **Aberto** | Levantar dados com a pousada (P0-01) |
 | B-16 | `og:image` é relativa e não há canonical/`og:url` | `<head>` | Média | **Aberto** | Resolver após definir o domínio |
 | B-17 | Mapa incorporado pode definir cookies do Google | Seção de localização | Média | **Aberto** | Aviso de cookies/privacidade (P0-04) |
-| B-18 | Tailwind via CDN gera aviso de produção | `<head>` | Baixa | **Aberto** | Compilar o Tailwind (P1-01) |
+| B-18 | Tailwind via CDN gerava aviso de produção | `<head>` | Baixa | **Corrigido** | CSS compilado em `css/styles.css` e carregado por `<link>` |
+| B-19 | `closeModal()` devolvia o foco mesmo quando o modal já estava fechado (ESC sem modal aberto roubava o foco) | `closeModal()` | Baixa | **Corrigido** | Retorno antecipado se o modal não estiver aberto; foco resetado após fechar |
 
 ---
 
@@ -458,7 +480,7 @@ Antes de executar o restante do backlog, é preciso definir:
 
 - [ ] Registrar domínio e configurar DNS/HTTPS
 - [ ] Atualizar canonical, `og:url` e `og:image` absoluta
-- [ ] Compilar o Tailwind
+- [x] Compilar o Tailwind
 - [ ] Rodar Lighthouse mobile e otimizar performance
 - [ ] Criar `robots.txt` e `sitemap.xml`
 - [ ] Configurar Google Search Console e Google Business Profile

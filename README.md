@@ -2,7 +2,7 @@
 
 Site de uma página (_one-page_) para a **Pousada Musa**, em Engenhos, Iguape/SP. O projeto reúne apresentação da pousada, acomodações, observação de aves, experiências, galeria, avaliações, localização, FAQ e um fluxo de solicitação de reserva pelo WhatsApp.
 
-> **Status:** site preenchido com os dados públicos da listagem do Google Maps e com fotos reais da pousada. A reserva já abre o WhatsApp com a mensagem pronta. Ainda **não é um site oficial publicado**: faltam confirmar direitos das fotos, preços, detalhes das acomodações, política de privacidade e domínio. Consulte [PENDENCIAS.md](./PENDENCIAS.md).
+> **Status:** site preenchido com os dados públicos da listagem do Google Maps e com fotos reais da pousada. O Tailwind é compilado localmente, as imagens têm variantes responsivas e a reserva abre o WhatsApp com a mensagem pronta. Ainda **não é um site oficial publicado**: faltam confirmar direitos das fotos, preços, detalhes das acomodações, política de privacidade e domínio. Consulte [PENDENCIAS.md](./PENDENCIAS.md).
 
 ---
 
@@ -12,6 +12,7 @@ Site de uma página (_one-page_) para a **Pousada Musa**, em Engenhos, Iguape/SP
 - [O que ainda não sabemos](#o-que-ainda-não-sabemos)
 - [Fotos e direitos de uso](#fotos-e-direitos-de-uso)
 - [Como rodar localmente](#como-rodar-localmente)
+- [Build e verificação](#build-e-verificação)
 - [Estrutura do repositório](#estrutura-do-repositório)
 - [Stack e dependências](#stack-e-dependências)
 - [Seções da página](#seções-da-página)
@@ -99,30 +100,50 @@ As imagens em `img/` foram baixadas da **listagem pública do Google Maps** (fot
 - `img/og.jpg` — imagem de compartilhamento (1200×630)
 - `img/favicon.svg` — favicon
 
+Cada foto de conteúdo também tem variantes `-480.webp` e `-960.webp`, usadas via `srcset`/`sizes`. O arquivo sem sufixo é a versão maior (1200–1400 px), servida para telas grandes.
+
 > **Atenção:** antes de divulgar o site como oficial, confirme a autoria das fotos e a autorização de uso. Fotos de avaliações podem pertencer aos hóspedes que as enviaram. O mesmo vale para os depoimentos: são públicos, mas é recomendável confirmar com os autores e com a pousada.
 
 ---
 
 ## Como rodar localmente
 
-Não há instalação, build ou dependências de projeto. Basta servir a pasta como arquivos estáticos.
+O site é estático. O único passo de build é compilar o Tailwind; o CSS gerado (`css/styles.css`) já está versionado, então dá para servir a pasta sem instalar nada.
 
-**Opção 1 — Python (já incluso no macOS):**
+**Com npm (recomendado):**
+
+```bash
+cd "/caminho/para/site-musa"
+npm install
+npm run serve
+```
+
+Abra <http://localhost:8000>.
+
+**Sem instalar nada:**
 
 ```bash
 cd "/caminho/para/site-musa"
 python3 -m http.server 8000
 ```
 
-Abra <http://localhost:8000>.
+> Abrir o `index.html` com duplo clique também funciona, mas um servidor local reproduz melhor o comportamento de produção (especialmente o mapa incorporado e os caminhos relativos).
 
-**Opção 2 — Node:**
+---
 
-```bash
-npx serve .
-```
+## Build e verificação
 
-> Abrir o `index.html` com duplo clique também funciona, mas um servidor local reproduz melhor o comportamento de produção (especialmente o mapa incorporado).
+| Comando | O que faz |
+|---|---|
+| `npm run build:css` | Compila `src/input.css` em `css/styles.css` minificado |
+| `npm run watch:css` | Recompila o CSS enquanto você edita |
+| `npm run build` | Alias para `build:css` |
+| `npm test` | Verifica IDs duplicados, âncoras, `aria-controls`, `alt`, `width`/`height` e arquivos referenciados |
+| `npm run serve` | Sobe um servidor local em <http://localhost:8000> |
+
+**Sempre que adicionar ou remover classes do Tailwind no `index.html`, rode `npm run build:css`.** O CSS gerado precisa ser commitado junto com a alteração.
+
+O `scripts/check-site.mjs` não tem dependências externas e pode rodar em CI. Ele falha se o HTML voltar a carregar o CDN do Tailwind ou se alguma imagem/arquivo local deixar de existir.
 
 ---
 
@@ -130,14 +151,20 @@ npx serve .
 
 ```
 site-musa/
-├── index.html      # Site completo: HTML + CSS customizado + JavaScript
-├── img/            # Fotos reais otimizadas, OG image e favicon
-├── README.md       # Este documento
-├── PENDENCIAS.md   # O que falta fazer, priorizado
+├── index.html              # HTML + JavaScript da página
+├── src/input.css           # Fonte do Tailwind + estilos customizados
+├── css/styles.css          # CSS compilado e minificado (gerado)
+├── tailwind.config.js      # Cores musa.* e famílias de fonte
+├── package.json            # Scripts de build, teste e servidor
+├── scripts/check-site.mjs  # Verificações estáticas do HTML e dos assets
+├── img/                    # Fotos reais, variantes responsivas, OG image e favicon
+├── robots.txt              # Indexação liberada (sitemap pendente do domínio)
+├── README.md               # Este documento
+├── PENDENCIAS.md           # O que falta fazer, priorizado
 └── .gitignore
 ```
 
-O CSS e o JavaScript ainda estão embutidos no `index.html`. A separação em `css/` e `js/` está prevista em [PENDENCIAS.md](./PENDENCIAS.md), mas não é necessária para o primeiro deploy.
+O CSS agora é separado. O JavaScript continua embutido no `index.html`; a extração para `js/` está prevista em [PENDENCIAS.md](./PENDENCIAS.md) (P2-01).
 
 ---
 
@@ -146,15 +173,16 @@ O CSS e o JavaScript ainda estão embutidos no `index.html`. A separação em `c
 | Camada | Tecnologia | Observação |
 |---|---|---|
 | Marcação | HTML5 | Página única, `lang="pt-BR"` |
-| Estilo | Tailwind CSS 3 via CDN | `https://cdn.tailwindcss.com` — **apenas desenvolvimento** |
-| Estilo customizado | CSS puro | Cards, acordeão, sombra do hero, `scroll-margin` |
-| Comportamento | JavaScript ES6 (vanilla) | Sem framework, sem build |
-| Tipografia | Google Fonts | Lora (serifada) + Plus Jakarta Sans (sans) |
-| Imagens | Fotos da listagem do Google Maps | Otimizadas localmente em WebP/JPEG |
+| Estilo | Tailwind CSS 3 compilado | `src/input.css` → `css/styles.css` (~26 KB) |
+| Estilo customizado | CSS puro em `@layer` | Cards, acordeão, sombra do hero, skip link, foco visível |
+| Comportamento | JavaScript ES6 (vanilla) | Sem framework; script embutido no HTML |
+| Tipografia | Google Fonts | Lora (400) + Plus Jakarta Sans (300–600) |
+| Imagens | Fotos da listagem do Google Maps | WebP com variantes de 480/960 px e `srcset` |
 | Mapa | Google Maps embed | Sem chave de API, via `output=embed` |
+| Build | Tailwind CLI 3 | Única dependência de desenvolvimento |
 | Versionamento | Git + GitHub | `gmsarti/site-musa` |
 
-Não há `package.json`, bundler, testes automatizados nem backend.
+Não há bundler, backend nem framework de testes. O `npm test` roda apenas verificações estáticas com Node puro.
 
 ---
 
@@ -212,7 +240,7 @@ Não há pagamento, confirmação automática nem consulta de calendário em tem
 | Boas práticas | **100** |
 | SEO | **100** |
 
-O único aviso de console é esperado: `cdn.tailwindcss.com should not be used in production`.
+Auditoria local após a compilação do Tailwind e as mudanças de acessibilidade: sem avisos de console e sem falhas nas três categorias.
 
 ### O que já está implementado
 
@@ -224,17 +252,20 @@ O único aviso de console é esperado: `cdn.tailwindcss.com should not be used i
 - `alt` descritivo nas fotos.
 - Contraste revisado (Lighthouse 100).
 - `scroll-margin-top` para as âncoras não ficarem atrás do header.
-- `loading="lazy"`, `width`/`height` e `fetchpriority="high"` no hero.
-- Título, meta description, Open Graph, Twitter Card, favicon e imagem OG.
+- Link "pular para o conteúdo" e `<main id="conteudo" tabindex="-1">`.
+- Foco visível global e respeito a `prefers-reduced-motion`.
+- `aria-controls` no FAQ e `aria-describedby` no formulário.
+- `loading="lazy"`, `width`/`height`, `decoding="async"` e `fetchpriority="high"` no hero.
+- `srcset`/`sizes` em todas as imagens de conteúdo e preload do hero.
+- Título, meta description, Open Graph, Twitter Card, favicon, imagem OG e `robots.txt`.
 
 ### O que ainda falta
 
-- URL canônica e `og:url` absoluto (dependem do domínio).
-- `robots.txt` e `sitemap.xml`.
+- URL canônica, `og:url` e `og:image` absoluta (dependem do domínio).
+- `sitemap.xml` (depende do domínio).
 - Teste manual com VoiceOver e navegação só por teclado.
-- Link "pular para o conteúdo".
-- Compilar o Tailwind para remover o CDN.
 - Rodar Lighthouse mobile com Performance ≥ 90.
+- Auto-hospedar as fontes e avaliar AVIF.
 
 ---
 
@@ -273,11 +304,11 @@ Cores adicionais fora do tema: fundo do `body` `#E6DFD3`, borda dos cards `#C8B5
 ## Decisões técnicas
 
 1. **Site estático, sem framework.** Para uma pousada, HTML/CSS/JS resolvem o problema com custo próximo de zero, alta velocidade e menos superfície de manutenção.
-2. **Tailwind via CDN no protótipo.** Permite iterar sem build. Deve ser trocado pela versão compilada antes de produção.
+2. **Tailwind compilado localmente.** Gera um CSS pequeno e elimina o CDN em produção. O build é o único passo de dependência do projeto.
 3. **Interatividade no próprio HTML.** Modais, acordeão e galeria são simples e não justificam uma biblioteca.
 4. **Reserva via WhatsApp.** Evita backend, banco de dados e custo de motor de reservas. Um motor só se o volume justificar.
 5. **Conteúdo centralizado em HTML.** Não há CMS; alterações de texto são feitas direto no arquivo.
-6. **Fotos locais em WebP.** Reduz dependência externa e melhora o carregamento, mantendo a possibilidade de trocar por fotos oficiais depois.
+6. **Fotos locais em WebP com `srcset`.** Reduz dependência externa, evita baixar 1400 px no celular e mantém a possibilidade de trocar por fotos oficiais depois.
 7. **Dados não confirmados foram removidos.** É melhor um site menor e verdadeiro do que um site completo e enganoso.
 
 ---
@@ -295,7 +326,7 @@ Cores adicionais fora do tema: fundo do `body` `#E6DFD3`, borda dos cards `#C8B5
 3. Criar política de privacidade e revisar o aviso de dados no formulário.
 4. Publicar em uma hospedagem estática (Netlify, Cloudflare Pages ou Vercel).
 5. Registrar domínio, configurar HTTPS e atualizar `og:url`/canonical.
-6. Compilar o Tailwind e rodar Lighthouse mobile.
+6. Rodar Lighthouse mobile e otimizar o que ainda pesar.
 7. Configurar Google Search Console e Google Business Profile.
 
 O plano detalhado, com checkboxes e critérios de aceite, está em [PENDENCIAS.md](./PENDENCIAS.md).

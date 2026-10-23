@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# O sitemap será publicado quando o domínio oficial for definido (P1-02).
+# Enquanto isso, não há URL absoluta para declarar aqui.

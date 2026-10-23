@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        background-color: #E6DFD3;
+        color: #4A3F35;
+    }
+
+    /* Evita que o header fixo cubra as âncoras */
+    section[id] {
+        scroll-margin-top: 6rem;
+    }
+
+    /* O <main> recebe foco via link "pular para o conteúdo" */
+    main:focus {
+        outline: none;
+    }
+
+    /* Foco visível e consistente, inclusive sobre fundos coloridos */
+    :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+        outline: 2px solid currentColor;
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        html {
+            scroll-behavior: auto;
+        }
+
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}
+
+@layer components {
+    /* Moldura dupla arredondada dos cards */
+    .musa-card-frame {
+        border: 1.5px solid #C8B598;
+        padding: 6px;
+        border-radius: 1.25rem;
+        background-color: #F4EFE6;
+        transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .musa-card-frame:hover {
+        transform: translateY(-6px);
+        border-color: #A84B2B;
+        box-shadow: 0 15px 30px -10px rgba(168, 75, 43, 0.2);
+    }
+
+    /* Acordeão do FAQ */
+    .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.35s ease-out;
+    }
+
+    .faq-item.active .faq-answer {
+        max-height: 620px;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: rotate(45deg);
+    }
+
+    /* Sombra suave no texto do hero */
+    .hero-text-shadow {
+        text-shadow: 0 2px 15px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Link de salto para o conteúdo principal */
+    .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+        z-index: 60;
+    }
+
+    .skip-link:focus {
+        left: 1rem;
+        top: 1rem;
+        padding: 0.75rem 1.25rem;
+        border-radius: 9999px;
+        background-color: #A84B2B;
+        color: #FFFFFF;
+        font-size: 0.875rem;
+        font-weight: 600;
+        box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.45);
+    }
+}
